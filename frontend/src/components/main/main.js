@@ -4,21 +4,11 @@ import "../../assets/stylesheets/main.scss";
 import { getGoogleKey } from "../../util/google_api_util";
 
 function MainPage() {
-  async function getKey() {
-    const googleAPI = getGoogleKey();
-    console.log(googleAPI);
-    let response = await fetch(googleAPI),
-      body = await response.json();
-    console.log(response);
-    console.log(body);
-    return body;
-  }
-
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: `${getGoogleKey()}`,
   });
   // const googlemapkey = await getGoogleKey()
-  if (!isLoaded && !getKey()) {
+  if (!isLoaded) {
     return <div> Loading... </div>;
   } else {
     return (

@@ -1,8 +1,8 @@
 # Root
 /node_modules
 .DS_Store
-/config/
-.env
+# /config/
+# .env
 
 # Frontend
 /frontend/node_modules
@@ -17,7 +17,7 @@
 
 # misc
 /frontend/.DS_Store
-/frontend/.env.local
+/frontend/.env.local 
 /frontend/.env.development.local
 /frontend/.env.test.local
 /frontend/.env.production.local
