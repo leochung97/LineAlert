@@ -9,7 +9,7 @@ function NavBar(props) {
   const getLinks = () => {
     if (props.loggedIn) {
       return (
-        <div>
+        <div className='nav-links'>
           <Link id="link" to="/">
             <h4>All Alerts</h4>
           </Link>
@@ -24,10 +24,12 @@ function NavBar(props) {
       );
     } else {
       return (
-        <div>
+        <div className='nav-links'>
+          <div>
           <Link id="link" to="/signup">
             <h4>Signup</h4>
           </Link>
+          </div>
           <Link id="link" to="/login">
             <h4>Login</h4>
           </Link>
