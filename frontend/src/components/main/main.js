@@ -34,15 +34,15 @@ function MainPage() {
 
     function Map() {
       const center = { lat: 40.767, lng: -73.972 };
+      
       return (
         <LoadScript googleMapsApiKey={mapKey.current}>
           <GoogleMap
-            zoom={13}
+            zoom={12.5}
             center={center}
             mapContainerClassName="map-container"
             options={{
               disableDefaultUI: true,
-
               styles: mapStyles
             }}
           ></GoogleMap>

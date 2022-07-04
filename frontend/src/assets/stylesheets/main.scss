@@ -8,7 +8,16 @@ header {
   z-index: 1000;
 }
 
-:hover#link {
+.header h4 {
+  margin: 20px;
+}
+
+#link {
+  color: white;
+  text-decoration: none;
+}
+
+#link:hover {
   color: #98cccc;
   cursor: pointer;
 }
@@ -26,17 +35,10 @@ header {
   align-items: center;
   flex-wrap: nowrap;
   margin-bottom: -50px;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 100;
   position: fixed;
   background-color: rgb(28, 37, 48);
-}
-
-.header h4 {
-  margin: 20px;
-  text-decoration: none;
-  color: white;
 }
 
 .links {
@@ -116,6 +118,7 @@ header {
   z-index: 10;
   margin-top: 50px;
   margin-left: 50%;
+  margin-right: 50px;
   display: inline-block;
   width: 50%;
   height: 100vh;
@@ -130,7 +133,6 @@ header {
   background-color: rgb(28, 37, 48);
   border-radius: 15px;
   margin-left: 50px;
-  margin-right: 50px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
@@ -141,7 +143,6 @@ header {
   background-color: rgb(28, 37, 48);
   border-radius: 15px;
   margin-left: 50px;
-  margin-right: 50px;
   margin-top: 50px;
   margin-bottom: 50px;
 }
