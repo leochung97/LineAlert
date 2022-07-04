@@ -10,27 +10,46 @@ function NavBar(props) {
     if (props.loggedIn) {
       return (
         <div>
-          <Link to="/">All Alerts</Link>
-          <Link to="/profile">Profile</Link>
-          <Link to="/new_alert">Create an Alert</Link>
+          <Link id="link" to="/">
+            <h4>All Alerts</h4>
+          </Link>
+          <Link id="link" to="/profile">
+            <h4>Profile</h4>
+          </Link>
+          <Link id="link" to="/new_alert">
+            <h4>Create an Alert</h4>
+          </Link>
           <button onClick={logoutUser}>Logout</button>
         </div>
       );
     } else {
       return (
         <div>
-          <Link to="/signup">Signup</Link>
-          <Link to="/login">Login</Link>
+          <Link id="link" to="/signup">
+            <h4>Signup</h4>
+          </Link>
+          <Link id="link" to="/login">
+            <h4>Login</h4>
+          </Link>
         </div>
       );
     }
   };
 
   return (
-    <div>
-      <h1>Line Alert NavBar</h1>
-      {getLinks()}
-    </div>
+    <header>
+      <div className="header">
+        <div className="header-logo">
+          <img
+            id="logo"
+            src="https://linealert-assets.s3.amazonaws.com/linealert_logo_full.png"
+            alt="line-alert-logo"
+          />
+        </div>
+        <div className="links"></div>
+        <div className="login-signup">{getLinks()}</div>
+      </div>
+    </header>
   );
 }
 
