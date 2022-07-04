@@ -103,6 +103,7 @@ header {
 .main-left-side {
   z-index: 10;
   margin-top: 50px;
+  margin-right: 50px;
   display: inline-block;
   width: 50%;
   height: 100vh;
@@ -119,6 +120,8 @@ header {
   margin-top: 50px;
   margin-left: 50%;
   margin-right: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
   display: inline-block;
   width: 50%;
   height: 100vh;
