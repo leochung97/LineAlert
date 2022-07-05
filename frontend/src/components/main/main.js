@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import "../../assets/stylesheets/main.scss";
-// import { getGoogleKey } from "../../util/google_api_util";
 import axios from "axios";
 import mapStyles from "./styles.js"
 
@@ -34,24 +33,23 @@ function MainPage() {
 
     function Map() {
       const center = { lat: 40.767, lng: -73.972 };
-
+    
+      const icons = {
+        alerts: {
+          yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow-10x10.png',
+          orange: 'https://linealert-assets.s3.amazonaws.com/alert-orange-10x10.png',
+          red: 'https://linealert-assets.s3.amazonaws.com/alert-orange-10x10.png'
+        },
+      }
       const markers = {
-        'Union Square': { id: 1, lat: 40.7359, lng: -73.9911, color: 'yellow' },
-        'Times Square': { id: 2, lat: 40.7559, lng: -73.9871, color: 'red' }
+        'Union Square': { id: 1, center: {lat: 40.7359, lng: -73.9911}, color: icons.alerts.yellow },
+        'Times Square': { id: 2, center: {lat: 40.7559, lng: -73.9871}, color: icons.alerts.red }
       }
 
       let markersArr = [];
       Object.values(markers).forEach(value => {
         markersArr.push(value)
       })
-
-      const icons = {
-        alerts: {
-          yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow.png',
-          orange: 'https://linealert-assets.s3.amazonaws.com/alert-orange.png',
-          red: 'https://linealert-assets.s3.amazonaws.com/alert-red.png'
-        },
-      }
 
       return (
         <LoadScript googleMapsApiKey={mapKey.current}>
@@ -71,6 +69,7 @@ function MainPage() {
                 let color = (({color}) => ({color}))(el);
                 return <Marker key={id} position={pos} 
                 // icon={`icons.alerts.${color}`}
+                return <Marker key={el.id} position={el.center} icon={el.color}
                 />
               })
             }

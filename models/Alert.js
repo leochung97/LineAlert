@@ -7,14 +7,19 @@ const AlertSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'users',
     },
-    location: {
-      type: String,
-      required: true,
+    station: {
+      type: Schema.Types.ObjectId,
+      ref: 'stations',
+      required: true
     },
     description: {
       type: String,
-      required: true,
+      required: true
     },
+    intensity: {
+      type: String,
+      required: true
+    }
   },
 
   {
@@ -25,5 +30,4 @@ const AlertSchema = new Schema(
 Alert = mongoose.model("Alert", AlertSchema);
 module.exports = Alert;
 
-// pour Leo
 // https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
