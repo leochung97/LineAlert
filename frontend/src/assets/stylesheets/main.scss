@@ -162,12 +162,8 @@ a[href^="http://maps.google.com/maps"]{display:none !important}
 a[href^="https://maps.google.com/maps"]{display:none !important}
 
 .gmnoprint a, .gmnoprint span, .gm-style-cc {
-  z-index: -1;
-  position: relative;
-  top: 20px;
-    // display:none;
+    display:none;
 }
 .gmnoprint div {
-  z-index: -1;
     background:none !important;
 }
