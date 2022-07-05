@@ -64,6 +64,11 @@ function MainPage() {
           >
             {
               markersArr.map(el => {
+                let id = (({id}) => ({id}))(el);
+                let pos = (({lat, lng}) => ({lat, lng}))(el);
+                let color = (({color}) => ({color}))(el);
+                return <Marker key={id} position={pos} 
+                // icon={`icons.alerts.${color}`}
                 return <Marker key={el.id} position={el.center} icon={el.color}
                 />
               })
