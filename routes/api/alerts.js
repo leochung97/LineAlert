@@ -29,4 +29,5 @@ router.post('/',
         newAlert.save().then(alert => res.json(alert));
     }
 );
-module.exports = router
+
+module.exports = router;
