@@ -4,13 +4,13 @@ const passport = require('passport');
 const Alert = require("../../models/Alert")
 const validateAlertInput = require('../../validation/alerts');
 
-router.get("/", (req, res) => {
+router.get("/", (req, res) => { //gets all alerts
   Alert.find()
   .then( (alerts) => res.json(alerts))
   .catch( (err) => res.json({noalertsfound : "No Alerts"}))
 })
 
-router.post('/',
+router.post('/', //creates alert
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateAlertInput(req.body);
@@ -29,5 +29,28 @@ router.post('/',
         newAlert.save().then(alert => res.json(alert));
     }
 );
+
+router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateAlertInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    Alert.findByIdAndUpdate( req.params.id, {
+      description: req.body.description,
+      intensity: req.body.intensity
+      })
+      .then( alert => {
+        return res.json(alert)
+      })
+      .catch( err => {
+        errors.id = 'Alert does not exist';
+        return res.status(400).json(errors);
+      })
+  }
+)
 
 module.exports = router;
