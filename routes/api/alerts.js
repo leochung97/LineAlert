@@ -14,9 +14,10 @@ router.post('/',
         }
     
         const newAlert = new Alert({
-          location: req.body.location,
+          station: req.body.station,
           description: req.body.description,
-          user: req.user.id
+          user: req.user.id,
+          intensity: req.body.intensity
         });
     
         newAlert.save().then(alert => res.json(alert));
