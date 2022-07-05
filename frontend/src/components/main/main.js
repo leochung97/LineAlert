@@ -4,6 +4,7 @@ import "../../assets/stylesheets/main.scss";
 import axios from "axios";
 import mapStyles from "./styles.js";
 import AlertsContainer from "./alerts";
+import DirectionsForm from "../directions/directions.js"
 
 function MainPage() {
   const [loaded, setLoaded] = useState(false);
@@ -26,7 +27,9 @@ function MainPage() {
           </div>
         </div>
         <div className="main-right-side">
-          <div className="main-right-top"></div>
+          <div className="main-right-top">
+          
+          </div>
           <div className="main-right-bottom">
             <AlertsContainer />
           </div>

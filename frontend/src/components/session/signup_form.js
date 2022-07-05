@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { signup } from "../../actions/session_actions";
+import { Link, useHistory } from "react-router-dom";
 
 function SignUp(props) {
   const [state, setState] = useState({
@@ -14,18 +15,19 @@ function SignUp(props) {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
   };
 
+  const history = useHistory();
+
   useEffect(() => {
-    if (props.isAuthenticated === true) {
-      props.history.push("/tweets");
+    if (props.currentUser) {
+      history.push("/tweets");
     }
-  }, [props.history, props.isAuthenticated]);
+  }, [props.currentUser, history]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     props.signup(state).then(() => {
-      if (state.currentUser) {
-        props.closeModal();
-      }
+      let current = props.currentUser;
+      current ? props.closeModal() : console.log("Check Signup Form");
     });
   };
 
@@ -42,9 +44,16 @@ function SignUp(props) {
   return (
     <div className="signup-form-container">
       <form onSubmit={handleSubmit}>
+        <svg id='close-modal' height="15pt" viewBox="0 0 500 500" width="15pt" onClick={props.closeModal}>
+          <path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0" />
+        </svg>
+        <div className='signup-header'>
+          <h1>Signup</h1>
+        </div>
         <div className="signup-form">
           <br />
           <input
+            id='modal-form'
             type="text"
             value={state.email}
             onChange={update("email")}
@@ -52,6 +61,7 @@ function SignUp(props) {
           />
           <br />
           <input
+            id='modal-form'
             type="text"
             value={state.mobile}
             onChange={update("mobile")}
@@ -59,6 +69,7 @@ function SignUp(props) {
           />
           <br />
           <input
+            id='modal-form'
             type="password"
             value={state.password}
             onChange={update("password")}
@@ -66,14 +77,18 @@ function SignUp(props) {
           />
           <br />
           <input
+            id='modal-form'
             type="password"
             value={state.password2}
             onChange={update("password2")}
             placeholder="Confirm Password"
           />
           <br />
-          <input type="submit" value="Submit" />
           {renderErrors()}
+        </div>
+        <input className='signup-submit-button' type="submit" value="Sign Up" />
+        <div className='switch-modals'>
+          <Link id="link" to="/login" onClick={props.openLogin}>Already have an account? Login. </Link>
         </div>
       </form>
     </div>
@@ -82,8 +97,8 @@ function SignUp(props) {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    signedIn: state.session.isSignedIn,
-    errors: state.errors.session,
+    currentUser: state.session.user,
+    errors: state.errors.session
   };
 };
 

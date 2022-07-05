@@ -12,15 +12,34 @@
 #link {
   color: white;
   text-decoration: none;
+  transition: background-color .25s ease, color .25s ease-in;
 }
 
 #link:hover {
   color: #98cccc;
-  cursor: pointer;
 }
 
-.nav-links {
-  white-space: none;
+.logout-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  border: none;
+}
+
+.logout-button-container > button {
+  background-color: none;
+  color: white;
+  text-decoration: none;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  transition: color .25s ease, color .25s ease-in;
+}
+
+.logout-button-container > button:hover {
+  color: #98cccc;
 }
 
 .header {
@@ -35,7 +54,7 @@
   font-size: 12px;
   font-weight: 100;
   position: fixed;
-  background-color: rgb(28, 37, 48);
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
 }
 
 .links {
@@ -63,6 +82,7 @@
   white-space: none;
   display: flex;
   color: white;
+  margin-right: 20px;
 }
 
 .header-logo {
@@ -73,13 +93,19 @@
   max-height: 50px;
   position: fixed;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
 #logo {
   max-width: 150px;
   margin-left: 20px;
+  transition: opacity .25s ease, color .25s ease-in;
+  opacity: 90%;
+}
+
+#logo:hover {
+  opacity: 100%;
 }
 
 .map-container {
@@ -134,7 +160,7 @@
 .main-right-top {
   width: 90%;
   height: 40vh;
-  background-color: rgb(28, 37, 48);
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
   border-radius: 15px;
   margin-top: 50px;
   overflow-x: hidden;
@@ -144,7 +170,7 @@
 .main-right-bottom {
   width: 90%;
   height: 40vh;
-  background-color: rgb(28, 37, 48);
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
   border-radius: 15px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -152,11 +178,7 @@
   overflow-y: hidden;
 }
 
-.nav-links {
-  margin-right: 20px;
-}
-
-//Don't let Google see this!!
+// Don't let Google see this!!
 
 a[href^="http://maps.google.com/maps"]{display:none !important}
 a[href^="https://maps.google.com/maps"]{display:none !important}

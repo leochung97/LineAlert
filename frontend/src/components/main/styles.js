@@ -385,7 +385,7 @@ const mapStyles =  [
     elementType: "all",
     stylers: [
       {
-        visibility: "on",
+        visibility: "off",
       },
     ],
   },
@@ -394,7 +394,7 @@ const mapStyles =  [
     elementType: "labels",
     stylers: [
       {
-        color: "#ff0000",
+        visbility: "off",
       },
     ],
   },
@@ -403,7 +403,7 @@ const mapStyles =  [
     elementType: "labels.icon",
     stylers: [
       {
-        visibility: "simplified",
+        visibility: "off",
       },
     ],
   },
