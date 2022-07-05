@@ -36,16 +36,15 @@ function MainPage() {
       const center = { lat: 40.767, lng: -73.972 };
 
       const markers = {
-        'Union Square': { lat: 40.7359, lng: -73.9911 },
-        'Times Square': { lat: 40.7559, lng: -73.9871 }
+        'Union Square': { id: 1, lat: 40.7359, lng: -73.9911, color: 'yellow' },
+        'Times Square': { id: 2, lat: 40.7559, lng: -73.9871, color: 'red' }
       }
 
       let markersArr = [];
       Object.values(markers).forEach(value => {
         markersArr.push(value)
       })
-      console.log(markersArr)
-    
+
       const icons = {
         alerts: {
           yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow.png',
@@ -67,7 +66,15 @@ function MainPage() {
           >
             {
               markersArr.map(el => {
-                return <Marker position={el} icon={icons.alerts.yellow}/>
+                let id = (({id}) => ({id}))(el);
+                let pos = (({lat, lng}) => ({lat, lng}))(el);
+                let color = (({color}) => ({color}))(el);
+                console.log(id)
+                console.log(pos)
+                console.log(color)
+                return <Marker key={id} position={pos} 
+                // icon={`icons.alerts.${color}`}
+                />
               })
             }
           </GoogleMap>
