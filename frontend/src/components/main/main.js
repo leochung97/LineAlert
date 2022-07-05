@@ -69,9 +69,6 @@ function MainPage() {
                 let id = (({id}) => ({id}))(el);
                 let pos = (({lat, lng}) => ({lat, lng}))(el);
                 let color = (({color}) => ({color}))(el);
-                console.log(id)
-                console.log(pos)
-                console.log(color)
                 return <Marker key={id} position={pos} 
                 // icon={`icons.alerts.${color}`}
                 />
