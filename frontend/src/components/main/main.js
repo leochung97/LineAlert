@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker, TransitLayer } from "@react-google-maps/api";
 import "../../assets/stylesheets/main.scss";
 import axios from "axios";
 import mapStyles from "./styles.js"
@@ -36,9 +36,9 @@ function MainPage() {
     
       const icons = {
         alerts: {
-          yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow-10x10.png',
-          orange: 'https://linealert-assets.s3.amazonaws.com/alert-orange-10x10.png',
-          red: 'https://linealert-assets.s3.amazonaws.com/alert-orange-10x10.png'
+          yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow-15x15.png',
+          orange: 'https://linealert-assets.s3.amazonaws.com/alert-orange-15x15.png',
+          red: 'https://linealert-assets.s3.amazonaws.com/alert-red-15x15.png'
         },
       }
       const markers = {
@@ -58,21 +58,19 @@ function MainPage() {
             center={center}
             mapContainerClassName="map-container"
             options={{
+              minZoom: 11,
+              panControl: false,
               disableDefaultUI: true,
-              styles: mapStyles
+              styles: mapStyles,
             }}
           >
             {
               markersArr.map(el => {
-                let id = (({id}) => ({id}))(el);
-                let pos = (({lat, lng}) => ({lat, lng}))(el);
-                let color = (({color}) => ({color}))(el);
-                return <Marker key={id} position={pos} 
-                // icon={`icons.alerts.${color}`}
                 return <Marker key={el.id} position={el.center} icon={el.color}
                 />
               })
             }
+            <TransitLayer/>
           </GoogleMap>
         </LoadScript>
       );
