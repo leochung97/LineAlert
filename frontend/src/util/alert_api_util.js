@@ -4,7 +4,7 @@ export const fetchAlert = alertId => {
     return axios.get(`/api/alerts/${alertId}`);
 }
 
-export const fetchAlerts = () => {  // don't think this is needed
+export const fetchAlerts = () => {
     return axios.get('/api/alerts');
 }
 
