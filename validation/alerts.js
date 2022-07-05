@@ -4,7 +4,7 @@ const validText = require('./valid-text');
 module.exports = function validateAlertInput(data) {
   let errors = {};
   
-  data.location = validText(data.location) ? data.location : '';
+  data.station = validText(data.station) ? data.station : '';
   data.description = validText(data.description) ? data.description : '';
 
 
@@ -15,9 +15,11 @@ module.exports = function validateAlertInput(data) {
     errors.description = 'Description is required';
   }
 
-  if (Validator.isEmpty(data.location)) {
-    errors.location = 'Your location is required';
+  if (Validator.isEmpty(data.station)) {
+    errors.station = 'Your location is required';
   }
+
+  
 
   return {
     errors,

@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { GoogleMap, LoadScript, Marker, TransitLayer } from "@react-google-maps/api";
 import "../../assets/stylesheets/main.scss";
 import axios from "axios";
-import mapStyles from "./styles.js"
+import mapStyles from "./styles.js";
+import AlertsContainer from "./alerts";
 import DirectionsForm from "../directions/directions.js"
 
 function MainPage() {
@@ -27,9 +28,11 @@ function MainPage() {
         </div>
         <div className="main-right-side">
           <div className="main-right-top">
-
+          
           </div>
-          <div className="main-right-bottom"></div>
+          <div className="main-right-bottom">
+            <AlertsContainer />
+          </div>
         </div>
       </div>
     );

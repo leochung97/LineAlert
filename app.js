@@ -7,7 +7,8 @@ const passport = require("passport");
 const expressListRoutes = require("express-list-routes");
 const cors = require("cors");
 const users = require("./routes/api/users");
-const alerts = require("./routes/api/alerts")
+const alerts = require("./routes/api/alerts");
+const stations = require("./routes/api/stations");
 const google = require("./routes/api/google");
 
 mongoose
@@ -23,8 +24,9 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 app.use("/api/users", users);
-app.use("/api/alerts", alerts)
+app.use("/api/alerts", alerts);
 app.use("/api/google", google);
+app.use("/api/stations", stations);
 
 const port = process.env.PORT || 5001;
 
