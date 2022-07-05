@@ -250,9 +250,6 @@ const mapStyles =  [
       elementType: "geometry.fill",
       stylers: [
         {
-          visibility: "off",
-        },
-        {
           color: "#000000",
         },
         {
@@ -264,9 +261,6 @@ const mapStyles =  [
       featureType: "road.highway",
       elementType: "geometry.stroke",
       stylers: [
-        {
-          visibility: "off",
-        },
         {
           color: "#000000",
         },
@@ -325,22 +319,10 @@ const mapStyles =  [
       elementType: "geometry",
       stylers: [
         {
-          lightness: 0,
-        },
-      ],
-    },
-    {
-      featureType: "transit",
-      elementType: "geometry.stroke",
-      stylers: [
-        {
           color: "#000000",
         },
         {
-          lightness: 29,
-        },
-        {
-          weight: 0,
+          lightness: 19,
         },
       ],
     },
@@ -376,7 +358,7 @@ const mapStyles =  [
       elementType: "all",
       stylers: [
         {
-          visibility: "on",
+          visibility: "off",
         },
       ],
     },
@@ -385,7 +367,7 @@ const mapStyles =  [
       elementType: "all",
       stylers: [
         {
-          visibility: "on",
+          visibility: "off",
         },
       ],
     },
@@ -407,15 +389,15 @@ const mapStyles =  [
         },
       ],
     },
-    // {
-    //   featureType: "transit.station.rail",
-    //   elementType: "all",
-    //   stylers: [
-    //     {
-    //       visibility: "on",
-    //     },
-    //   ],
-    // },
+    {
+      featureType: "transit.station.rail",
+      elementType: "all",
+      stylers: [
+        {
+          visibility: "on",
+        },
+      ],
+    },
     {
       featureType: "transit.station.rail",
       elementType: "labels.text",
