@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
 })
 
 router.post('/',
-  passport.authenticate('jwt', { session: false }),
+    passport.authenticate('jwt', { session: false }),
     (req, res) => {
         const { errors, isValid } = validateAlertInput(req.body);
     
@@ -28,15 +28,5 @@ router.post('/',
     
         newAlert.save().then(alert => res.json(alert));
     }
-
-    const newAlert = new Alert({
-      location: req.body.location,
-      description: req.body.description,
-      user: req.user.id
-    });
-
-    newAlert.save().then(alert => res.json(alert));
-  }
 );
-
 module.exports = router
