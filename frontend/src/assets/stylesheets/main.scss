@@ -4,10 +4,6 @@
   background-color:#98cccc;
 }
 
-header {
-  z-index: 1000;
-}
-
 .header h4 {
   margin: 20px;
   font-weight: 400;
@@ -102,7 +98,7 @@ header {
 }
 
 .main-left-side {
-  z-index: 10;
+  // z-index: 10;
   margin-top: 50px;
   display: inline-block;
   width: 50%;
@@ -117,7 +113,7 @@ header {
 }
 
 .main-right-side {
-  z-index: 10;
+  // z-index: 10;
   margin-left: 50%;
   overflow-x: hidden;
   overflow-y: hidden;

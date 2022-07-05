@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
-function SignUp(props) {
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { login } from "../../actions/session_actions";
+
+function LoginForm(props) {
   const [state, setState] = useState({
     email: "",
-    mobile: "",
     password: "",
-    password2: "",
   });
+
+  useEffect(() => {
+    if (props.currentUser === true) {
+      props.history.push("/alerts");
+    }
+  }, [props.currentUser, props.history]);
 
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
   };
 
-  useEffect(() => {
-    if (props.isAuthenticated === true) {
-      props.history.push("/tweets");
-    }
-  }, [props.history, props.isAuthenticated]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.signup(state);
+    props.login(state).then(() => {
+      if (state.currentUser) {
+        props.closeModal();
+      }
+    });
   };
 
   const renderErrors = () => {
@@ -33,10 +38,9 @@ function SignUp(props) {
   };
 
   return (
-    <div className="signup-form-container">
+    <div>
       <form onSubmit={handleSubmit}>
-        <div className="signup-form">
-          <br />
+        <div>
           <input
             type="text"
             value={state.email}
@@ -45,24 +49,10 @@ function SignUp(props) {
           />
           <br />
           <input
-            type="text"
-            value={state.mobile}
-            onChange={update("mobile")}
-            placeholder="Phone Number"
-          />
-          <br />
-          <input
             type="password"
             value={state.password}
             onChange={update("password")}
             placeholder="Password"
-          />
-          <br />
-          <input
-            type="password"
-            value={state.password2}
-            onChange={update("password2")}
-            placeholder="Confirm Password"
           />
           <br />
           <input type="submit" value="Submit" />
@@ -73,4 +63,17 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    errors: state.errors.session,
+    currentUser: state.session.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (user) => dispatch(login(user)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

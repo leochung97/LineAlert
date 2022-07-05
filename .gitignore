@@ -1,8 +1,8 @@
 # Root
 /node_modules
 .DS_Store
-# /config/
-# .env
+/config/
+.env
 
 # Frontend
 /frontend/node_modules
