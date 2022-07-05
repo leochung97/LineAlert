@@ -29,9 +29,9 @@ export const fetchAlerts = () => dispatch => {
     return (
         AlertApiUtil.fetchAlerts()
             .then(res => dispatch(receiveAlerts(res)))
-            .catch(err => {
-                dispatch(receiveSessionErrors(err.response.data));
-            })
+            // .catch(err => {
+            //     dispatch(receiveSessionErrors(err.response.data));
+            // })
     )
 }
 
@@ -39,9 +39,9 @@ export const fetchAlert = alertId => dispatch => {
     return (
         AlertApiUtil.fetchAlert(alertId)
             .then(res => dispatch(receiveAlert(res)))
-            .catch(err => {
-                dispatch(receiveSessionErrors(err.response.data));
-            })
+            // .catch(err => {
+            //     dispatch(receiveSessionErrors(err.response.data));
+            // })
     )
 }
 
@@ -49,9 +49,9 @@ export const createAlert = alert => dispatch => {
     return (
         AlertApiUtil.createAlert(alert)
             .then(res => dispatch(receiveAlert(alert)))
-            .catch(err => {
-                dispatch(receiveSessionErrors(err.response.data));
-            })
+            // .catch(err => {
+            //     dispatch(receiveSessionErrors(err.response.data));
+            // })
     )
 }
 
@@ -59,18 +59,18 @@ export const updateAlert = alert => dispatch => {
     return (
         AlertApiUtil.updateAlert(alert)
             .then(res => dispatch(receiveAlert(alert)))
-            .catch(err => {
-                dispatch(receiveSessionErrors(err.response.data));
-            })
+            // .catch(err => {
+            //     dispatch(receiveSessionErrors(err.response.data));
+            // })
     )
 }
 
 export const deleteAlert = alertId => dispatch => {
     return (
-        AlertApiUtil.removeAlert(alertId)
+        AlertApiUtil.deleteAlert(alertId)
             .then(res => dispatch(removeAlert(res)))
-            .catch(err => {
-                dispatch(receiveSessionErrors(err.response.data));
-            })
+            // .catch(err => {
+            //     dispatch(receiveSessionErrors(err.response.data));
+            // })
     )
 }

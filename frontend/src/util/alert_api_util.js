@@ -9,7 +9,7 @@ export const fetchAlerts = () => {
 }
 
 export const createAlert = alert => {
-    return axios.post('api/alerts/new', alert)
+    return axios.post('api/alerts', alert)
 }
 
 export const updateAlert = alert => {
