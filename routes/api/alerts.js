@@ -4,6 +4,12 @@ const passport = require('passport');
 const Alert = require("../../models/Alert")
 const validateAlertInput = require('../../validation/alerts');
 
+router.get("/", (req, res) => {
+  Alert.find()
+  .then( (alerts) => res.json(alerts))
+  .catch( (err) => res.json({noalertsfound : "No Alerts"}))
+})
+
 router.post('/',
     passport.authenticate('jwt',{ session: false }),
     (req, res) => {

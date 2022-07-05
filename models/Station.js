@@ -9,13 +9,10 @@ const StationSchema = new Schema (
     },
     // Array of strings
     line: {
-      type: Array,
+      type: [String],
       required: true
     },
-    author: {
-      type: Schema.Type.ObjectId,
-      ref: 'users',
-    }
+    alerts: [{ type: Schema.Types.ObjectId, ref: "Alert" }]
   },
 
   {
@@ -24,4 +21,4 @@ const StationSchema = new Schema (
 );
 
 Station = mongoose.model('Station', StationSchema);
-module.exports = Alert;
+module.exports = Station;
