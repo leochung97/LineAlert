@@ -35,16 +35,16 @@ function MainPage() {
     function Map() {
       const center = { lat: 40.767, lng: -73.972 };
 
-      // const markers = {
-      //   'Union Square': { lat: 40.7359, lng: -73.9911 },
-      //   'Times Square': { lat: 40.7559, lng: -73.9871 }
-      // }
+      const markers = {
+        'Union Square': { lat: 40.7359, lng: -73.9911 },
+        'Times Square': { lat: 40.7559, lng: -73.9871 }
+      }
 
-      // let markersArr = [];
-      // Object.values(markers).forEach(value => {
-      //   markersArr.push(value)
-      // })
-      // console.log(markersArr)
+      let markersArr = [];
+      Object.values(markers).forEach(value => {
+        markersArr.push(value)
+      })
+      console.log(markersArr)
     
       const icons = {
         alerts: {
@@ -65,13 +65,11 @@ function MainPage() {
               styles: mapStyles
             }}
           >
-            {/* {
+            {
               markersArr.map(el => {
-                <Marker position={el} icon={icon}/>
+                return <Marker position={el} icon={icons.alerts.yellow}/>
               })
-            } */}
-            <Marker position={{ lat: 40.7359, lng: -73.9911 }} icon={icons.alerts.yellow}/>
-            <Marker position={{ lat: 40.7559, lng: -73.9871 }} icon={icons.alerts.red}/>
+            }
           </GoogleMap>
         </LoadScript>
       );
