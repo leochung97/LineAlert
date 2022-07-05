@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import "../../assets/stylesheets/main.scss";
 // import { getGoogleKey } from "../../util/google_api_util";
 import axios from "axios";
@@ -34,7 +34,26 @@ function MainPage() {
 
     function Map() {
       const center = { lat: 40.767, lng: -73.972 };
-      
+
+      // const markers = {
+      //   'Union Square': { lat: 40.7359, lng: -73.9911 },
+      //   'Times Square': { lat: 40.7559, lng: -73.9871 }
+      // }
+
+      // let markersArr = [];
+      // Object.values(markers).forEach(value => {
+      //   markersArr.push(value)
+      // })
+      // console.log(markersArr)
+    
+      const icons = {
+        alerts: {
+          yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow.png',
+          orange: 'https://linealert-assets.s3.amazonaws.com/alert-orange.png',
+          red: 'https://linealert-assets.s3.amazonaws.com/alert-red.png'
+        },
+      }
+
       return (
         <LoadScript googleMapsApiKey={mapKey.current}>
           <GoogleMap
@@ -45,7 +64,15 @@ function MainPage() {
               disableDefaultUI: true,
               styles: mapStyles
             }}
-          ></GoogleMap>
+          >
+            {/* {
+              markersArr.map(el => {
+                <Marker position={el} icon={icon}/>
+              })
+            } */}
+            <Marker position={{ lat: 40.7359, lng: -73.9911 }} icon={icons.alerts.yellow}/>
+            <Marker position={{ lat: 40.7559, lng: -73.9871 }} icon={icons.alerts.red}/>
+          </GoogleMap>
         </LoadScript>
       );
     }

@@ -10,6 +10,7 @@ header {
 
 .header h4 {
   margin: 20px;
+  font-weight: 400;
 }
 
 #link {
@@ -89,7 +90,7 @@ header {
   width: 100%;
   height: 85vh;
   border-radius: 20px;
-  margin-left: 50px;
+  margin-left: 5%;
   margin-bottom: 50px;
 }
 
@@ -103,7 +104,6 @@ header {
 .main-left-side {
   z-index: 10;
   margin-top: 50px;
-  margin-right: 50px;
   display: inline-block;
   width: 50%;
   height: 100vh;
@@ -113,13 +113,12 @@ header {
   background-color:#98cccc;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .main-right-side {
   z-index: 10;
-  margin-top: 50px;
   margin-left: 50%;
-  margin-right: 50px;
   overflow-x: hidden;
   overflow-y: hidden;
   display: inline-block;
@@ -128,6 +127,12 @@ header {
   background-color:#98cccc;
   overflow-x: hidden;
   overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 25px;
 }
 
 .main-right-top {
@@ -135,9 +140,9 @@ header {
   height: 40vh;
   background-color: rgb(28, 37, 48);
   border-radius: 15px;
-  margin-left: 50px;
   margin-top: 50px;
-  margin-bottom: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .main-right-bottom {
@@ -145,9 +150,10 @@ header {
   height: 40vh;
   background-color: rgb(28, 37, 48);
   border-radius: 15px;
-  margin-left: 50px;
   margin-top: 50px;
   margin-bottom: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .nav-links {
