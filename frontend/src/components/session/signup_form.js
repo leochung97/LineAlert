@@ -88,7 +88,7 @@ function SignUp(props) {
         </div>
         <input className='signup-submit-button' type="submit" value="Sign Up" />
         <div className='switch-modals'>
-          <Link id="link" to="/login" onClick={props.openLogin}>Already have an account? Login. </Link>
+          <Link id="link" to="/login" onClick={props.openLogin}>Have an account? Log in. </Link>
         </div>
       </form>
     </div>

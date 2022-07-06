@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchDirections } from '../../actions/directions_actions';
 import { Link, useHistory } from "react-router-dom";
+import '../../assets/stylesheets/directions.scss'
 
 function DirectionsForm(props) {
   const [state, setState] = useState({
@@ -30,8 +31,31 @@ function DirectionsForm(props) {
 
   return (
     <div className='directions-form-container'>
-        <form onSubmit={handleSubmit}>
-
+        <h1>Search Along a Route</h1>
+        <form onSubmit={handleSubmit} className='directions-form'>
+          <div className='directions-search-fields'>
+            <label className='directions-origin-label'>
+              <input
+                id='directions-form'
+                type='text'
+                value={state.origin}
+                onChange={update('origin')}
+                placeholder='Origin'
+              />
+            </label>
+            <label className='directions-destination-label'>
+              <input
+                  id='directions-form'
+                  type='text'
+                  value={state.destination}
+                  onChange={update('destination')}
+                  placeholder='Destination'
+                />
+            </label>
+            <div className='directions-submit-container'>
+              <input id='directions-submit-button' className='directions-submit-button' type='submit' value='Search'/>
+            </div>
+          </div>
         </form>
     </div>
   );

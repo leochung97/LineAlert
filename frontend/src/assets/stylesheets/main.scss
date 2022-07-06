@@ -19,6 +19,11 @@
   color: #98cccc;
 }
 
+#link:active {
+  position: relative;
+  top: 1px;
+}
+
 .logout-button-container {
   display: flex;
   justify-content: center;
@@ -42,6 +47,16 @@
   color: #98cccc;
 }
 
+.logout-button-container > button:active {
+  position: relative;
+  top: 1px;
+}
+
+// position: relative;
+// top: 1px;
+// max-width: 179px;
+// min-width: 119px;
+
 .header {
   z-index: 1000;
   min-width: 100%;
@@ -52,6 +67,7 @@
   flex-wrap: nowrap;
   margin-bottom: -50px;
   font-size: 12px;
+  text-align: center;;
   font-weight: 100;
   position: fixed;
   background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
@@ -159,7 +175,8 @@
 
 .main-right-top {
   width: 90%;
-  height: 40vh;
+  height: 19vh;
+  min-height: 235px;
   background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
   border-radius: 15px;
   margin-top: 50px;
@@ -169,10 +186,11 @@
 
 .main-right-bottom {
   width: 90%;
-  height: 40vh;
+  height: 61vh;
   background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
   border-radius: 15px;
   margin-top: 50px;
+  min-height: 130px;
   margin-bottom: 50px;
   overflow-x: hidden;
   overflow-y: hidden;

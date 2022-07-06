@@ -72,7 +72,7 @@ function LoginForm(props) {
         </div>
         <input className="login-submit-button" type="submit" value="Login" />
         <div className='switch-modals'>
-          <Link id="link" to="/register" onClick={props.openSignup}>Not on LineAlert? Create an account.</Link>
+          <Link id="link" to="/register" onClick={props.openSignup}>New to LineAlert? Create an account.</Link>
         </div>
       </form>
     </div>

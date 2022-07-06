@@ -376,7 +376,7 @@ const mapStyles =  [
     elementType: "all",
     stylers: [
       {
-        visibility: "on",
+        visibility: "off",
       },
     ],
   },
