@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Alert from './alert';
 import { fetchAlerts } from '../../actions/alert_actions';
 import { fetchStation } from '../../actions/station_actions';
+import '../../assets/stylesheets/alerts.scss'
 
 const Alerts = ({fetchAlerts, alerts, fetchStation, currentStation}) => {
   const [isloaded, setLoaded] = useState(false);
@@ -14,7 +15,6 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, currentStation}) => {
 
   let component;
   if (!isloaded) {
-
     component = <></>
   } else {
     component = (
@@ -25,7 +25,7 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, currentStation}) => {
   }
   
   return (
-    <div>
+    <div className='alert-item-container'>
       {component}
     </div>
   )

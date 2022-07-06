@@ -5,7 +5,7 @@ import {
 } from '../actions/alert_actions';
 
 const initialState = {
-
+  
 }
 
 const AlertsReducer = (state = initialState, action) => {

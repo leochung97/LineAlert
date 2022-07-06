@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
+import { connect } from "react-redux";
 import { GoogleMap, LoadScript, Marker, TransitLayer, Polyline } from "@react-google-maps/api";
 import "../../assets/stylesheets/main.scss";
 import axios from "axios";
 import mapStyles from "./styles.js";
-import AlertsContainer from "./alerts";
-import DirectionsForm from "../directions/directions.js"
+import AlertsContainer from "../alerts/alerts";
+import DirectionsForm from "../directions/directions_form.js"
+import DirectionsResult from "../directions/directions_result";
 
-function MainPage() {
+function MainPage({directions}) {
   const [loaded, setLoaded] = useState(false);
 
   const mapKey = useRef(null);
+
+  // console.log(directions);
 
   useEffect(() => {
     axios.get("/api/google/").then((key) => {
@@ -17,7 +21,6 @@ function MainPage() {
       mapKey.current = key.data;
     });
   }, []);
-
   if (loaded) {
     return (
       <div className="main">
@@ -28,9 +31,10 @@ function MainPage() {
         </div>
         <div className="main-right-side">
           <div className="main-right-top">
-            <DirectionsForm />
+            {Object.values(directions).length !== 0 ? <DirectionsResult/> : <DirectionsForm /> }
           </div>
           <div className="main-right-bottom">
+            <h1>Alerts</h1>
             <AlertsContainer />
           </div>
         </div>
@@ -49,9 +53,9 @@ function MainPage() {
 
       const icons = {
         alerts: {
-          yellow: 'https://linealert-assets.s3.amazonaws.com/alert-yellow-15x15.png',
-          orange: 'https://linealert-assets.s3.amazonaws.com/alert-orange-15x15.png',
-          red: 'https://linealert-assets.s3.amazonaws.com/alert-red-15x15.png'
+          yellow: 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-yellow.png',
+          orange: 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-orange.png',
+          red: 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-red.png'
         }
       };
 
@@ -116,4 +120,10 @@ function MainPage() {
   }
 }
 
-export default MainPage;
+const mapStateToProps = (state) => {
+  return {
+    directions: state.entities.directions
+  };
+};
+
+export default connect(mapStateToProps)(MainPage)

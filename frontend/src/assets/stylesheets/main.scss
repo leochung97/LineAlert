@@ -70,7 +70,7 @@
   text-align: center;;
   font-weight: 100;
   position: fixed;
-  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
 }
 
 .links {
@@ -177,7 +177,7 @@
   width: 90%;
   height: 19vh;
   min-height: 235px;
-  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
   border-radius: 15px;
   margin-top: 50px;
   overflow-x: hidden;
@@ -187,13 +187,18 @@
 .main-right-bottom {
   width: 90%;
   height: 61vh;
-  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  background: linear-gradient(162deg, rgb(34, 44, 57) 5%, rgb(31, 42, 48) 60%, rgb(33, 52, 59) 100%) 20% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(30, 35, 44);
   border-radius: 15px;
   margin-top: 50px;
   min-height: 130px;
   margin-bottom: 50px;
   overflow-x: hidden;
   overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  color: white;
 }
 
 // Don't let Google see this!!

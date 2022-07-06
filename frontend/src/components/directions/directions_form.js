@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchDirections } from '../../actions/directions_actions';
 import '../../assets/stylesheets/directions.scss'
+import { useLoadScript, Autocomplete } from "@react-google-maps/api";
 
 function DirectionsForm(props) {
   const [state, setState] = useState({
@@ -16,6 +17,13 @@ function DirectionsForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.fetchDirections(state)
+  };
+
+  const NEW_YORK_BOUNDS = {
+    north: 40.867,
+    south: 40.667,
+    west: -74.072,
+    east: -73.872
   };
 
 //   const renderErrors = () => {
@@ -34,6 +42,20 @@ function DirectionsForm(props) {
         <form onSubmit={handleSubmit} className='directions-form'>
           <div className='directions-search-fields'>
             <label className='directions-origin-label'>
+                {/* <Autocomplete 
+                  options={{
+                    bounds: NEW_YORK_BOUNDS,
+                    componentRestrictions: {country: "us"},
+                    fields: ["address_components", "geometry", "icon", "name"],
+                    strictBounds: false,
+                    types: ["subway_station"]
+                  }}
+                  id='directions-form'
+                  type='text'
+                  value={state.origin}
+                  onChange={update('origin')}
+                  placeholder='Origin'
+                /> */}
               <input
                 id='directions-form'
                 type='text'
@@ -62,7 +84,7 @@ function DirectionsForm(props) {
 
 const mapStateToProps = (state) => {
   return {
-
+    directions: state.entities.directions
   };
 };
 

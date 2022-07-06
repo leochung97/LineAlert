@@ -10,6 +10,8 @@ const users = require("./routes/api/users");
 const alerts = require("./routes/api/alerts");
 const stations = require("./routes/api/stations");
 const google = require("./routes/api/google");
+const directions = require("./routes/api/directions")
+const twilio = require("./routes/api/twilio")
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -27,7 +29,8 @@ app.use("/api/users", users);
 app.use("/api/alerts", alerts);
 app.use("/api/google", google);
 app.use("/api/stations", stations);
-
+app.use("/api/twilio", twilio);
+app.use("/api/directions", directions);
 const port = process.env.PORT || 5001;
 
 // for route debugging purposes
