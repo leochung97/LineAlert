@@ -7,7 +7,6 @@ module.exports = function validateAlertInput(data) {
   data.station = validText(data.station) ? data.station : '';
   data.description = validText(data.description) ? data.description : '';
 
-
   if (!Validator.isLength(data.description, { min: 5, max: 300 })) {
     errors.description = 'Alert must be between 5 and 300 characters';
   }
@@ -18,8 +17,6 @@ module.exports = function validateAlertInput(data) {
   if (Validator.isEmpty(data.station)) {
     errors.station = 'Your location is required';
   }
-
-  
 
   return {
     errors,
