@@ -15,12 +15,18 @@ function MainPage({directions}) {
 
   // console.log(directions);
 
+  // useEffect(() => {
+  //   axios.get("/api/google/").then((key) => {
+  //     setLoaded(true);
+  //     mapKey.current = key.data;
+  //   });
+  // }, []);
   useEffect(() => {
-    axios.get("/api/google/").then((key) => {
+    
       setLoaded(true);
-      mapKey.current = key.data;
+      mapKey.current = 'AIzaSyAnIbS_geF_FmCXWPVgocrZOz85lP6kCsk'
     });
-  }, []);
+
   if (loaded) {
     return (
       <div className="main">
@@ -77,8 +83,9 @@ function MainPage({directions}) {
       })
 
       return (
-        <LoadScript googleMapsApiKey={mapKey.current}>
+        // <LoadScript googleMapsApiKey={mapKey.current}>
           <GoogleMap
+            googleMapsApiKey={mapKey.current}
             zoom={12.5}
             center={center}
             mapContainerClassName="map-container"
@@ -114,7 +121,7 @@ function MainPage({directions}) {
               }}
             /> */}
           </GoogleMap>
-        </LoadScript>
+        // </LoadScript>
       );
     }
   }

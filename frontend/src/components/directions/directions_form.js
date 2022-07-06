@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchDirections } from '../../actions/directions_actions';
 import '../../assets/stylesheets/directions.scss'
-import { useLoadScript, Autocomplete } from "@react-google-maps/api";
+import { Autocomplete } from "@react-google-maps/api";
 
 function DirectionsForm(props) {
   const [state, setState] = useState({
     origin: "",
     destination: "",
   });
-
-  // const { isLoaded } = useLoadScript({
-    
-  // })
 
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
@@ -46,27 +42,23 @@ function DirectionsForm(props) {
         <form onSubmit={handleSubmit} className='directions-form'>
           <div className='directions-search-fields'>
             <label className='directions-origin-label'>
-                {/* <Autocomplete 
-                  options={{
-                    bounds: NEW_YORK_BOUNDS,
-                    componentRestrictions: {country: "us"},
-                    fields: ["address_components", "geometry", "icon", "name"],
-                    strictBounds: false,
-                    types: ["subway_station"]
-                  }}
-                  id='directions-form'
-                  type='text'
-                  value={state.origin}
-                  onChange={update('origin')}
-                  placeholder='Origin'
-                /> */}
-              <input
+                <Autocomplete
+                                id='directions-form'
+                                type='text'
+                                value={state.origin}
+                                onChange={update('origin')}
+                                placeholder='Origin'  
+                >
+                  <input />
+                </Autocomplete>
+                
+              {/* <input
                 id='directions-form'
                 type='text'
                 value={state.origin}
                 onChange={update('origin')}
                 placeholder='Origin'
-              />
+              /> */}
             </label>
             <label className='directions-destination-label'>
               <input

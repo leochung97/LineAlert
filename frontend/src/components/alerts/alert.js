@@ -5,19 +5,20 @@ const Alert = ({ alert, fetchStation, currentStation }) => {
   const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
-
     fetchStation(alert.station)
       .then(() => {
         setLoaded(true)
       })
   }, [])
 
-  const alertDate = (
-    alert.createdAt.split('T')[0]
+  const alertDate = () => (
+    console.log("checking Split")
+    // alert.createdAt.split('T')[0]
   )
 
-  const alertTime = (
-    alert.createdAt.split('T')[1].split('.')[0]
+  const alertTime = () => (
+    console.log("checking Split")
+    // alert.createdAt.split('T')[1].split('.')[0];
   )
 
   return isLoaded ? (
@@ -29,8 +30,8 @@ const Alert = ({ alert, fetchStation, currentStation }) => {
       {/* will be replaced by station name */}
       <p className='alert-description'>{alert.description}</p>
       <div className='alert-date-time'>
-        <p className={`alert-date ${alert.intensity}`}>{alertDate}</p>
-        <p className={`alert-time ${alert.intensity}`}>{alertTime}</p>
+        <p className={`alert-date ${alert.intensity}`}>{alertDate()}</p>
+        <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
       </div>
     </div>
   ) : (

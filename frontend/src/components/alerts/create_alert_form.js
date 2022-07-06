@@ -11,13 +11,15 @@ function CreateAlertForm(props) {
     user: props.currentUser.id
   });
 
+  const history = useHistory();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
     props.createAlert(state)
       .then((res) => {
         if (res) {
           props.closeModal();
+          history.push("/");
         }
       })
       .catch(err => (

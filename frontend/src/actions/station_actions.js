@@ -10,8 +10,8 @@ const receiveStation = station => {
 }
 
 export const fetchStation = stationId => dispatch => {
-    return (
-        StationApiUtil.fetchStation(stationId)
-            .then(res => dispatch(receiveStation(res)))
-    )
+  return (
+    StationApiUtil.fetchStation(stationId)
+      .then(res => dispatch(receiveStation(res)))
+  )
 }

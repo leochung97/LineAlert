@@ -46,4 +46,3 @@ const mapDisptachToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDisptachToProps)(Alerts);
-
