@@ -1,16 +1,10 @@
 .main-right-bottom > h1 {
     font-size: 23px;
-    margin-top: 10%;
+    margin-top: 20px;
+    font-weight: 550;
+    margin-bottom: 20px;
 }
 
-.alert-item-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-width: 85%;
-}
 .alert-item {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -32,10 +26,12 @@
 .alert-location {
     text-align: center;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 550;
     margin-bottom: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    max-width: 75%;
+    min-width: 75%;
 }
 
 .alert-description {
@@ -43,19 +39,57 @@
     text-align: center;
 }
 
+.alert-date-time {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.alert-time {
+    background-color: rgb(42, 65, 63);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+.alert-date {
+    background-color: rgb(42, 65, 63);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.alerts-stations {
+    margin-top: 5px;
+    font-size: 10px;
+}
+
+.YELLOW {
+    background-color: rgb(234, 221, 101);
+    border-radius: 5px;
+    color: rgb(37, 37, 37);
+}
+
+.ORANGE {
+    background-color: rgb(230, 158, 90);
+    border-radius: 5px;
+}
+
 .RED {
     background-color: rgb(230, 90, 90);
     border-radius: 5px;
-    max-width: 75%;
-    min-width: 75%;
 }
 
-.white {
+.WHITE {
     background-color: white;
     color: rgb(37, 37, 37);
     border-radius: 5px;
-    max-width: 75%;
-    min-width: 75%;
 }
 
 .alert-description {

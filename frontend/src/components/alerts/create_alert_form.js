@@ -5,23 +5,32 @@ import { createAlert } from "../../actions/alert_actions";
 
 function CreateAlertForm(props) {
   const [state, setState] = useState({
-    body: "",
+    description: "",
     station: "",
-    intensity: ""
+    intensity: "",
+    user: props.currentUser.id
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(state);
     props.createAlert(state)
       .then((res) => {
         if (res) {
           props.closeModal();
         }
       })
+      .catch(err => (
+        console.log(err)
+      ))
   }
 
   const update = field => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
+  }
+
+  const intensityUpdate = text => {
+    return () => setState(() => ({ ...state, intensity: text }))
   }
 
   return (
@@ -37,8 +46,8 @@ function CreateAlertForm(props) {
           <input
             className='modal-form'
             type="text"
-            value={state.body}
-            onChange={update("body")}
+            value={state.description}
+            onChange={update("description")}
             placeholder="Description of alert"
           />
         </div>
@@ -52,23 +61,35 @@ function CreateAlertForm(props) {
           />
         </div>
         <div className='create-alert-intensity-dropdown'>
-          <div className='create-alert-content'>
-            <div>
-              <input type="radio" name="intensity" className="intensity-input" checked="checked" />
-              <label for="low-intensity">Low</label>
-            </div>
-            <div>
-              <input type="radio" name="intensity" className="intensity-input" />
-              <label for="medium-intensity">Medium</label>
-            </div>
-            <div>
-              <input type="radio" name="intensity" className="intensity-input" />
-              <label for="high-intensity">High</label>
-            </div>
+          <div class="middle">
+            <h1>Alert Intensity </h1>
+
+            <label>
+              <input type="radio" name="radio" onClick={intensityUpdate("YELLOW")} />
+              <div class="low box">
+                <span>Low</span>
+              </div>
+            </label>
+
+            <label>
+              <input type="radio" name="radio" onClick={intensityUpdate("ORANGE")} />
+              <div class="medium box">
+                <span>Medium</span>
+              </div>
+            </label>
+
+            <label>
+              <input type="radio" name="radio" onClick={intensityUpdate("RED")} />
+              <div class="high box">
+                <span>High</span>
+              </div>
+            </label>
           </div>
         </div>
         <div className='intensity-explainer'>
-
+          <p>Low: No hazards - discomfort unlikely</p>
+          <p>Medium: Chance of hazard - discomfort probable</p>
+          <p>High: Hazard confirmed - avoid station</p>
         </div>
         <input className="create-alert-submit-button" type="submit" value="Create Alert" />
       </form>
@@ -77,7 +98,7 @@ function CreateAlertForm(props) {
 }
 
 const mSTP = state => ({
-
+  currentUser: state.session.user
 })
 
 const mDTP = dispatch => ({

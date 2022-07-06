@@ -77,6 +77,7 @@
   margin-bottom: 20px;
   color: white;
   cursor: default;
+  font-weight: 550;
 }
 
 .login-submit-button {
@@ -88,6 +89,8 @@
   min-height: 30px;
   margin-top: 20px;
   transition: background-color .25s ease, color .25s ease-in;
+  color: #98cccc;
+  font-weight: 550;
 }
 
 .login-submit-button:hover {
@@ -132,6 +135,7 @@
   margin-bottom: 10px;
   color: white;
   cursor: default;
+  font-weight: 550;
 }
 
 .signup-submit-button {
@@ -142,6 +146,8 @@
   min-height: 30px;
   margin-top: 20px;
   transition: background-color .25s ease, color .25s ease-in;
+  color: #98cccc;
+  font-weight: 550;
 }
 
 .signup-submit-button:hover {

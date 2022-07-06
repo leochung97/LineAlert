@@ -93,6 +93,7 @@ function MainPage({directions}) {
               }
             }}
           >
+          <TransitLayer/>
             {
               markersArr.map(el => {
                 return (
@@ -104,15 +105,14 @@ function MainPage({directions}) {
                 )
               })
             }
-            {/* <TransitLayer/> */}
-            <Polyline
+            {/* <Polyline
               path={poly}
               options={{
                 strokeColor: '#FFFFFF',
                 strokeOpactiy: 1.0,
                 strokeWeight: 2
               }}
-            />
+            /> */}
           </GoogleMap>
         </LoadScript>
       );
