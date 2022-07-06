@@ -6,16 +6,16 @@ const validateStationInput = require('../../validation/stations');
 
 router.get("/:id", (req, res) => {
     Station.findById({ _id: req.params.id })
-    .then( (alerts) => res.json(alerts))
-    .catch( (err) => res.json({noalertsfound : "No Alerts"}))
+    .then( (station) => res.json(station))
+    .catch( (err) => res.json("Station not found"))
 })
 
 router.post("/", (req, res) => {
-  const { errors, isValid } = validateStationInput(req.body);
+  // const { errors, isValid } = validateStationInput(req.body);
   
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+  // if (!isValid) {
+  //   return res.status(400).json(errors);
+  // }
 
   const newStation = new Station({
     name: req.body.name,
