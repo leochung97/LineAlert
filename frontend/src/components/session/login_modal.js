@@ -12,9 +12,10 @@ export default function LoginModal(props) {
       closeTimeoutMS={50}
       ariaHideApp={false}
     >
+      {/* Has openSignup prop for switch function */}
       <LoginForm
-        openLogin={props.openLogin}
         closeModal={props.closeModal}
+        openSignup={props.openSignup}
       />
     </Modal>
   )

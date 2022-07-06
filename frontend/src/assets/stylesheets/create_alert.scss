@@ -9,16 +9,6 @@
   animation: fadeIn 1.5s, slideIn 1.2s;
 }
 
-@keyframes fadeIn {
-  0% { opacity: .8; }
-  50% { opacity: 1; }
-}
-
-@keyframes slideIn {
-  0% { margin-top: 5px; }
-  50% { margin-top: 0px; }
-}
-
 .modal-form {
   border-radius: 3px;
   border: none;
@@ -52,14 +42,8 @@
   top: 16px;
 }
 
-.switch-modals {
-    margin-top: 20px;
-    color: white;
-    font-size: 11px;
-  }
-
-// Login Form
-.login-form-container > * {
+// Create Alert Form
+.create-alert-form-container > * {
   height: 450px;
   width: 400px;
   background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
@@ -72,14 +56,14 @@
   box-shadow: 0px 10px 50px 0.5px rgb(35, 35, 35);
 }
 
-.login-header > h1 {
+.create-alert-header > h1 {
   font-size: 25px;
   margin-bottom: 20px;
   color: white;
   cursor: default;
 }
 
-.login-submit-button {
+.create-alert-submit-button {
   border-radius: 15px;
   cursor: pointer;
   border: none;
@@ -90,71 +74,62 @@
   transition: background-color .25s ease, color .25s ease-in;
 }
 
-.login-submit-button:hover {
+.create-alert-submit-button:hover {
   background-color: #98cccc;
   color: black;
 }
 
-.login-submit-button:active {
+.create-alert-submit-button:active {
   position: relative;
   top: 1px;
   max-width: 129px;
   min-width: 114px;
 }
 
-.login-password > ul {
-    margin-top: 15px;
-}
-.login-password > ul > li {
-    margin-top: 2px;
-    color: rgb(239, 48, 48);
-    font-size: 10px;
-    font-weight: 400;
+.create-alert-content {
+  display: inline-block;
 }
 
-// Signup Form
+.create-alert-content > div {
+  border: 2px solid #01cc65;
+  border-radius: 5px;
+}
 
-.signup-form-container > * {
-  height: 450px;
-  width: 400px;
-  background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  flex-direction: column;
+input[type="radio"] {
+  display: none;
+}
+
+.create-alert-content > div > label {
   position: relative;
-  box-shadow: 0px 10px 50px 0.5px rgb(35, 35, 35);
+  color: #01cc65;
+  font-size: 12px;
+  padding: 5px 14px;
+  min-width: 45px;
+  margin: 6px;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
 }
 
-.signup-header > h1 {
-  font-size: 25px;
-  margin-bottom: 10px;
+.create-alert-content > div > label:before {
+  position: relative;
+  content: "";
+  height: 6px;
+  width: 6px;
+  min-width: 6px;
+  margin-right: 6px;
+  border: 3px solid #01cc65;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked + .create-alert-content > div > label {
+  background-color: #01cc65;
   color: white;
-  cursor: default;
 }
 
-.signup-submit-button {
-  border-radius: 15px;
-  cursor: pointer;
-  border: none;
-  min-width: 130px;
-  min-height: 30px;
-  margin-top: 20px;
-  transition: background-color .25s ease, color .25s ease-in;
-}
-
-.signup-submit-button:hover {
-  background-color: #98cccc;
-  color: black;
-}
-
-.signup-form > ul {
-    margin-top: 15px;
-}
-.signup-form > ul > li {
-    margin-top: 2px;
-    color: rgb(239, 48, 48);
-    font-size: 10px;
-    font-weight: 400;
+input[type="radio"]:checked + .create-alert-content > div > label:before {
+  height: 6px;
+  width: 6px;
+  border: 6px solid white;
+  background-color: #01cc65;
 }

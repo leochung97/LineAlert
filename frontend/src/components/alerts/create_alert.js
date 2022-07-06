@@ -1,9 +1,9 @@
 import React from "react";
 import Modal from "react-modal";
-import SignupForm from "./signup_form";
-import "../../assets/stylesheets/session.scss";
+import CreateAlertForm from "./create_alert_form.js";
+import "../../assets/stylesheets/create_alert.scss";
 
-export default function SignupModal(props) {
+export default function CreateModal(props) {
   return (
     <Modal
       className="session-modal"
@@ -12,9 +12,7 @@ export default function SignupModal(props) {
       closeTimeoutMS={50}
       ariaHideApp={false}
     >
-      {/* Has openLogin prop for switch function */}
-      <SignupForm 
-        openLogin={props.openLogin}
+      <CreateAlertForm
         closeModal={props.closeModal}
       />
     </Modal>

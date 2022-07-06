@@ -4,27 +4,34 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions";
 import LoginModal from "../session/login_modal";
 import SignupModal from "../session/signup_modal.js";
+import CreateAlertModal from "../alerts/create_alert";
 
 function NavBar(props) {
-  const [state, setState] = useState(
-    { isLoginOpen: false, isSignupOpen: false }
-  );
+  const [state, setState] = useState({ 
+    isLoginOpen: false, isSignupOpen: false, isAlertOpen: false 
+  });
 
   const openLogin = () => {
     setState({
-      isLoginOpen: true, isSignupOpen: false
+      isLoginOpen: true, isSignupOpen: false, isAlertOpen: false
     })
   };
 
   const openSignup = () => {
     setState({
-      isLoginOpen: false, isSignupOpen: true
+      isLoginOpen: false, isSignupOpen: true, isAlertOpen: false
     })
   };
 
+  const openAlert = () => {
+    setState({
+      isLoginOpen: false, isSignupOpen: false, isAlertOpen: true
+    })
+  }
+
   const closeModal = () => {
     setState({
-      isLoginOpen: false, isSignupOpen: false
+      isLoginOpen: false, isSignupOpen: false, isAlertOpen: false
     });
   };
   
@@ -43,7 +50,7 @@ function NavBar(props) {
           <Link id="link" to="/">
             <h4>All Alerts</h4>
           </Link>
-          <Link id="link" to="/new_alert">
+          <Link id="link" to="/new_alert" onClick={openAlert}>
             <h4>Create an Alert</h4>
           </Link>
           <div className='logout-button-container'>
@@ -87,13 +94,18 @@ function NavBar(props) {
 
       <LoginModal
         isOpen={state.isLoginOpen}
-        openLogin={openLogin}
+        openSignup={openSignup}
         closeModal={closeModal}
       />
 
       <SignupModal
         isOpen={state.isSignupOpen}
-        openSignup={openSignup}
+        openLogin={openLogin}
+        closeModal={closeModal}
+      />
+
+      <CreateAlertModal
+        isOpen={state.isAlertOpen}
         closeModal={closeModal}
       />
     </header>
