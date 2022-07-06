@@ -30,7 +30,7 @@ router.post('/', //creates alert
     }
 );
 
-router.patch('/:id',
+router.patch('/:id', //edits alert
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateAlertInput(req.body);
@@ -52,5 +52,11 @@ router.patch('/:id',
       })
   }
 )
+
+router.delete('/id', (req, res) => { //unable to test??
+  Alert.findByIdAndRemove({_id: req.params.id})
+    .then(res => console.log("Alert removed"))
+    .catch(err => res.json('Alert does not exist'))
+})
 
 module.exports = router;
