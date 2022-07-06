@@ -11,11 +11,10 @@ export default function SignupModal(props) {
       onRequestClose={props.closeModal}
       closeTimeoutMS={50}
       ariaHideApp={false}
-      onClick={props.closeModal}
     >
       <SignupForm 
+        openSignup={props.openSignup}
         closeModal={props.closeModal}
-        openLogin={props.openLogin}
       />
     </Modal>
   )

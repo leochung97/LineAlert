@@ -13,9 +13,8 @@ export default function LoginModal(props) {
       ariaHideApp={false}
     >
       <LoginForm
+        openLogin={props.openLogin}
         closeModal={props.closeModal}
-        openSignup={props.openSignup}
-        loggedIn={props.loggedIn}
       />
     </Modal>
   )

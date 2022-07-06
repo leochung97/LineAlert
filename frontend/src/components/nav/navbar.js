@@ -87,24 +87,23 @@ function NavBar(props) {
 
       <LoginModal
         isOpen={state.isLoginOpen}
-        openSignup={openSignup}
+        openLogin={openLogin}
         closeModal={closeModal}
-        loggedIn={props.loggedIn}
       />
 
       <SignupModal
         isOpen={state.isSignupOpen}
-        openLogin={openLogin}
+        openSignup={openSignup}
         closeModal={closeModal}
-        loggedIn={props.loggedIn}
       />
     </header>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   loggedIn: state.session.isAuthenticated,
 });
+
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
 });
