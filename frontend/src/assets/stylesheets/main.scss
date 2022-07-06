@@ -2,6 +2,8 @@
   white-space: none;
   flex-wrap: wrap;
   background-color:#98cccc;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .header h4 {
@@ -127,7 +129,7 @@
 .map-container {
   width: 100%;
   height: 85vh;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-left: 5%;
   margin-bottom: 50px;
 }
@@ -175,10 +177,10 @@
 
 .main-right-top {
   width: 90%;
-  height: 19vh;
-  min-height: 235px;
+  min-height: 28vh;
+  max-height: 28vh;
   background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
-  border-radius: 15px;
+  border-radius: 5px;
   margin-top: 50px;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -186,19 +188,36 @@
 
 .main-right-bottom {
   width: 90%;
-  height: 61vh;
   background: linear-gradient(162deg, rgb(34, 44, 57) 5%, rgb(31, 42, 48) 60%, rgb(33, 52, 59) 100%) 20% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(30, 35, 44);
-  border-radius: 15px;
-  margin-top: 50px;
-  min-height: 130px;
+  border-radius: 5px;
+  margin-top: 20px;
+  min-height: 53vh;
+  max-height: 53vh;
   margin-bottom: 50px;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y:auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
   color: white;
+  padding-bottom: 20px;
+}
+
+.main-right-bottom::-webkit-scrollbar {
+  width: 5px;
+  max-height: 80%;
+  height: 50%;
+}
+
+.main-right-bottom::-webkit-scrollbar-track {
+  background: linear-gradient(162deg, rgb(34, 44, 57) 5%, rgb(31, 42, 48) 60%, rgb(33, 52, 59) 100%) 20% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(30, 35, 44);
+  border-radius: 5px;
+}
+
+.main-right-bottom::-webkit-scrollbar-thumb {
+  background-color:#5a857e;
+  border-radius: 2px;
 }
 
 // Don't let Google see this!!

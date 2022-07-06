@@ -19,13 +19,13 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, currentStation}) => {
   } else {
     component = (
       Object.values(alerts).map(alert => {
-        return <div key={alert._id}><Alert alert={alert} fetchStation={fetchStation} currentStation={currentStation}/></div>
+        return <div className='alert-item' key={alert._id}><Alert alert={alert} fetchStation={fetchStation} currentStation={currentStation}/></div>
       })
     )
   }
   
   return (
-    <div className='alert-item-container'>
+    <div>
       {component}
     </div>
   )

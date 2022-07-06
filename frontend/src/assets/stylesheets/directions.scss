@@ -12,6 +12,7 @@
     color: white;
     cursor: default;
     text-align: center;
+    font-weight: 550;
 }
 
 .directions-form {
@@ -56,6 +57,8 @@
     min-height: 32px;
     margin-top: 20px;
     transition: background-color .25s ease, color .25s ease-in;
+    color: #98cccc;
+    font-weight: 550;
 }
 
 .directions-submit-button:active {
