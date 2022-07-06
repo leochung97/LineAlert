@@ -7,17 +7,17 @@ module.exports = function validateStationInput(data) {
   data.name = validText(data.name) ? data.name : '';
   data.line = validText(data.line) ? data.line : '';
 
-  // if (!Validator.isLength(data.name, { min: 5, max: 50 })) {
-  //   errors.name = "Station name must be between 5 and 50 characters";
-  // }
+  if (!Validator.isLength(data.name, { min: 5, max: 50 })) {
+    errors.name = "Station name must be between 5 and 50 characters";
+  }
 
-  // if (Validator.isEmpty(data.name)) {
-  //   errors.name = "Station name is required";
-  // }
+  if (Validator.isEmpty(data.name)) {
+    errors.name = "Station name is required";
+  }
 
-  // if (Object.values(data.line).length === 0) {
-  //   errors.line = 'Station must contain a line';
-  // }
+  if (Object.values(data.line).length === 0) {
+    errors.line = 'Station must contain a line';
+  }
 
   return {
     errors,

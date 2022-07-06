@@ -20,7 +20,11 @@ router.post("/", (req, res) => {
   const newStation = new Station({
     name: req.body.name,
     line: req.body.line,
-    alerts: req.body.alerts
+    alerts: req.body.alerts,
+    latLng: {
+      lat: req.body.latLng.lat,
+      lng: req.body.latLng.lng
+    }
   });
 
   newStation.save().then(station => res.json(station));
