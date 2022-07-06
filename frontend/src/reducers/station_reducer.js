@@ -9,7 +9,7 @@ const StationsReducer = (state = initialState, action) => {
     let nextState = {...state};
     switch(action.type) {
         case RECEIVE_STATION:
-            nextState[action.station.id] = action.station;
+            nextState[action.station._id] = action.station;
             return nextState;
         default:
             return state;

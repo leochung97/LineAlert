@@ -6,7 +6,7 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
-import { fetchAlerts } from "./actions/alert_actions";
+import { fetchStation } from "./actions/station_actions";
 // import reportWebVitals from "./reportWebVitals";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.store = store;
-  window.fetchAlerts = fetchAlerts;
+  window.fetchStation = fetchStation;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   return root.render(<Root store={store} />);

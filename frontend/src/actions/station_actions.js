@@ -9,9 +9,9 @@ const receiveStation = station => {
   }
 }
 
-export const fetchStation = station => dispatch => {
-  return (
-    StationApiUtil.fetchStation(station)
-      .then(res => dispatch(receiveStation(res)))
+export const fetchStation = stationId => dispatch => {
+    return (
+        StationApiUtil.fetchStation(stationId)
+            .then(res => dispatch(receiveStation(res)))
     )
 }
