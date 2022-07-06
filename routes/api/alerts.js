@@ -53,8 +53,8 @@ router.patch('/:id', //edits alert
   }
 )
 
-router.delete('/id', (req, res) => { //unable to test??
-  Alert.findByIdAndRemove({_id: req.params.id})
+router.delete('/:id', (req, res) => { //deletes alert
+  Alert.deleteOne({_id: req.params.id})
     .then(res => console.log("Alert removed"))
     .catch(err => res.json('Alert does not exist'))
 })
