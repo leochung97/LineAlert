@@ -23,7 +23,7 @@ module.exports = function validateAlertInput(data) {
   if (Validator.isEmpty(data.intensity)) {
     errors.intensity = 'Please choose danger level';
   }
-
+  
   return {
     errors,
     isValid: Object.keys(errors).length === 0

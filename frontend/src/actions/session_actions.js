@@ -39,10 +39,11 @@ export const signup = (user) => (dispatch) =>
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
+      return decoded;
     })
     .catch((err) => {
-      console.log(err);
       dispatch(receiveSessionErrors(err.response.data));
+      return null;
     });
 
 export const login = (user) => (dispatch) =>
@@ -53,7 +54,9 @@ export const login = (user) => (dispatch) =>
       APIUtil.setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(receiveCurrentUser(decoded));
+      return decoded;
     })
     .catch((err) => {
       dispatch(receiveSessionErrors(err.response.data));
+      return null;
     });

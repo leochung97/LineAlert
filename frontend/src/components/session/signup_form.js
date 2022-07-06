@@ -11,10 +11,6 @@ function SignUp(props) {
     password2: "",
   });
 
-  const update = (field) => {
-    return (e) => setState(() => ({ ...state, [field]: e.target.value }));
-  };
-
   const history = useHistory();
 
   useEffect(() => {
@@ -23,12 +19,18 @@ function SignUp(props) {
     }
   }, [props.currentUser, history]);
 
+  const update = (field) => {
+    return (e) => setState(() => ({ ...state, [field]: e.target.value }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.signup(state).then(() => {
-      let current = props.currentUser;
-      current ? props.closeModal() : console.log("Check Signup Form");
-    });
+    props.signup(state)
+      .then((decoded) => {
+        if (decoded) {
+          props.closeModal();
+        }
+      })
   };
 
   const renderErrors = () => {
@@ -93,7 +95,7 @@ function SignUp(props) {
       </form>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state, ownProps) => {
   return {
