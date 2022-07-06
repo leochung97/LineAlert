@@ -16,7 +16,7 @@ const AlertsReducer = (state = initialState, action) => {
             nextState = {...action.alerts};
             return nextState;
         case RECEIVE_ALERT:
-            nextState[action.alert.id] = action.alert;
+            nextState[action.alert._id] = action.alert;
             return nextState;
         case REMOVE_ALERT:
             delete nextState[action.alert];

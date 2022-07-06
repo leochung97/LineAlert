@@ -4,8 +4,8 @@ const passport = require('passport');
 const Station = require("../../models/Station")
 const validateStationInput = require('../../validation/stations');
 
-router.get("/", (req, res) => {
-    Station.findOne({ name: req.body.name })
+router.get("/:id", (req, res) => {
+    Station.findById({ _id: req.params.id })
     .then( (alerts) => res.json(alerts))
     .catch( (err) => res.json({noalertsfound : "No Alerts"}))
 })

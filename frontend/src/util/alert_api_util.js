@@ -10,7 +10,6 @@ export const fetchAlert = alertId => {
 export const fetchAlerts = () => {
     return axios.get('/api/alerts')
     .then(res => {
-        console.log(res);
         return res.data;
     });
 }
