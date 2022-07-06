@@ -13,7 +13,7 @@ function LoginForm(props) {
 
   useEffect(() => {
     if (props.currentUser) {
-      history.push("/");
+      history.push("/"); 
     }
   }, [props.currentUser, history]);
 
@@ -23,9 +23,12 @@ function LoginForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return props.login(state).then(() => {
-      return props.loggedIn ? props.closeModal() : console.log("Not logged in!")
-    });
+    props.login(state)
+      .then((decoded) => {
+        if (decoded) {
+          props.closeModal();
+        }
+      })
   };
 
   const renderErrors = () => {
@@ -77,11 +80,12 @@ function LoginForm(props) {
       </form>
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
-    errors: state.errors.session
+    errors: state.errors.session,
+    currentUser: state.session.user
   };
 };
 
