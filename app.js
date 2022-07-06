@@ -10,9 +10,9 @@ const users = require("./routes/api/users");
 const alerts = require("./routes/api/alerts");
 const stations = require("./routes/api/stations");
 const google = require("./routes/api/google");
-const directions = require("./routes/api/directions")
-const twilio = require("./routes/api/twilio")
-
+const directions = require("./routes/api/directions");
+const twilio = require("./routes/api/twilio");
+// const trainStations = require("./trainstations");
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
@@ -31,6 +31,7 @@ app.use("/api/google", google);
 app.use("/api/stations", stations);
 app.use("/api/twilio", twilio);
 app.use("/api/directions", directions);
+// app.use("/api/trainStations", trainStations);
 const port = process.env.PORT || 5001;
 
 // for route debugging purposes
