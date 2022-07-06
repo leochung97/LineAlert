@@ -1,0 +1,160 @@
+.session-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1005;
+  background-color: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 1.5s, slideIn 1.2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: .8; }
+  50% { opacity: 1; }
+}
+
+@keyframes slideIn {
+  0% { margin-top: 5px; }
+  50% { margin-top: 0px; }
+}
+
+.modal-form {
+  border-radius: 3px;
+  border: none;
+  margin-top: 3px;
+  min-width: 250px;
+  min-height: 25px;
+  color: white;
+  background-color: rgb(28, 37, 48);
+  border-bottom: 1px, solid, black;
+  font-size: 10px;
+}
+
+.modal-form:hover {
+  border: 1px, solid, #98cccc;
+}
+
+.close-modal {
+  filter: invert(100%) sepia(1%) saturate(2136%) hue-rotate(254deg) brightness(113%) contrast(100%);
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  transition: filter .25s ease;
+}
+
+.close-modal:hover {
+  filter: invert(87%) sepia(29%) saturate(315%) hue-rotate(126deg) brightness(89%) contrast(81%);
+}
+
+.close-modal:active {
+  top: 16px;
+}
+
+.switch-modals {
+    margin-top: 20px;
+    color: white;
+    font-size: 11px;
+  }
+
+// Login Form
+.login-form-container > * {
+  height: 450px;
+  width: 400px;
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(31, 69, 93) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0px 10px 50px 0.5px rgb(35, 35, 35);
+}
+
+.login-header > h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: white;
+    cursor: default;
+}
+
+.login-submit-button {
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  min-width: 115px;
+  max-width: 130px;
+  min-height: 30px;
+  margin-top: 20px;
+  transition: background-color .25s ease, color .25s ease-in;
+}
+
+.login-submit-button:hover {
+  background-color: #98cccc;
+  color: black;
+}
+
+.login-submit-button:active {
+  position: relative;
+  top: 1px;
+  max-width: 129px;
+  min-width: 114px;
+}
+
+.login-password > ul {
+    margin-top: 15px;
+}
+.login-password > ul > li {
+    margin-top: 2px;
+    color: rgb(239, 48, 48);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+// Signup Form
+
+.signup-form-container > * {
+  height: 450px;
+  width: 400px;
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(31, 69, 93) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0px 10px 50px 0.5px rgb(35, 35, 35);
+}
+
+.signup-header > h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  color: white;
+  cursor: default;
+}
+
+.signup-submit-button {
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  min-width: 130px;
+  min-height: 30px;
+  margin-top: 20px;
+  transition: background-color .25s ease, color .25s ease-in;
+}
+
+.signup-submit-button:hover {
+  background-color: #98cccc;
+  color: black;
+}
+
+.signup-form > ul {
+    margin-top: 15px;
+}
+.signup-form > ul > li {
+    margin-top: 2px;
+    color: rgb(239, 48, 48);
+    font-size: 10px;
+    font-weight: 400;
+}

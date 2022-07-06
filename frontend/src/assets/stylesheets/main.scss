@@ -1,0 +1,209 @@
+.main {
+  white-space: none;
+  flex-wrap: wrap;
+  background-color:#98cccc;
+}
+
+.header h4 {
+  margin: 20px;
+  font-weight: 400;
+}
+
+#link {
+  color: white;
+  text-decoration: none;
+  transition: background-color .25s ease, color .25s ease-in;
+}
+
+#link:hover {
+  color: #98cccc;
+}
+
+#link:active {
+  position: relative;
+  top: 1px;
+}
+
+.logout-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  border: none;
+}
+
+.logout-button-container > button {
+  background-color: none;
+  color: white;
+  text-decoration: none;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  transition: color .25s ease, color .25s ease-in;
+}
+
+.logout-button-container > button:hover {
+  color: #98cccc;
+}
+
+.logout-button-container > button:active {
+  position: relative;
+  top: 1px;
+}
+
+// position: relative;
+// top: 1px;
+// max-width: 179px;
+// min-width: 119px;
+
+.header {
+  z-index: 1000;
+  min-width: 100%;
+  white-space: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-bottom: -50px;
+  font-size: 12px;
+  text-align: center;;
+  font-weight: 100;
+  position: fixed;
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+}
+
+.links {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: none;
+  margin-left: 200px;
+  color: white;
+}
+
+#about {
+  display: inline-block;
+}
+
+#create-alert-button {
+  display: inline-block;
+}
+
+#view-alerts-button {
+  display: inline-block;
+}
+
+.nav-links {
+  white-space: none;
+  display: flex;
+  color: white;
+  margin-right: 20px;
+}
+
+.header-logo {
+  margin: none;
+  padding: none;
+  min-width: 150px;
+  min-height: 50px;
+  max-height: 50px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  max-width: 150px;
+  margin-left: 20px;
+  transition: opacity .25s ease, color .25s ease-in;
+  opacity: 90%;
+}
+
+#logo:hover {
+  opacity: 100%;
+}
+
+.map-container {
+  width: 100%;
+  height: 85vh;
+  border-radius: 20px;
+  margin-left: 5%;
+  margin-bottom: 50px;
+}
+
+.map {
+  display: flex;
+  min-width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-left-side {
+  // z-index: 10;
+  margin-top: 50px;
+  display: inline-block;
+  width: 50%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: fixed;
+  background-color:#98cccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-right-side {
+  // z-index: 10;
+  margin-left: 50%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: inline-block;
+  width: 50%;
+  height: 100vh;
+  background-color:#98cccc;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 25px;
+}
+
+.main-right-top {
+  width: 90%;
+  height: 19vh;
+  min-height: 235px;
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  border-radius: 15px;
+  margin-top: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.main-right-bottom {
+  width: 90%;
+  height: 61vh;
+  background: linear-gradient(162deg, rgb(34, 44, 57) 0%, rgb(23, 45, 58) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  border-radius: 15px;
+  margin-top: 50px;
+  min-height: 130px;
+  margin-bottom: 50px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+// Don't let Google see this!!
+
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
