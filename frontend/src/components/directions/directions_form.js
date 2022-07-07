@@ -1,26 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
+import Downshift from 'downshift'
 import { fetchDirections } from '../../actions/directions_actions';
+import stationNames from "../../util/station_name";
 import '../../assets/stylesheets/directions.scss'
 // import { Autocomplete } from "@react-google-maps/api";
 import AutoComplete from "./autocomplete";
 function DirectionsForm(props) {
-
-
-  const AutoCompleteRef = useRef(null)
-  
-  const [state, setState] = useState({
-    origin: AutoCompleteRef.current,
-    destination: AutoCompleteRef.current,
-  });
-  // if (document.getElementsByClassName("origin-input")[0]) {
-  //   setState(state.origin) = document.getElementsByClassName("origin-input")[0].value 
-  // }
-  // const update = (field) => {
-  //   console.log("update is getting called")
-  //   return (e) => setState(() => ({ ...state, [field]: e.target.innerText }));
-  // };
-  // console.log(AutoCompleteRef.current)
   const handleSubmit = (e) => {
     e.preventDefault();
     props.fetchDirections(state)
@@ -50,6 +36,105 @@ function DirectionsForm(props) {
         <h1>Search Along a Route</h1>
         <form onSubmit={handleSubmit} className='directions-form'>
           <div className='directions-search-fields'>
+            <Downshift
+    onChange={selection => setState(() => ({ ...state, origin: selection }))}
+    
+    itemToString={item => (item ? item : '')}
+  >
+    {({
+      getInputProps,
+      getItemProps,
+      getLabelProps,
+      getMenuProps,
+      isOpen,
+      inputValue,
+      highlightedIndex,
+      selectedItem,
+      getRootProps,
+    }) => (
+      <div>
+        <label className='directions-origin-label'>Origin</label>
+        <div
+          style={{display: 'inline-block'}}
+          {...getRootProps({}, {suppressRefError: true})}
+        >
+          <input {...getInputProps()} />
+        </div>
+        <ul {...getMenuProps()}>
+          {isOpen
+            ? stationNames
+                .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLocaleLowerCase()))
+                .map((item, index) => (
+                  <li
+                    {...getItemProps({
+                      key: item,
+                      index,
+                      item,
+                      style: {
+                        backgroundColor:
+                          highlightedIndex === index ? 'lightgray' : 'white',
+                        fontWeight: selectedItem === item ? 'bold' : 'normal',
+                      },
+                    })}
+                  >
+                    {item}
+                  </li>
+                ))
+            : null}
+        </ul>
+      </div>
+    )}
+  </Downshift>
+            <label className='directions-destination-label'>
+            <Downshift
+    onChange={selection => setState(() => ({ ...state, destination: selection }))}
+    
+    itemToString={item => (item ? item : '')}
+  >
+    {({
+      getInputProps,
+      getItemProps,
+      getLabelProps,
+      getMenuProps,
+      isOpen,
+      inputValue,
+      highlightedIndex,
+      selectedItem,
+      getRootProps,
+    }) => (
+      <div>
+        <label className='directions-destination-label'>Destination</label>
+        <div
+          style={{display: 'inline-block'}}
+          {...getRootProps({}, {suppressRefError: true})}
+        >
+          <input {...getInputProps()} />
+        </div>
+        <ul {...getMenuProps()}>
+          {isOpen
+            ? stationNames
+                .filter(item => !inputValue || item.includes(inputValue))
+                .map((item, index) => (
+                  <li
+                    {...getItemProps({
+                      key: item,
+                      index,
+                      item,
+                      style: {
+                        backgroundColor:
+                          highlightedIndex === index ? 'lightgray' : 'white',
+                        fontWeight: selectedItem === item ? 'bold' : 'normal',
+                      },
+                    })}
+                  >
+                    {item}
+                  </li>
+                ))
+            : null}
+        </ul>
+      </div>
+    )}
+  </Downshift>
             <label className='directions-origin-label'>
                 {/* <Autocomplete
                   options={{
