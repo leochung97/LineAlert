@@ -407,15 +407,15 @@ const mapStyles =  [
       },
     ],
   },
-  // {
-  //   featureType: "transit.station.rail",
-  //   elementType: "all",
-  //   stylers: [
-  //     {
-  //       visibility: "on",
-  //     },
-  //   ],
-  // },
+  {
+    featureType: "transit.station.rail",
+    elementType: "all",
+    stylers: [
+      {
+        visibility: "off",
+      },
+    ],
+  },
   {
     featureType: "transit.station.rail",
     elementType: "labels.text",
@@ -437,14 +437,14 @@ const mapStyles =  [
       },
     ],
   },
-  {
-    featureType: "transit.line",
-    elementType: "stroke",
-    stylers: [
-      {
-        "visibility": "off",
-      },
-    ],
-  }
+  // {
+  //   featureType: "transit.line",
+  //   elementType: "all",
+  //   stylers: [
+  //     {
+  //       "visibility": "off",
+  //     },
+  //   ],
+  // }
 ]
 export default mapStyles

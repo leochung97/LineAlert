@@ -22,7 +22,7 @@ router.post(
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    let stationSearch = new RegExp("^" + req.body.station + "$", "i");
+    let stationSearch = new RegExp("^" + req.body.station, "i");
     Station.findOne({ name: { $regex: stationSearch } })
       .then((station) => {
         const newAlert = new Alert({
@@ -34,9 +34,9 @@ router.post(
         newAlert
           .save()
           .then((alert) => res.json(alert))
-          .catch((err) => res.json(err));
+          .catch((err) => res.json({alert: "Sorry! Alert could not be created"}));
       })
-      .catch((err) => res.json(err));
+      .catch((err) => res.json({station: "Sorrry that station could not be found"}));
   }
 );
 
@@ -67,8 +67,8 @@ router.patch(
 router.delete("/:id", (req, res) => {
   //deletes alert
   Alert.deleteOne({ _id: req.params.id })
-    .then((res) => console.log("Alert removed"))
-    .catch((err) => res.json("Alert does not exist"));
+    .then((res) => res.json({alerts:"Alert removed"}))
+    .catch((err) => res.json({alerts: err}));
 });
 
 module.exports = router;

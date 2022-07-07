@@ -46,12 +46,9 @@ function NavBar(props) {
       return (
         <div className='nav-links'>
           <Link id="link" to="/profile">
-            <h4>Profile</h4>
+            <h4>{props.currentUser.email}</h4>
           </Link>
-          <Link id="link" to="/">
-            <h4>All Alerts</h4>
-          </Link>
-          <Link id="link" to="/new_alert" onClick={openAlert}>
+          <Link id="link" to="/" onClick={openAlert}>
             <h4>Create an Alert</h4>
           </Link>
           <div className='logout-button-container'>
@@ -115,6 +112,7 @@ function NavBar(props) {
 
 const mapStateToProps = (state) => ({
   loggedIn: state.session.isAuthenticated,
+  currentUser: state.session.user
 });
 
 const mapDispatchToProps = (dispatch) => ({

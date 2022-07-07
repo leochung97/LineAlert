@@ -5,7 +5,6 @@ const rawTSData = require("./trainstation_info.json");
 const mongoose = require("mongoose");
 const Station = require("./models/Station");
 const db = require("./config/keys").mongoURI;
-// console.log(rawTSData);
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -19,7 +18,6 @@ const TSDataParser = () => {
     if (station.borough === "M") {
       let stationData = {};
       stationData.name = station.stop_name;
-      //   console.log(typeof station.daytime_routes);
       stationData.line = station.daytime_routes.toString().split(" ");
       stationData.latLng = {
         lat: station.gtfs_latitude,

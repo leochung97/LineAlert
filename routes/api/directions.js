@@ -36,8 +36,6 @@ router.post("/", (req, res) => {
     method: "get",
     url: `https://maps.googleapis.com/maps/api/directions/json?alternatives=true&mode=transit&transit_mode=subway&origin=${req.body.data.origin}&destination=${req.body.data.destination}&key=${process.env.REACT_APP_MAP_KEY}`,
   };
-
-  console.log(req.body.data)
   axios(options).then((directions) => {
     if (directions.data.status === "OK") {
       filteredData = parseRoutes(directions.data.routes);

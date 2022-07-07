@@ -3,7 +3,7 @@ import EditAlertModal from "./edit_alert_modal";
 import '../../assets/stylesheets/alerts.scss'
 import { useHistory } from 'react-router-dom';
 
-const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
+const Alert = ({ alert, fetchStation, stations, deleteAlert, clearAlerts, currentUser, isAuthenticated }) => {
   const [state, setState] = useState({
     isOpen: false, 
     isLoaded: false
@@ -17,6 +17,14 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
         setState({ ...state, isLoaded: true })
       })
   }, [fetchStation, alert])
+
+  const handleDelete = (alertId) => {
+    deleteAlert(alertId)
+      .then(() => {
+        clearAlerts()
+        console.log("this was called")
+      })
+  }
 
   const openEdit = () => {
     setState({ ...state, isOpen: true });
@@ -34,8 +42,6 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
       currentStation = station;
     }
   })
-
-  console.log(currentStation);
 
   const alertDate = () => {
     let alertday = alert.createdAt.split('T')[0];
@@ -56,19 +62,18 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
       <p className='alert-description'>{alert.description}</p>
       <div className='alert-date-time'>
         <p className={`alert-date ${alert.intensity}`}>{alertDate()}</p>
+        {
+          currentUser === alert.user && isAuthenticated ? (
+            <div className='edit-delete-alert'>
+              <button className='edit-alert-button' onClick={openEdit}>Edit</button>
+              <button className='delete-alert-button' onClick={() => handleDelete(alert._id)}>Delete</button>
+            </div>
+          ) : (
+            <></>
+          )
+        }
         <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
       </div>
-
-      {
-        currentUser === alert.user && isAuthenticated ? (
-          <div>
-            <button onClick={openEdit}>Edit</button>
-            <button onClick={() => deleteAlert(alert._id)}>Delete</button>
-          </div>
-        ) : (
-          <></>
-        )
-      }
       
       <EditAlertModal
         alert={alert}

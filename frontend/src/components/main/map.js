@@ -1,7 +1,17 @@
+import React, { useEffect, useState } from "react";
+import { connect } from 'react-redux';
 import { GoogleMap, Marker, TransitLayer, Polyline, InfoWindow, MarkerClusterer } from "@react-google-maps/api";
 import mapStyles from "./styles.js";
+import { fetchAlerts, fetchAlert } from '../../actions/alert_actions';
 
-export default function Map({ alerts, stations }) {
+function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
+  const [state, setState] = useState(false);
+  
+  useEffect(() => {
+    fetchAlerts()
+      .then(() => setState(true))
+  }, [fetchAlerts])
+
   const center = { lat: 40.767, lng: -73.972 };
   const NEW_YORK_BOUNDS = {
     north: 40.867,
@@ -9,13 +19,8 @@ export default function Map({ alerts, stations }) {
     west: -74.072,
     east: -73.872
   };
-  const icons = {
-    alerts: {
-      YELLOW: 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-yellow.png',
-      ORANGE: 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-orange.png',
-      RED: 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-red.png'
-    }
-  };
+  
+  
   const poly = [
     { lat: 40.7359, lng: -73.9911 },
     { lat: 40.7559, lng: -73.9871 },
@@ -24,20 +29,22 @@ export default function Map({ alerts, stations }) {
     { lat: 40.7830, lng: -73.9815 }
   ]
 
-  console.log(alerts);
-  console.log(stations);
-  
   let markersArr = [];
 
   const findUnique = () => {
     const markers = {};
+    const icons = new Map();
+    icons.set("YELLOW", 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-yellow.png');
+    icons.set("ORANGE", 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-orange.png');
+    icons.set("RED", 'https://linealert-assets.s3.amazonaws.com/linealert-marker-pin-red.png');
+    
     alerts.forEach(alert => {
       stations.forEach(station => {
         if (station._id === alert.station) {
           const marker = {
             id: alert._id,
             center: { lat: station.latLng.lat, lng: station.latLng.lng },
-            color: alert.intensity,
+            color: icons.get(alert.intensity)
           }
           markers[marker.id] = marker;
         }
@@ -46,12 +53,12 @@ export default function Map({ alerts, stations }) {
     markersArr = Object.values(markers);
   }
 
-  const markerClick = (center) => {
-    const station = stations.find(station =>
-      station.latLng.lat === center.lat && station.latLng.lng === center.lng
-    );
-    console.log(station);
-  }
+  const markerClick = id => (
+    console.log(id)
+    // fetchAlert(id).then( alert => 
+    //   console.log(alert)
+    // )
+  )
 
   return (
     <GoogleMap
@@ -70,22 +77,29 @@ export default function Map({ alerts, stations }) {
       }}
       onClick={() => findUnique()}
     >
+      
       <TransitLayer />
+
       {
-        markersArr.map(alert => {
-          return (
-            <Marker
-              key={alert.id}
-              position={alert.center}
-              icon={alert.color}
-              onClick={() => { markerClick(alert.center) }}
-              options={{
-                clickable: true
-              }}
-            />
-          )
-        })
+        state ? 
+          findUnique() :
+          null
       }
+
+      {
+        state ? 
+          markersArr.map(marker => 
+            <Marker 
+              key={marker.id}
+              position={marker.center}
+              icon={marker.color}
+              onClick={ () => markerClick(marker.id) }
+              options={{ clickable: true }}
+            />
+          ) : 
+          null
+      }
+
       {/* <Polyline
             path={poly}
             options={{
@@ -94,6 +108,19 @@ export default function Map({ alerts, stations }) {
               strokeWeight: 2
             }}
           /> */}
+
     </GoogleMap>
   );
 }
+
+const mSTP = state => ({
+  alerts: state.entities.alerts,
+  stations: state.entities.stations
+})
+
+const mDTP = dispatch => ({
+  fetchAlerts: () => dispatch(fetchAlerts()),
+  fetchAlert: alertId => dispatch(fetchAlert(alertId))
+})
+
+export default connect(mSTP, mDTP)(Maps);
