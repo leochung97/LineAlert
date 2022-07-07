@@ -437,5 +437,14 @@ const mapStyles =  [
       },
     ],
   },
+  {
+    featureType: "transit.line",
+    elementType: "stroke",
+    stylers: [
+      {
+        "visibility": "off",
+      },
+    ],
+  }
 ]
 export default mapStyles

@@ -58,7 +58,7 @@ export const fetchAlert = alertId => dispatch => {
 export const createAlert = alert => dispatch => {
   return (
     AlertApiUtil.createAlert(alert)
-      .then(res => dispatch(receiveAlert(alert)))
+      .then(res => dispatch(receiveAlert(res)))
       .catch(err => {
         dispatch(receiveAlertErrors(err.response.data));
     })
@@ -68,7 +68,7 @@ export const createAlert = alert => dispatch => {
 export const updateAlert = alert => dispatch => {
   return (
     AlertApiUtil.updateAlert(alert)
-      .then(res => dispatch(receiveAlert(alert)))
+      .then(res => dispatch(receiveAlert(res)))
       .catch(err => {
         dispatch(receiveAlertErrors(err.response.data));
     })

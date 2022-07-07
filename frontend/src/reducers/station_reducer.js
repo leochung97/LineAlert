@@ -1,15 +1,11 @@
 import { RECEIVE_STATION } from "../actions/station_actions";
 
-const initialState = {
-
-}
-
-const StationsReducer = (state = initialState, action) => {
+const StationsReducer = (state = [], action) => {
     Object.freeze(state);
-    let nextState = {...state};
+    let nextState = [...state];
     switch(action.type) {
         case RECEIVE_STATION:
-            nextState[action.station._id] = action.station;
+            nextState.push(action.station);
             return nextState;
         default:
             return state;

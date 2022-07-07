@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import Downshift from 'downshift'
 import { fetchDirections } from '../../actions/directions_actions';
 import stationNames from "../../util/station_name";
 import '../../assets/stylesheets/directions.scss'
-
+// import { Autocomplete } from "@react-google-maps/api";
+import AutoComplete from "./autocomplete";
 function DirectionsForm(props) {
-  const [state, setState] = useState({
-    origin: "",
-    destination: "",
-  });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     props.fetchDirections(state)
@@ -139,6 +135,45 @@ function DirectionsForm(props) {
       </div>
     )}
   </Downshift>
+            <label className='directions-origin-label'>
+                {/* <Autocomplete
+                  options={{
+                    types: ['subway_station'],
+                    bounds: defaultBounds,
+                    strictBounds: true,
+                    componentRestrictions: {
+                      country: 'US',
+                    }
+                  }}>
+                  <input        
+                    id='directions-form'
+                    type='text'
+                    value={state.origin}
+                    onChange={update('origin')}
+                    placeholder='Origin'
+                  />
+                </Autocomplete> */}
+              {/* <AutoComplete  ref={AutoCompleteRef} suggestions={["Oranges", "Apples", "Banana", "Kiwi", "Mango"]}/> */}
+            </label>
+            <label className='directions-destination-label'>
+              {/* <Autocomplete
+                  options={{
+                    types: ['subway_station'],
+                    bounds: defaultBounds,
+                    strictBounds: true,
+                    componentRestrictions: {
+                      country: 'US',
+                    }
+                  }}>
+                <input
+                    id='directions-form'
+                    type='text'
+                    value={state.destination}
+                    onChange={update('destination')}
+                    placeholder='Destination'
+                  />
+              </Autocomplete> */}
+              {/* <AutoComplete ref={AutoCompleteRef} suggestions={["Oranges", "Apples", "Banana", "Kiwi", "Mango"]}/> */}
             </label>
             <div className='directions-submit-container'>
               <input className='directions-submit-button' type='submit' value='Search'/>

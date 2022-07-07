@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "../../actions/session_actions";
+import { logout } from "../../actions/session_actions.js";
 import LoginModal from "../session/login_modal";
 import SignupModal from "../session/signup_modal.js";
-import CreateAlertModal from "../alerts/create_alert";
+import CreateAlertModal from "../alerts/create_alert_modal.js";
 
 function NavBar(props) {
   const [state, setState] = useState({ 
@@ -38,6 +38,7 @@ function NavBar(props) {
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
+    // window.location.reload();
   };
 
   const getLinks = () => {

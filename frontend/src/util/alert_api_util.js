@@ -22,7 +22,7 @@ export const createAlert = alert => {
 }
 
 export const updateAlert = alert => {
-  return axios.patch(`api/alerts/${alert.id}`, alert)
+  return axios.patch(`api/alerts/${alert._id}`, alert)
   .then(res => {
     return res.data;
   });
