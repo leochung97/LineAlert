@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/session_actions";
 import { Link, useHistory } from "react-router-dom";
+import Typed from "typed.js";
 
 function LoginForm(props) {
   const [state, setState] = useState({
@@ -41,6 +42,34 @@ function LoginForm(props) {
     );
   };
 
+  const demoLogin = () => {
+    const email = {
+      strings: ["demouser@linealert.com"],
+      typeSpeed: 50
+    };
+
+    const password = {
+      strings: ["demopass"],
+      typeSpeed: 50
+    };
+
+    setState({
+      email: "",
+      password: ""
+    });
+
+    new Typed(".email", email);
+    new Typed(".password", password);
+
+    setTimeout(() => {
+      props.login(state).then((decoded) => {
+        if (decoded) {
+          props.closeModal();
+        }
+      })
+    }, 1000);
+  }
+
   return (
     <div className='login-form-container'>
       <form onSubmit={handleSubmit}>
@@ -74,6 +103,7 @@ function LoginForm(props) {
           { renderErrors() }
         </div>
         <input className="login-submit-button" type="submit" value="Login" />
+        <input className="login-submit-button" type="submit" value="Demo Login" onClick={demoLogin()} />
         <div className='switch-modals'>
           <Link id="link" to="/register" onClick={props.openSignup}>New to LineAlert? Create an account.</Link>
         </div>

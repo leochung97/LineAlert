@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createAlert } from "../../actions/alert_actions";
 
 function CreateAlertForm(props) {
@@ -70,35 +70,37 @@ function CreateAlertForm(props) {
           />
         </div>
         <div className='create-alert-intensity-dropdown'>
-          <div class="middle">
+          <div className="middle">
             <h1>Alert Intensity </h1>
             <label>
               <input type="radio" name="radio" onClick={intensityUpdate("YELLOW")} />
-              <div class="low box">
+              <div className="low box">
                 <span>Low</span>
               </div>
             </label>
 
             <label>
               <input type="radio" name="radio" onClick={intensityUpdate("ORANGE")} />
-              <div class="medium box">
+              <div className="medium box">
                 <span>Medium</span>
               </div>
             </label>
 
             <label>
               <input type="radio" name="radio" onClick={intensityUpdate("RED")} />
-              <div class="high box">
+              <div className="high box">
                 <span>High</span>
               </div>
             </label>
           </div>
         </div>
-        { renderErrors() }
         <div className='intensity-explainer'>
           <p>Low: No hazards - discomfort unlikely</p>
           <p>Medium: Chance of hazard - discomfort probable</p>
           <p>High: Hazard confirmed - avoid station</p>
+        </div>
+        <div className='create-alert-errors'>
+          { renderErrors() }
         </div>
         <input className="create-alert-submit-button" type="submit" value="Create Alert" />
       </form>

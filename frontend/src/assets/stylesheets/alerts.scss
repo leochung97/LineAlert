@@ -14,7 +14,6 @@
     max-width: 90%;
     min-width: 90%;
     background-color: rgba(135, 193, 207, 0.431);
-    margin-left: -13px;
     cursor: default;
 }
 
@@ -23,6 +22,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-width: 200px;
 }
 
 .alert-location {

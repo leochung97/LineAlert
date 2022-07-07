@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../assets/stylesheets/alerts.scss'
 
 const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
@@ -9,7 +9,7 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
       .then(() => {
         setLoaded(true)
       })
-  }, [])
+  }, [alert.station, fetchStation])
 
   let currentStation = {}
   Object.values(stations).forEach(station => {
@@ -32,8 +32,8 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
     <div className='alert-body'>
       <h1 className={`alert-location ${alert.intensity}`}>
         {Object.values(currentStation)[0].name}
-      <p className='alerts-stations'>{Object.values(currentStation)[0].line.join(", ")}</p>
-    </h1>
+        <p className='alerts-stations'>{Object.values(currentStation)[0].line.join(", ")}</p>
+      </h1>
       <p className='alert-description'>{alert.description}</p>
       <div className='alert-date-time'>
         <p className={`alert-date ${alert.intensity}`}>{alertDate}</p>
