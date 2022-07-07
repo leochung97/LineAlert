@@ -11,8 +11,8 @@
     margin-bottom: 5px;
     padding: 12.5px;
     border-radius: 15px;
-    max-width: 90%;
-    min-width: 90%;
+    max-width: 75%;
+    min-width: 75%;
     background-color: rgba(135, 193, 207, 0.431);
     cursor: default;
 }
@@ -22,7 +22,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 200px;
+    min-width: 100%;
+    // max-width: 
 }
 
 .alert-location {
@@ -32,8 +33,8 @@
     margin-bottom: 5px;
     padding-top: 2.5px;
     padding-bottom: 2.5px;
-    max-width: 75%;
-    min-width: 75%;
+    max-width: 85%;
+    min-width: 85%;
 }
 
 .alert-description {

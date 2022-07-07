@@ -1,54 +1,81 @@
 import React, { useEffect, useState } from 'react';
+import EditAlertModal from "./edit_alert_modal";
 import '../../assets/stylesheets/alerts.scss'
+import { useHistory } from 'react-router-dom';
 
 const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
-  const [isLoaded, setLoaded] = useState(false);
+  const [state, setState] = useState({
+    isOpen: false, 
+    isLoaded: false
+  })
+
+  const history = useHistory();
 
   useEffect(() => {
     fetchStation(alert.station)
       .then(() => {
-        setLoaded(true)
+        setState({ ...state, isLoaded: true })
       })
-  }, [alert.station, fetchStation])
+  }, [fetchStation, alert])
+
+  const openEdit = () => {
+    setState({ ...state, isOpen: true });
+    history.push(`/alerts/${alert._id}`);
+  }
+  
+  const closeModal = () => {
+    setState({ ...state, isOpen: false })
+    history.push("/");
+  }
 
   let currentStation = {}
-  Object.values(stations).forEach(station => {
+  stations.forEach(station => {
     if (station._id === alert.station) {
-      currentStation[station._id] = station;
+      currentStation = station;
     }
   })
 
-  const alertDate = () => (
-    console.log("checking Split")
-    // alert.createdAt.split('T')[0]
-  )
+  console.log(currentStation);
 
-  const alertTime = () => (
-    console.log("checking Split")
-    // alert.createdAt.split('T')[1].split('.')[0];
-  )
+  const alertDate = () => {
+    let alertday = alert.createdAt.split('T')[0];
+    return alertday;
+  }
 
-  return isLoaded ? (
+  const alertTime = () => {
+    let alerttime = alert.createdAt.split('T')[1].split('.')[0];
+    return alerttime;
+  }
+
+  return state.isLoaded ? (
     <div className='alert-body'>
       <h1 className={`alert-location ${alert.intensity}`}>
-        {Object.values(currentStation)[0].name}
-        <p className='alerts-stations'>{Object.values(currentStation)[0].line.join(", ")}</p>
+        {currentStation.name}
+        <p className='alerts-stations'>{currentStation.line.join(" ")}</p>
       </h1>
       <p className='alert-description'>{alert.description}</p>
       <div className='alert-date-time'>
-        <p className={`alert-date ${alert.intensity}`}>{alertDate}</p>
-        <p className={`alert-time ${alert.intensity}`}>{alertTime}</p>
+        <p className={`alert-date ${alert.intensity}`}>{alertDate()}</p>
+        <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
       </div>
+
       {
         currentUser === alert.user && isAuthenticated ? (
           <div>
-            <button>Edit</button>
+            <button onClick={openEdit}>Edit</button>
             <button onClick={() => deleteAlert(alert._id)}>Delete</button>
           </div>
         ) : (
           <></>
         )
       }
+      
+      <EditAlertModal
+        alert={alert}
+        isOpen={state.isOpen}
+        closeModal={closeModal}
+      />
+
     </div>
   ) : (
     <></>

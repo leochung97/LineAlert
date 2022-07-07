@@ -35,9 +35,9 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, curre
   }
   
   return (
-    <div>
+    <>
       {component}
-    </div>
+    </>
   )
 }
 

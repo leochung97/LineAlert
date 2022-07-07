@@ -4,19 +4,15 @@ import {
     REMOVE_ALERT
 } from '../actions/alert_actions';
 
-const initialState = {
-  
-}
-
-const AlertsReducer = (state = initialState, action) => {
+const AlertsReducer = (state = [], action) => {
     Object.freeze(state);
-    let nextState = {...state};
+    let nextState = [...state];
     switch(action.type) {
         case RECEIVE_ALERTS:
-            nextState = {...action.alerts};
+            nextState = [...action.alerts];
             return nextState;
         case RECEIVE_ALERT:
-            nextState[action.alert._id] = action.alert;
+            nextState.push(action.alert);
             return nextState;
         case REMOVE_ALERT:
             delete nextState[action.alert];
