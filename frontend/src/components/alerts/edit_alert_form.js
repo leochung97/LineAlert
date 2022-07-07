@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { updateAlert } from "../../actions/alert_actions";
+import { updateAlert, fetchAlerts } from "../../actions/alert_actions";
 
 function EditAlertForm(props) {
   const [state, setState] = useState({
@@ -106,7 +106,8 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  updateAlert: alert => dispatch(updateAlert(alert))
+  updateAlert: alert => dispatch(updateAlert(alert)),
+  fetchAlerts: () => dispatch(fetchAlerts()),
 })
 
 export default connect(mSTP, mDTP)(EditAlertForm);

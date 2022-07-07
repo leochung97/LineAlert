@@ -12,6 +12,7 @@ const stations = require("./routes/api/stations");
 const google = require("./routes/api/google");
 const directions = require("./routes/api/directions");
 const twilio = require("./routes/api/twilio");
+const path = require('path');
 // const trainStations = require("./trainstations");
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -37,3 +38,11 @@ const port = process.env.PORT || 5001;
 // for route debugging purposes
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 console.log(expressListRoutes(app, { prefix: "/" }));
+
+// For Heroku
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}

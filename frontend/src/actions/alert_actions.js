@@ -3,6 +3,7 @@ import * as AlertApiUtil from '../util/alert_api_util';
 export const RECEIVE_ALERTS = 'RECEIVE_ALERTS';
 export const RECEIVE_ALERT = 'RECEIVE_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
+export const CLEAR_ALERTS = 'CLEAR_ALERTS';
 export const RECEIVE_ALERT_ERRORS = 'RECEIVE_ALERT_ERRORS';
 
 const receiveAlerts = alerts => {
@@ -33,11 +34,16 @@ const receiveAlertErrors = errors => {
   }
 }
 
+export const clearAlerts = () => ({
+  type: CLEAR_ALERTS
+})
+
 export const fetchAlerts = () => dispatch => {
   return (
     AlertApiUtil.fetchAlerts()
       .then(res => {
         dispatch(receiveAlerts(res))
+        return res
       })
       .catch(err => {
         dispatch(receiveAlertErrors(err.response.data));

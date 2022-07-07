@@ -13,7 +13,7 @@ function DirectionsForm(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.fetchDirections(state)
+    props.fetchDirections({origin: state.origin + ",NY", destination: state.destination + ",NY"})
   };
   
   const center = { lat: 40.767, lng: -73.972 };
@@ -31,6 +31,7 @@ function DirectionsForm(props) {
         <form onSubmit={handleSubmit} className='directions-form'>
           <div className='directions-search-fields'>
             <Downshift
+              className='downshift-origin'
               onChange={selection => setState(() => ({ ...state, origin: selection }))}
               itemToString={item => (item ? item : '')}
             >
@@ -45,10 +46,10 @@ function DirectionsForm(props) {
               selectedItem,
               getRootProps,
             }) => (
-              <div>
+              <div className='directions-search-origin'>
                 <label className='directions-origin-label'>Origin</label>
-                <div
-                  style={{display: 'inline-block'}}
+                <div className='combobox-origin'
+                  // style={{display: 'inline-block'}}
                   {...getRootProps({}, {suppressRefError: true})}
                 >
                   <input {...getInputProps()} />
@@ -56,7 +57,7 @@ function DirectionsForm(props) {
                 <ul {...getMenuProps()}>
                   {isOpen
                     ? stationNames
-                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLocaleLowerCase()))
+                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLowerCase())).slice(0, 4)
                         .map((item, index) => (
                           <li
                             {...getItemProps({
@@ -94,10 +95,10 @@ function DirectionsForm(props) {
                 selectedItem,
                 getRootProps,
               }) => (
-                <div>
-                  <label className='directions-destination-label'>Destination</label>
-                  <div
-                    style={{display: 'inline-block'}}
+                <div className='directions-search-destination'>
+                <label className='directions-destination-label'>Destination</label>
+                  <div className='combobox-destination'
+                    // style={{display: 'inline-block'}}
                     {...getRootProps({}, {suppressRefError: true})}
                   >
                     <input {...getInputProps()} />
@@ -105,7 +106,7 @@ function DirectionsForm(props) {
                   <ul {...getMenuProps()}>
                     {isOpen
                       ? stationNames
-                          .filter(item => !inputValue || item.includes(inputValue))
+                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLowerCase())).slice(0, 4)
                           .map((item, index) => (
                             <li
                               {...getItemProps({
@@ -127,10 +128,10 @@ function DirectionsForm(props) {
                 </div>
               )}
             </Downshift>
-            <div className='directions-submit-container'>
+          </div>
+          <div className='directions-submit-container'>
               <input className='directions-submit-button' type='submit' value='Search'/>
             </div>
-          </div>
         </form>
     </div>
   );

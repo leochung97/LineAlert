@@ -1,36 +1,37 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Alert from './alert';
-import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
+import { deleteAlert, fetchAlerts, clearAlerts } from '../../actions/alert_actions';
 import { fetchStation } from '../../actions/station_actions';
 import '../../assets/stylesheets/alerts.scss'
 
 const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, currentUser, isAuthenticated}) => {
-  const [isloaded, setLoaded] = useState(false);
 
+  const [instateAlerts, setstateAlerts] = useState(alerts)
+  
   useEffect(() => {
-    fetchAlerts()
-      .then(() => setLoaded(true))
-  }, [fetchAlerts])
+    fetchAlerts().then((data) => setstateAlerts(data))
+  }, [fetchAlerts, instateAlerts])
 
   let component;
 
-  if (!isloaded) {
+  if (!instateAlerts || !instateAlerts.length) {
     component = <></>
   } else {
     component = (
-      Object.values(alerts).map(alert => {
-        return <div className='alert-item' key={alert._id}>
+      Object.values(instateAlerts).map(alert => (
+        <div className='alert-item' key={alert._id}>
           <Alert 
             alert={alert} 
             fetchStation={fetchStation} 
             stations={stations} 
             deleteAlert={deleteAlert}
+            clearAlerts={clearAlerts}
             currentUser={currentUser}
             isAuthenticated={isAuthenticated}
           />
         </div>
-      })
+      ))
     )
   }
   
@@ -41,7 +42,7 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, curre
   )
 }
 
-const mapStateToProps = state => {
+const mSTP = state => {
   return {
     alerts: state.entities.alerts,
     stations: state.entities.stations,
@@ -50,12 +51,13 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDisptachToProps = dispatch => {
+const mDTP = dispatch => {
   return {
     fetchAlerts: () => dispatch(fetchAlerts()),
     fetchStation: stationId => dispatch(fetchStation(stationId)),
     deleteAlert: alertId => dispatch(deleteAlert(alertId)),
+    clearAlerts: () => dispatch(clearAlerts())
   }
 }
 
-export default connect(mapStateToProps, mapDisptachToProps)(Alerts);
+export default connect(mSTP, mDTP)(Alerts);

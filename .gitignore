@@ -1,7 +1,9 @@
 # Root
 /node_modules
 .DS_Store
-/config
+/config/keys.js
+/config/keys_dev.js
+/config/passport.js
 .env
 
 # Frontend

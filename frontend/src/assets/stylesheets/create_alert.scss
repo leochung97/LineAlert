@@ -198,3 +198,43 @@
   font-size: 10px;
   font-weight: 400;
 }
+
+.create-alert-station {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.directions-search-station {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.combobox-alert-destination {
+  display: flex;
+  justify-content: center;
+}
+
+.combobox-alert-destination > input {
+  margin-top: 5px;
+  min-width: 250px;
+  min-height: 25px;
+  border-radius: 5px;
+  background-color: rgb(28, 37, 48);
+  color: white;
+  font-size: 10px;
+  box-shadow: none;
+  border: none;
+}
+
+#downshift-2-menu {
+  z-index: 1500;
+  position: absolute;
+  top: 39px;
+  min-width: 63%;
+  cursor: pointer;
+}

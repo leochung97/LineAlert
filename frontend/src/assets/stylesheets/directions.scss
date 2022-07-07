@@ -13,6 +13,7 @@
     cursor: default;
     text-align: center;
     font-weight: 550;
+
 }
 
 .directions-form {
@@ -20,14 +21,72 @@
 }
 .directions-search-fields {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.directions-search-origin {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     min-width: 100%;
+    min-height: 60px;
+}
+
+.directions-search-destination {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 60px;
+
+}
+
+.directions-origin-label {
+    color: white;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.directions-destination-label {
+    color: white;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.combobox-origin {
+    min-width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+.combobox-destination {
+    min-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.combobox-origin > input {
+    min-width: 75%;
+    min-height: 17.5px;
+    border-radius: 5px;
+    background-color: rgb(62, 90, 107);
+    color: white;
+    font-size: 10px;
+}
 
-.directions-search-fields form {
-    min-width: 50%;
+.combobox-destination > input {
+    min-width: 75%;
+    min-height: 17.5px;
+    border-radius: 5px;
+    background-color: rgb(62, 90, 107);
+    color: white;
+    font-size: 10px;
 }
 
 #directions-form {
@@ -73,27 +132,22 @@
     color: black;
 }
 
-.pac-container {
-    background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
-    color: white;
-}
-
-.pac-matched {
-    color: white;
-}
-
-.pac-item-query {
-    color: rgb(192, 192, 192);
-}
-
-.pac-item:hover {
-    background-color: #416f6f;
-    color: rgb(28, 37, 48);
-}
-
-.pac-icon {
-    visibility: hidden;
-}
 .directions-results-container {
     color: white;
+}
+
+#downshift-0-menu {
+    z-index: 1000;
+    position: absolute;
+    top: 62px;
+    min-width: 60%;
+    cursor: pointer;
+}
+
+#downshift-1-menu {
+    z-index: 1100;
+    position: absolute;
+    top: 62px;
+    min-width: 60%;
+    cursor: pointer;
 }

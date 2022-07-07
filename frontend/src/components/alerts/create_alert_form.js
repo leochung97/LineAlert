@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createAlert } from "../../actions/alert_actions";
+import Downshift from 'downshift'
+import stationNames from "../../util/station_name";
 
 function CreateAlertForm(props) {
   const [state, setState] = useState({
@@ -61,13 +63,54 @@ function CreateAlertForm(props) {
           />
         </div>
         <div className='create-alert-station'>
-          <input
-            className='modal-form'
-            type="text"
-            value={state.station}
-            onChange={update("station")}
-            placeholder="Station Name"
-          />
+        <Downshift
+              className='downshift-station'
+              onChange={selection => setState(() => ({ ...state, station: selection }))}
+              itemToString={item => (item ? item : '')}
+            >
+            {({
+              getInputProps,
+              getItemProps,
+              getLabelProps,
+              getMenuProps,
+              isOpen,
+              inputValue,
+              highlightedIndex,
+              selectedItem,
+              getRootProps,
+            }) => (
+              <div className='directions-search-station'>
+                <div className='combobox-alert-destination'
+                  style={{display: 'inline-block'}}
+                  {...getRootProps({}, {suppressRefError: true})}
+                >
+                  <input placeholder="Station Name" {...getInputProps()} />
+                </div>
+                <ul {...getMenuProps()}>
+                  {isOpen
+                    ? stationNames
+                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLowerCase())).slice(0, 4)
+                        .map((item, index) => (
+                          <li
+                            {...getItemProps({
+                              key: item,
+                              index,
+                              item,
+                              style: {
+                                backgroundColor:
+                                  highlightedIndex === index ? 'lightgray' : 'white',
+                                fontWeight: selectedItem === item ? 'bold' : 'normal',
+                              },
+                            })}
+                          >
+                            {item}
+                          </li>
+                        ))
+                    : null}
+                </ul>
+              </div>
+            )}
+            </Downshift>
         </div>
         <div className='create-alert-intensity-dropdown'>
           <div className="middle">
