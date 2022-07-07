@@ -18,12 +18,14 @@ function DirectionsForm(props) {
     e.preventDefault();
     props.fetchDirections(state)
   };
+  
+  const center = { lat: 40.767, lng: -73.972 };
 
-  const NEW_YORK_BOUNDS = {
-    north: 40.867,
-    south: 40.667,
-    west: -74.072,
-    east: -73.872
+  const defaultBounds = {
+    north: center.lat + 0.1,
+    south: center.lat -0.1,
+    east: center.lng + 0.1,
+    west: center.lng - 0.1
   };
 
 //   const renderErrors = () => {
@@ -43,31 +45,41 @@ function DirectionsForm(props) {
           <div className='directions-search-fields'>
             <label className='directions-origin-label'>
                 <Autocomplete
-                                id='directions-form'
-                                type='text'
-                                value={state.origin}
-                                onChange={update('origin')}
-                                placeholder='Origin'  
-                >
-                  <input />
+                  options={{
+                    types: ['subway_station'],
+                    bounds: defaultBounds,
+                    strictBounds: true,
+                    componentRestrictions: {
+                      country: 'US',
+                    }
+                  }}>
+                  <input        
+                    id='directions-form'
+                    type='text'
+                    value={state.origin}
+                    onChange={update('origin')}
+                    placeholder='Origin'
+                  />
                 </Autocomplete>
-                
-              {/* <input
-                id='directions-form'
-                type='text'
-                value={state.origin}
-                onChange={update('origin')}
-                placeholder='Origin'
-              /> */}
             </label>
             <label className='directions-destination-label'>
-              <input
-                  id='directions-form'
-                  type='text'
-                  value={state.destination}
-                  onChange={update('destination')}
-                  placeholder='Destination'
-                />
+              <Autocomplete
+                  options={{
+                    types: ['subway_station'],
+                    bounds: defaultBounds,
+                    strictBounds: true,
+                    componentRestrictions: {
+                      country: 'US',
+                    }
+                  }}>
+                <input
+                    id='directions-form'
+                    type='text'
+                    value={state.destination}
+                    onChange={update('destination')}
+                    placeholder='Destination'
+                  />
+              </Autocomplete>
             </label>
             <div className='directions-submit-container'>
               <input className='directions-submit-button' type='submit' value='Search'/>

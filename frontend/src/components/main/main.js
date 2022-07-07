@@ -13,21 +13,20 @@ function MainPage({directions}) {
 
   const mapKey = useRef(null);
 
-  // console.log(directions);
-
+  // PROBABLY WON'T NEED THIS ANYMORE
   // useEffect(() => {
   //   axios.get("/api/google/").then((key) => {
   //     setLoaded(true);
   //     mapKey.current = key.data;
   //   });
   // }, []);
+
   useEffect(() => {
-    
       setLoaded(true);
       mapKey.current = 'AIzaSyAnIbS_geF_FmCXWPVgocrZOz85lP6kCsk'
     });
 
-  if (loaded) {
+  //PROBABLY WON'T NEED THIS ANYMORE if (loaded) {
     return (
       <div className="main">
         <div className="main-left-side">
@@ -83,9 +82,9 @@ function MainPage({directions}) {
       })
 
       return (
-        // <LoadScript googleMapsApiKey={mapKey.current}>
+        //PROBABLY WON'T NEED THIS ANYMORE <LoadScript googleMapsApiKey={mapKey.current}>
           <GoogleMap
-            googleMapsApiKey={mapKey.current}
+            //PROBABLY WON'T NEED THIS ANYMORE googleMapsApiKey={mapKey.current}
             zoom={12.5}
             center={center}
             mapContainerClassName="map-container"
@@ -121,10 +120,10 @@ function MainPage({directions}) {
               }}
             /> */}
           </GoogleMap>
-        // </LoadScript>
+        //PROBABLY WON'T NEED THIS ANYMORE </LoadScript>
       );
     }
-  }
+  // }
 }
 
 const mapStateToProps = (state) => {

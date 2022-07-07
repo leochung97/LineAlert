@@ -9,7 +9,7 @@ const StationSchema = new Schema (
     },
     // Array of strings
     line: [String],
-    alerts: [{ type: Schema.Types.ObjectId, ref: "Alert" }],
+    // alerts: [{ type: Schema.Types.ObjectId, ref: "Alert" }],
     latLng: {
       lat: {
         type: Number,
