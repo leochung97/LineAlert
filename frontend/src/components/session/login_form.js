@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/session_actions";
 import { Link, useHistory } from "react-router-dom";
-import Typed from "typed.js";
 
 function LoginForm(props) {
   const [state, setState] = useState({
@@ -42,32 +41,19 @@ function LoginForm(props) {
     );
   };
 
-  const demoLogin = () => {
-    const email = {
-      strings: ["demouser@linealert.com"],
-      typeSpeed: 50
-    };
-
-    const password = {
-      strings: ["demopass"],
-      typeSpeed: 50
-    };
-
-    setState({
-      email: "",
-      password: ""
-    });
-
-    new Typed(".email", email);
-    new Typed(".password", password);
-
-    setTimeout(() => {
-      props.login(state).then((decoded) => {
+  async function demoLogin(e) {
+    e.preventDefault();
+    let demouser = {
+      email: "demouser@linealert.com",
+      password: "demopass"
+    }
+    setState(demouser);
+    props.login(demouser)
+      .then((decoded) => {
         if (decoded) {
           props.closeModal();
         }
-      })
-    }, 1000);
+    });
   }
 
   return (
@@ -82,7 +68,7 @@ function LoginForm(props) {
         <div>
           <label className="login-email-label">
             <input
-              className='modal-form'
+              className='modal-form email'
               type="text"
               value={state.email}
               onChange={update("email")}
@@ -93,7 +79,7 @@ function LoginForm(props) {
         <div className='login-password'>
           <label className="login-password-label">
             <input
-              className='modal-form'
+              className='modal-form password'
               type="password"
               value={state.password}
               onChange={update("password")}
@@ -103,7 +89,7 @@ function LoginForm(props) {
           { renderErrors() }
         </div>
         <input className="login-submit-button" type="submit" value="Login" />
-        <input className="login-submit-button" type="submit" value="Demo Login" onClick={demoLogin()} />
+        <input className="login-submit-button" type="submit" value="Demo" onClick={demoLogin} />
         <div className='switch-modals'>
           <Link id="link" to="/register" onClick={props.openSignup}>New to LineAlert? Create an account.</Link>
         </div>
