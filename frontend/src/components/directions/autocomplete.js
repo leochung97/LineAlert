@@ -1,6 +1,5 @@
 import React, {useState, useRef } from 'react';
 
-
 function AutoComplete(props) {
     const [state, setState] = useState({
         activeSuggestion : 0,
