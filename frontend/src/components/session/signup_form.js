@@ -15,7 +15,7 @@ function SignUp(props) {
 
   useEffect(() => {
     if (props.currentUser) {
-      history.push("/tweets");
+      history.push("/");
     }
   }, [props.currentUser, history]);
 

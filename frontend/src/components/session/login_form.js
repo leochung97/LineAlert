@@ -71,7 +71,7 @@ function LoginForm(props) {
               placeholder="Password"
             />
           </label>
-          {renderErrors()}
+          { renderErrors() }
         </div>
         <input className="login-submit-button" type="submit" value="Login" />
         <div className='switch-modals'>

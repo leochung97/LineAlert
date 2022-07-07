@@ -13,6 +13,14 @@ function CreateAlertForm(props) {
 
   const history = useHistory();
 
+  const update = (field) => {
+    return (e) => setState(() => ({ ...state, [field]: e.target.value }));
+  };
+
+  const intensityUpdate = text => {
+    return () => setState(() => ({ ...state, intensity: text }))
+  }
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     props.createAlert(state)
@@ -22,17 +30,16 @@ function CreateAlertForm(props) {
           history.push("/");
         }
       })
-      .catch(err => (
-        console.log(err)
-      ))
   }
 
-  const update = field => {
-    return (e) => setState(() => ({ ...state, [field]: e.target.value }));
-  }
-
-  const intensityUpdate = text => {
-    return () => setState(() => ({ ...state, intensity: text }))
+  const renderErrors = () => {
+    return (
+      <ul>
+        {Object.keys(props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{props.errors[error]}</li>
+        ))}
+      </ul>
+    );
   }
 
   return (
@@ -65,7 +72,6 @@ function CreateAlertForm(props) {
         <div className='create-alert-intensity-dropdown'>
           <div class="middle">
             <h1>Alert Intensity </h1>
-
             <label>
               <input type="radio" name="radio" onClick={intensityUpdate("YELLOW")} />
               <div class="low box">
@@ -88,6 +94,7 @@ function CreateAlertForm(props) {
             </label>
           </div>
         </div>
+        { renderErrors() }
         <div className='intensity-explainer'>
           <p>Low: No hazards - discomfort unlikely</p>
           <p>Medium: Chance of hazard - discomfort probable</p>
@@ -100,7 +107,8 @@ function CreateAlertForm(props) {
 }
 
 const mSTP = state => ({
-  currentUser: state.session.user
+  currentUser: state.session.user,
+  errors: state.errors.alert
 })
 
 const mDTP = dispatch => ({

@@ -71,4 +71,26 @@
 .directions-submit-button:hover {
     background-color: #98cccc;
     color: black;
-  }
+}
+
+.pac-container {
+    background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+    color: white;
+}
+
+.pac-matched {
+    color: white;
+}
+
+.pac-item-query {
+    color: rgb(192, 192, 192);
+}
+
+.pac-item:hover {
+    background-color: #416f6f;
+    color: rgb(28, 37, 48);
+}
+
+.pac-icon {
+    visibility: hidden;
+}

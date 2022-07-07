@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../../assets/stylesheets/alerts.scss'
 
-const Alert = ({ alert, fetchStation, currentStation }) => {
+const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
   const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -10,6 +10,13 @@ const Alert = ({ alert, fetchStation, currentStation }) => {
         setLoaded(true)
       })
   }, [])
+
+  let currentStation = {}
+  Object.values(stations).forEach(station => {
+    if (station._id === alert.station) {
+      currentStation[station._id] = station;
+    }
+  })
 
   const alertDate = () => (
     console.log("checking Split")
@@ -27,12 +34,21 @@ const Alert = ({ alert, fetchStation, currentStation }) => {
         {Object.values(currentStation)[0].name}
       <p className='alerts-stations'>{Object.values(currentStation)[0].line.join(", ")}</p>
     </h1>
-      {/* will be replaced by station name */}
       <p className='alert-description'>{alert.description}</p>
       <div className='alert-date-time'>
-        <p className={`alert-date ${alert.intensity}`}>{alertDate()}</p>
-        <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
+        <p className={`alert-date ${alert.intensity}`}>{alertDate}</p>
+        <p className={`alert-time ${alert.intensity}`}>{alertTime}</p>
       </div>
+      {
+        currentUser === alert.user && isAuthenticated ? (
+          <div>
+            <button>Edit</button>
+            <button onClick={() => deleteAlert(alert._id)}>Delete</button>
+          </div>
+        ) : (
+          <></>
+        )
+      }
     </div>
   ) : (
     <></>
