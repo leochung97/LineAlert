@@ -6,22 +6,31 @@ import {
 } from '../actions/alert_actions';
 
 const AlertsReducer = (state = [], action) => {
-  Object.freeze(state);
   let nextState = [...state];
   switch(action.type) {
-    case RECEIVE_ALERTS:
-      nextState = [...action.alerts];
-      return nextState;
-    case RECEIVE_ALERT:
-      nextState.push(action.alert);
-      return nextState;
-    case REMOVE_ALERT:
-      delete nextState[action.alert];
-      return nextState;
-    case CLEAR_ALERTS:
-      return [];
-    default:
-      return state;
+      case RECEIVE_ALERTS:
+          nextState = [...action.alerts];
+          return nextState;
+      case RECEIVE_ALERT:
+          for (let i = 0; i < nextState.length; i++){
+              let id = action.alert._id;
+              if (nextState[i]._id === id) {
+                  nextState[i] = action.alert;
+              } else {
+                nextState.unshift(action.alert)
+            }
+          }
+          return nextState;
+      case REMOVE_ALERT:
+          for (let i = 0; i < nextState.length; i++){
+              let id = action.alert._id;
+              if (nextState[i]._id === id) {
+                  nextState.splice(i, 1)
+              }
+          }
+          return nextState;
+      default:
+          return state;
   }
 }
 

@@ -12,7 +12,7 @@ function Directions_Results({ directions, errors }) {
         (
           <div>
             <RouteInfo route={directions[count]} />
-            <button type="button" onClick={setCount(count+1)}></button>
+            {/* <button type="button" onClick={setCount(count+1)}></button> */}
           </div>
         
         )

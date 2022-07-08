@@ -1,10 +1,5 @@
-// keys.js
-let key;
-
 if (process.env.NODE_ENV === 'production') {
-  key = await import("./keys_prod.js")
+  module.exports = require('./keys_prod');
 } else {
-  key = await import("./keys_dev.js");
+  module.exports = require('./keys_dev');
 }
-
-export default key;

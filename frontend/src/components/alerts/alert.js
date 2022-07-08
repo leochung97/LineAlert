@@ -16,7 +16,7 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, clearAlerts, curren
       .then(() => {
         setState({ ...state, isLoaded: true })
       })
-  }, [fetchStation, alert])
+  }, [])
 
   const handleDelete = (alertId) => {
     deleteAlert(alertId)
