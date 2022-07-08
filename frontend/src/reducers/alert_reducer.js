@@ -15,7 +15,18 @@ const AlertsReducer = (state = [], action) => {
           nextState.unshift(action.alert);
           return nextState;
       case REMOVE_ALERT:
-          delete nextState[action.alert];
+          // Check this function in Alerts Reducer
+          console.log("First one")
+          console.log(nextState);
+          nextState.filter(alert => { 
+            console.log("alerts within nextState")
+            console.log(alert)
+            console.log("action.alerts")
+            console.log(action.alert)
+            return alert._id !== action.alert._id
+          })
+          console.log("Second one")
+          console.log(nextState);
           return nextState;
       case CLEAR_ALERTS:
           return [];

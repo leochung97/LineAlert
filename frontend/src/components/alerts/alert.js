@@ -3,12 +3,11 @@ import EditAlertModal from "./edit_alert_modal";
 import '../../assets/stylesheets/alerts.scss'
 import { useHistory } from 'react-router-dom';
 
-const Alert = ({ alert, alerts, fetchStation, stations, deleteAlert, clearAlerts, currentUser, isAuthenticated }) => {
+const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
   const [state, setState] = useState({
     isOpen: false, 
     isLoaded: false
-  })
-  const [counter, setCounter ] = useState(0)
+  });
 
   const history = useHistory();
 
@@ -20,7 +19,7 @@ const Alert = ({ alert, alerts, fetchStation, stations, deleteAlert, clearAlerts
   }, [])
 
   const handleDelete = (alertId) => {
-    deleteAlert(alertId).then( () => setCounter(counter + 1))
+    deleteAlert(alertId)
   }
 
   const openEdit = () => {
@@ -51,9 +50,7 @@ const Alert = ({ alert, alerts, fetchStation, stations, deleteAlert, clearAlerts
   }
 
   return state.isLoaded ? (
-
     <div className='alert-body'>
-      {console.log(alert)}
       <h1 className={`alert-location ${alert.intensity}`}>
         {currentStation.name}
         <p className='alerts-stations'>{currentStation.line.join(" ")}</p>
@@ -73,13 +70,11 @@ const Alert = ({ alert, alerts, fetchStation, stations, deleteAlert, clearAlerts
         }
         <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
       </div>
-      
       <EditAlertModal
         alert={alert}
         isOpen={state.isOpen}
         closeModal={closeModal}
       />
-
     </div>
   ) : (
     <></>

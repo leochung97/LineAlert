@@ -15,7 +15,6 @@ export const fetchAlerts = () => {
 }
 
 export const createAlert = alert => {
-  console.log("Whattup");
   return axios.post('api/alerts', alert)
   .then(res => {
     return res.data;
