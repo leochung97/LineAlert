@@ -53,7 +53,7 @@ router.patch(
     Alert.findByIdAndUpdate(req.params.id, {
       description: req.body.description,
       intensity: req.body.intensity,
-    })
+    }, {new: true})
       .then((alert) => {
         return res.json(alert);
       })
@@ -66,9 +66,13 @@ router.patch(
 
 router.delete("/:id", (req, res) => {
   //deletes alert
-  Alert.deleteOne({ _id: req.params.id })
-    .then((res) => res.json({alerts:"Alert removed"}))
-    .catch((err) => res.json({alerts: err}));
+  Alert.findByIdAndDelete({ _id: req.params.id })
+    .then( alert => {
+      return res.json(alert)
+      })
+    .catch( err => {
+      return res.json("Alert does not exist")
+    });
 });
 
 module.exports = router;

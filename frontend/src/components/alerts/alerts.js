@@ -9,9 +9,11 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, curre
 
   const [instateAlerts, setstateAlerts] = useState(alerts)
   
+  
   useEffect(() => {
-    fetchAlerts().then((data) => setstateAlerts(data))
-  }, [fetchAlerts, instateAlerts])
+    fetchAlerts()
+      .then((data) => setstateAlerts(data))
+  }, [])
 
   let component;
 
@@ -22,9 +24,9 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, curre
       Object.values(instateAlerts).map(alert => (
         <div className='alert-item' key={alert._id}>
           <Alert 
-            alert={alert} 
-            fetchStation={fetchStation} 
-            stations={stations} 
+            alert={alert}
+            fetchStation={fetchStation}
+            stations={stations}
             deleteAlert={deleteAlert}
             clearAlerts={clearAlerts}
             currentUser={currentUser}

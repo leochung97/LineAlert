@@ -5,12 +5,7 @@ import mapStyles from "./styles.js";
 import { fetchAlerts, fetchAlert } from '../../actions/alert_actions';
 
 function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
-  const [state, setState] = useState(false);
-  
-  useEffect(() => {
-    fetchAlerts()
-      .then(() => setState(true))
-  }, [fetchAlerts])
+  const [state, setState] = useState(alerts);
 
   const center = { lat: 40.767, lng: -73.972 };
   const NEW_YORK_BOUNDS = {
@@ -19,7 +14,6 @@ function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
     west: -74.072,
     east: -73.872
   };
-  
   
   const poly = [
     { lat: 40.7359, lng: -73.9911 },
@@ -59,7 +53,7 @@ function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
     //   console.log(alert)
     // )
   )
-
+  if (window.google) {
   return (
     <GoogleMap
       zoom={12.5}
@@ -110,7 +104,10 @@ function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
           /> */}
 
     </GoogleMap>
-  );
+    )
+        } else {
+          return <></>
+        }
 }
 
 const mSTP = state => ({
@@ -119,8 +116,8 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  fetchAlerts: () => dispatch(fetchAlerts()),
-  fetchAlert: alertId => dispatch(fetchAlert(alertId))
+  // fetchAlerts: () => dispatch(fetchAlerts()),
+  // fetchAlert: alertId => dispatch(fetchAlert(alertId))
 })
 
 export default connect(mSTP, mDTP)(Maps);
