@@ -33,7 +33,7 @@ app.use("/api/stations", stations);
 app.use("/api/twilio", twilio);
 app.use("/api/directions", directions);
 // app.use("/api/trainStations", trainStations);
-const port = process.env.PORT || 5001;
+// const port = process.env.PORT || 5001;
 
 // for route debugging purposes
 app.listen(port, () => console.log(`Server is running on port ${port}`));
