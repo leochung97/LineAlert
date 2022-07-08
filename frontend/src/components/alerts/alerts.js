@@ -30,7 +30,7 @@ const Alerts = ({fetchAlerts, fetchStation, stations, deleteAlert, currentUser, 
   )
 }
 
-const mSTP = state => {
+const mapStateToProps = state => {
   return {
     stations: state.entities.stations,
     currentUser: state.session.user.id,
@@ -38,12 +38,12 @@ const mSTP = state => {
   }
 }
 
-const mDTP = dispatch => {
+const mapDisptachToProps = dispatch => {
   return {
     fetchAlerts: () => dispatch(fetchAlerts()),
     fetchStation: stationId => dispatch(fetchStation(stationId)),
-    deleteAlert: alertId => dispatch(deleteAlert(alertId))
+    deleteAlert: alertId => dispatch(deleteAlert(alertId)),
   }
 }
 
-export default connect(mSTP, mDTP)(Alerts);
+export default connect(mapStateToProps, mapDisptachToProps)(Alerts);

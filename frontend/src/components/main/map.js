@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { GoogleMap, Marker, TransitLayer, Polyline, InfoWindow, MarkerClusterer } from "@react-google-maps/api";
 import mapStyles from "./styles.js";
-
+  
 const center = { lat: 40.767, lng: -73.972 };
 const NEW_YORK_BOUNDS = {
   north: 40.867,
@@ -21,7 +21,8 @@ const poly = [
 
 function Maps() {
   const [markers, setMarkers] = useState([]);
-
+  const [toggleTL, setoggleTL] = useState(true)
+  
   const alerts = useSelector(state => state.entities.alerts, (a, b) => a.length === b.length);
   const stations = useSelector(state => state.entities.stations, (a, b) => a.length === b.length);
 
@@ -71,6 +72,9 @@ function Maps() {
         }
       }}
     >
+      
+      <button className="transitlayer-toggle" onClick={() => setoggleTL(!toggleTL)}>Toggle Transit Layer</button>
+      {toggleTL ? <TransitLayer /> : <></>}
 
       <TransitLayer />
 

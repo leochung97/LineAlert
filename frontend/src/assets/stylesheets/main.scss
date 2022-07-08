@@ -231,3 +231,17 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 .gmnoprint div {
     background:none !important;
 }
+
+.transitlayer-toggle {
+  z-index: 5000;
+  position: absolute;
+  background-color: #a0cccc;
+  background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden; 
+    color: black;
+    font-size: 10px;  
+    border-radius: 3px;
+    left: -5px;
+}
