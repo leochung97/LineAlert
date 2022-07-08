@@ -23,7 +23,6 @@ function EditAlertForm(props) {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     props.updateAlert(state)
       .then((res) => {
         if (res) {

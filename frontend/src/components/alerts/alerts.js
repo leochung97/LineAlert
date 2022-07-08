@@ -1,50 +1,37 @@
 import React, {useState, useEffect} from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import Alert from './alert';
 import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
 import { fetchStation } from '../../actions/station_actions';
 import '../../assets/stylesheets/alerts.scss'
 
-const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, currentUser, isAuthenticated}) => {
-  const [isloaded, setLoaded] = useState(false);
-  // const [data, setData] = useState({});
+const Alerts = ({fetchAlerts, fetchStation, stations, deleteAlert, currentUser, isAuthenticated}) => {
+  const alerts = useSelector(state => state.entities.alerts, (a, b) => a.length === b.length);
 
   useEffect(() => {
     fetchAlerts()
-      .then(() => setLoaded(true))
-      // .then(() => setData({...alerts}))
   }, []);
 
-  let component;
-  if (!isloaded) {
-    component = <></>
-  } else {
-    component = (
-      Object.values(alerts).map(alert => {
-        return <div className='alert-item' key={alert._id}>
-          <Alert 
-            alert={alert} 
-            fetchStation={fetchStation} 
-            stations={stations} 
+  return (
+    <>
+      {Object.values(alerts).map(alert => (
+        <div className='alert-item' key={alert._id}>
+          <Alert
+            alert={alert}
+            fetchStation={fetchStation}
+            stations={stations}
             deleteAlert={deleteAlert}
             currentUser={currentUser}
             isAuthenticated={isAuthenticated}
           />
         </div>
-      })
-    )
-  }
-  
-  return (
-    <>
-      {component}
+      ))}
     </>
   )
 }
 
 const mapStateToProps = state => {
   return {
-    alerts: state.entities.alerts,
     stations: state.entities.stations,
     currentUser: state.session.user.id,
     isAuthenticated: state.session.isAuthenticated

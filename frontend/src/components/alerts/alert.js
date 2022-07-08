@@ -9,6 +9,7 @@ const Alert = ({ alert, alerts, fetchStation, stations, deleteAlert, clearAlerts
     isLoaded: false
   })
   const [counter, setCounter ] = useState(0)
+
   const history = useHistory();
 
   useEffect(() => {
