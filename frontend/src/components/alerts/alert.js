@@ -3,11 +3,11 @@ import EditAlertModal from "./edit_alert_modal";
 import '../../assets/stylesheets/alerts.scss'
 import { useHistory } from 'react-router-dom';
 
-const Alert = ({ alert, fetchStation, stations, deleteAlert, clearAlerts, currentUser, isAuthenticated }) => {
+const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
   const [state, setState] = useState({
     isOpen: false, 
     isLoaded: false
-  })
+  });
 
   const history = useHistory();
 
@@ -19,11 +19,7 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, clearAlerts, curren
   }, [])
 
   const handleDelete = (alertId) => {
-    deleteAlert(alertId)
-      .then(() => {
-        clearAlerts()
-        console.log("this was called")
-      })
+    deleteAlert(alertId).then(() => window.location.reload())
   }
 
   const openEdit = () => {

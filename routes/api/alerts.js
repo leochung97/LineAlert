@@ -23,7 +23,7 @@ router.post(
       return res.status(400).json(errors);
     }
     let stationSearch = new RegExp("^" + req.body.station, "i");
-    Station.findOne({ name: { $regex: stationSearch } })
+    return Station.findOne({ name: { $regex: stationSearch } })
       .then((station) => {
         const newAlert = new Alert({
           station: station.id,
@@ -31,7 +31,7 @@ router.post(
           user: req.user.id,
           intensity: req.body.intensity,
         });
-        newAlert
+        return newAlert
           .save()
           .then((alert) => res.json(alert))
           .catch((err) => res.json({alert: "Sorry! Alert could not be created"}));
