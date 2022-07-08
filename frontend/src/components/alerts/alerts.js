@@ -1,39 +1,37 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import Alert from './alert';
-import { deleteAlert, fetchAlerts, clearAlerts } from '../../actions/alert_actions';
+import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
 import { fetchStation } from '../../actions/station_actions';
 import '../../assets/stylesheets/alerts.scss'
 
 const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, currentUser, isAuthenticated}) => {
+  const [isloaded, setLoaded] = useState(false);
+  // const [data, setData] = useState({});
 
-  const [instateAlerts, setstateAlerts] = useState(alerts)
-  
-  
   useEffect(() => {
     fetchAlerts()
-      .then((data) => setstateAlerts(data))
-  }, [])
+      .then(() => setLoaded(true))
+      // .then(() => setData({...alerts}))
+  }, []);
 
   let component;
-
-  if (!instateAlerts || !instateAlerts.length) {
+  if (!isloaded) {
     component = <></>
   } else {
     component = (
-      Object.values(instateAlerts).map(alert => (
-        <div className='alert-item' key={alert._id}>
+      Object.values(alerts).map(alert => {
+        return <div className='alert-item' key={alert._id}>
           <Alert 
-            alert={alert}
-            fetchStation={fetchStation}
-            stations={stations}
+            alert={alert} 
+            fetchStation={fetchStation} 
+            stations={stations} 
             deleteAlert={deleteAlert}
-            clearAlerts={clearAlerts}
             currentUser={currentUser}
             isAuthenticated={isAuthenticated}
           />
         </div>
-      ))
+      })
     )
   }
   
@@ -44,7 +42,7 @@ const Alerts = ({fetchAlerts, alerts, fetchStation, stations, deleteAlert, curre
   )
 }
 
-const mSTP = state => {
+const mapStateToProps = state => {
   return {
     alerts: state.entities.alerts,
     stations: state.entities.stations,
@@ -53,13 +51,12 @@ const mSTP = state => {
   }
 }
 
-const mDTP = dispatch => {
+const mapDisptachToProps = dispatch => {
   return {
     fetchAlerts: () => dispatch(fetchAlerts()),
     fetchStation: stationId => dispatch(fetchStation(stationId)),
     deleteAlert: alertId => dispatch(deleteAlert(alertId)),
-    clearAlerts: () => dispatch(clearAlerts())
   }
 }
 
-export default connect(mSTP, mDTP)(Alerts);
+export default connect(mapStateToProps, mapDisptachToProps)(Alerts);

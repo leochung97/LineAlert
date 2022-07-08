@@ -6,6 +6,7 @@ import { fetchAlerts, fetchAlert } from '../../actions/alert_actions';
 
 function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
   const [state, setState] = useState(alerts);
+  const [toggleTL, setoggleTL] = useState(true)
 
   const center = { lat: 40.767, lng: -73.972 };
   const NEW_YORK_BOUNDS = {
@@ -71,8 +72,8 @@ function Maps({ alerts, stations, fetchAlerts, fetchAlert }) {
       }}
       onClick={() => findUnique()}
     >
-      
-      <TransitLayer />
+        <button className="transitlayer-toggle" onClick={() => setoggleTL(!toggleTL)}>Toggle Transit Layer</button>
+      {toggleTL ? <TransitLayer /> : <></>}
 
       {
         state ? 
