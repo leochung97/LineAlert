@@ -1,3 +1,45 @@
+.route-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .route-container-header {
-    font-size: 30px;
+    font-size: 23px;
+    margin-top: 20px;
+    font-weight: 550;
+    margin-bottom: 20px;
+}
+
+.route-container-tripinfo {
+    max-width: 80%;
+}
+
+.fastest-route-h4 {
+    font-size: 16px;
+    font-weight: 550px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.fastest-route-p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.fastest-route-info-container {
+    margin-top: 5px;
+    max-width: 120%;
+    min-height: 20px;
+    max-height: 120%;
+    background-color: rgba(135, 193, 207, 0.431);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
 }

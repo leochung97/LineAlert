@@ -13,8 +13,6 @@ function CreateAlertForm(props) {
     user: props.currentUser.id
   });
 
-  const history = useHistory();
-
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
   };
@@ -26,10 +24,9 @@ function CreateAlertForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.createAlert(state)
-      .then((res) => {
+      .then(res => {
         if (res) {
           props.closeModal();
-          history.push("/");
         }
       })
   }
