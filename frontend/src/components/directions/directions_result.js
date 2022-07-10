@@ -1,9 +1,19 @@
 import React, {useState} from "react";
 import { connect } from "react-redux";
-import { fetchDirections } from "../../actions/directions_actions";
+import { fetchDirections, clearDirections } from "../../actions/directions_actions";
 import RouteInfo from "./routeinfo";
-function Directions_Results({ directions, errors }) {
+function Directions_Results({ directions, errors, clearDirections }) {
   const [count, setCount] = useState(0)
+
+  const toggleButton = () => {
+    if (count === directions.length -1 ) {
+      return <></>
+    } 
+    else {
+      return <button type="button" onClick={() => setCount(count + 1 )}>Next best route</button>
+    }
+  }
+
   return (
     <div className="directions-results-container">
       {
@@ -12,7 +22,8 @@ function Directions_Results({ directions, errors }) {
         (
           <div>
             <RouteInfo route={directions[count]} />
-            {/* <button type="button" onClick={setCount(count+1)}></button> */}
+          {toggleButton()}
+            < button type = "button" onClick={() => clearDirections()}> Re-fill Form! </button>
           </div>
         
         )
@@ -31,6 +42,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchDirections: (directions) => dispatch(fetchDirections(directions)),
+    clearDirections: () => dispatch(clearDirections()),
   };
 };
 

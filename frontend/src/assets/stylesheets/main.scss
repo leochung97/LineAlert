@@ -183,16 +183,31 @@
   border-radius: 5px;
   margin-top: 50px;
   overflow-x: hidden;
-  overflow-y: hidden;
+}
+
+.main-right-top::-webkit-scrollbar {
+  width: 5px;
+  max-height: 80%;
+  height: 50%;
+}
+
+.main-right-top::-webkit-scrollbar-track {
+  background: linear-gradient(162deg, rgb(34, 44, 57) 5%, rgb(31, 42, 48) 60%, rgb(33, 52, 59) 100%) 20% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(30, 35, 44);
+  border-radius: 5px;
+}
+
+.main-right-top::-webkit-scrollbar-thumb {
+  background-color:#5a857e;
+  border-radius: 2px;
 }
 
 .main-right-bottom {
   width: 90%;
   background: linear-gradient(162deg, rgb(34, 44, 57) 5%, rgb(31, 42, 48) 60%, rgb(33, 52, 59) 100%) 20% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(30, 35, 44);
   border-radius: 5px;
-  margin-top: 20px;
-  min-height: 41vh;
-  max-height: 41vh;
+  margin-top: 50px;
+  min-height: 40vh;
+  max-height: 40vh;
   margin-bottom: 50px;
   overflow-x: hidden;
   overflow-y:auto;

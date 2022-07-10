@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
 import { GoogleMap, Marker, TransitLayer, Polyline, InfoWindow, MarkerClusterer } from "@react-google-maps/api";
 import mapStyles from "./styles.js";
+
+import AlertModal from '../alerts/alert_modal.js';
   
 const center = { lat: 40.767, lng: -73.972 };
 const NEW_YORK_BOUNDS = {
@@ -22,6 +24,8 @@ const poly = [
 function Maps() {
   const [markers, setMarkers] = useState([]);
   const [toggleTL, setoggleTL] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
+  const [clickedMarker, setClickedMarker] = useState(null)
   
   const alerts = useSelector(state => state.entities.alerts, (a, b) => a.length === b.length);
   const stations = useSelector(state => state.entities.stations, (a, b) => a.length === b.length);
@@ -48,13 +52,14 @@ function Maps() {
 
     setMarkers(Object.values(tempMarkers));
   }, [alerts, stations])
+  
+  const markerClick = id => {
+    let clickedMarker = alerts.filter(alert => (alert._id === id))[0]
+    setIsOpen(true)
+    setClickedMarker(clickedMarker)
+    console.log(clickedMarker)
+  }
 
-  const markerClick = id => (
-    console.log(id)
-    // fetchAlert(id).then( alert => 
-    //   console.log(alert)
-    // )
-  )
   if (window.google) {
   return (
     <GoogleMap
@@ -72,9 +77,13 @@ function Maps() {
         }
       }}
     >
-      
       <button className="transitlayer-toggle" onClick={() => setoggleTL(!toggleTL)}>Toggle Transit Layer</button>
       {toggleTL ? <TransitLayer /> : <></>}
+
+      <div className='alert-modal-container'>
+        <AlertModal alert={clickedMarker} open={isOpen} onClose={()=> setIsOpen(false)}/>
+      </div>
+      
 
       <TransitLayer />
 

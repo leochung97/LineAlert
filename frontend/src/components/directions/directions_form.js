@@ -4,16 +4,25 @@ import Downshift from 'downshift'
 import { fetchDirections } from '../../actions/directions_actions';
 import stationNames from "../../util/station_name";
 import '../../assets/stylesheets/directions.scss'
+// import "bootstrap/dist/css/bootstrap.min.css"
+import Spinner from 'react-bootstrap/Spinner';
 
 function DirectionsForm(props) {
   const [state, setState] = useState({
     origin: "",
     destination: "",
   });
-  
+  const [loading, setLoading ] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     props.fetchDirections({origin: state.origin + ",NY", destination: state.destination + ",NY"})
+    .then( () => {
+      setTimeout(() => {
+        setLoading(false)
+      }, 2000);
+    })
   };
   
   const center = { lat: 40.767, lng: -73.972 };
@@ -24,7 +33,13 @@ function DirectionsForm(props) {
     east: center.lng + 0.1,
     west: center.lng - 0.1
   };
-
+  if (loading) {
+    return (
+      <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+    )
+  } else {  
   return (
     <div className='directions-form-container'>
         <h1>Search Along a Route</h1>
@@ -136,6 +151,8 @@ function DirectionsForm(props) {
     </div>
   );
 }
+}
+
 
 const mapStateToProps = (state) => {
   return {
