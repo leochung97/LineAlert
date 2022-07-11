@@ -13,7 +13,6 @@
     cursor: default;
     text-align: center;
     font-weight: 550;
-
 }
 
 .directions-form {
@@ -150,4 +149,10 @@
     top: 62px;
     min-width: 60%;
     cursor: pointer;
+}
+
+.spinner-animation {
+    position: absolute;
+    top: 25%;
+    left: 48%;
 }

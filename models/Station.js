@@ -19,7 +19,11 @@ const StationSchema = new Schema (
         type: Number,
         required: true
       }
-    }
+    },
+    alerts: {
+      type: Schema.Types.ObjectId,
+      ref: 'alerts',
+    },
   },
 
   {

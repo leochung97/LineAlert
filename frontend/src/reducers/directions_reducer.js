@@ -1,11 +1,15 @@
-import {RECEIVE_DIRECTIONS} from '../actions/directions_actions';
+import {RECEIVE_DIRECTIONS, CLEAR_DIRECTIONS} from '../actions/directions_actions';
 
-const DirectionsReducer = (state = {}, action) => {
+const initialState = {};
+const DirectionsReducer = (state = initialState, action) => {
   Object.freeze(state);
   let nextState = {...state};
   switch(action.type) {
     case RECEIVE_DIRECTIONS:
       nextState = {...action.directions};
+      return nextState;
+    case CLEAR_DIRECTIONS:
+      nextState = {}
       return nextState;
     default:
       return state;
