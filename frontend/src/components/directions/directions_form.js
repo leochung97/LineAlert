@@ -16,12 +16,10 @@ function DirectionsForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true)
+    setLoading(loading => !loading);
     props.fetchDirections({origin: state.origin + ",NY", destination: state.destination + ",NY"})
     .then( () => {
-      setTimeout(() => {
-        setLoading(false)
-      }, 2000);
+      setLoading(loading => !loading)
     })
   };
   
@@ -35,9 +33,11 @@ function DirectionsForm(props) {
   };
   if (loading) {
     return (
-      <Spinner animation="border" role="status">
+      <div className="spinner-animation">
+      <Spinner animation="border" role="status" variant="light">
       <span className="visually-hidden">Loading...</span>
     </Spinner>
+    </div>
     )
   } else {  
   return (

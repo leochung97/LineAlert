@@ -7,7 +7,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
 
   const toggleButton = () => {
     if (count === directions.length -1 ) {
-      return <></>
+      return <button type="button" onClick={() => setCount(0)}>Best Route Again</button>
     } 
     else {
       return <button type="button" onClick={() => setCount(count + 1 )}>Next best route</button>

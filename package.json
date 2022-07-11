@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server:debug": "npx nodemon --inspect app.js",
+    "server:debug": "npx nodemon --inspect app.js --ignore client",
     "start": "node app.js",
-    "server": "npx nodemon app.js",
+    "server": "npx nodemon app.js --ignore client",
     "frontend-install": "npm install --prefix frontend",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
