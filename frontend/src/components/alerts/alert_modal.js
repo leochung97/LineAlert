@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom'
 import { connect, useSelector } from 'react-redux';
+import EditAlertModal from "./edit_alert_modal";
 import '../../assets/stylesheets/alert_modal.scss'
 import { useHistory } from 'react-router-dom';
 import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
