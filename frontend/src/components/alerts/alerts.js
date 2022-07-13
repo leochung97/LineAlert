@@ -6,7 +6,7 @@ import { fetchStation } from '../../actions/station_actions';
 import '../../assets/stylesheets/alerts.scss'
 
 const Alerts = ({fetchAlerts, fetchStation, stations, deleteAlert, currentUser, isAuthenticated}) => {
-  const alerts = useSelector(state => state.entities.alerts, (a, b) => a.length === b.length);
+  const alerts = useSelector(state => state.entities.alerts, (a, b) => JSON.stringify(a) === JSON.stringify(b));
 
   useEffect(() => {
     fetchAlerts()
@@ -14,8 +14,8 @@ const Alerts = ({fetchAlerts, fetchStation, stations, deleteAlert, currentUser, 
 
   return (
     <>
-      {Object.values(alerts).map(alert => (
-        <div className='alert-item' key={alert._id}>
+      {Object.values(alerts).map((alert, i) => (
+        <div className='alert-item' key={i}>
           <Alert
             alert={alert}
             fetchStation={fetchStation}

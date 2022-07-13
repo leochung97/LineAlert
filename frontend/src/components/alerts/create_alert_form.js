@@ -92,11 +92,6 @@ function CreateAlertForm(props) {
                               key: item,
                               index,
                               item,
-                              style: {
-                                backgroundColor:
-                                  highlightedIndex === index ? 'lightgray' : 'white',
-                                fontWeight: selectedItem === item ? 'bold' : 'normal',
-                              },
                             })}
                           >
                             {item}

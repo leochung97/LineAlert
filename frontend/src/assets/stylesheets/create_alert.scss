@@ -203,6 +203,27 @@
   align-items: center;
   position: relative;
 }
+.directions-search-station > ul {
+  z-index: 1000;
+  position: absolute;
+  top: 30px;
+  min-width: 60%;
+  cursor: pointer;
+  background-color: rgb(59, 96, 119);
+  font-size: 13px;
+  font-weight: 400;
+  color: white;
+}
+
+
+.directions-search-station > ul > li[aria-selected="true"] {
+  background-color: rgb(247, 176, 114);
+  color: black;
+}
+
+.directions-search-station > ul > li {
+  padding: 5px;
+}
 
 .combobox-alert-destination {
   display: flex;

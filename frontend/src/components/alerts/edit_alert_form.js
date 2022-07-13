@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { updateAlert, fetchAlerts } from "../../actions/alert_actions";
 
 function EditAlertForm(props) {
@@ -12,8 +11,6 @@ function EditAlertForm(props) {
     user: props.currentUser.id
   });
 
-  const history = useHistory();
-
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
   };
@@ -23,12 +20,10 @@ function EditAlertForm(props) {
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     props.updateAlert(state)
-      .then((res) => {
-        if (res) {
-          props.closeModal();
-          history.push("/");
-        }
+      .then(() => {
+        props.closeModal();
       })
   }
 

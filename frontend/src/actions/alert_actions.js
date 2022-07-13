@@ -77,7 +77,10 @@ export const createAlert = alert => dispatch => {
 export const updateAlert = alert => dispatch => {
   return (
     AlertApiUtil.updateAlert(alert)
-      .then(res => dispatch(receiveAlert(res)))
+      .then(res => {
+        console.log(res);
+        dispatch(receiveAlert(res))
+      })
       .catch(err => {
         dispatch(receiveAlertErrors(err.response.data));
     })
