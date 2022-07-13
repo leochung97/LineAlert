@@ -9,7 +9,7 @@ function SignUp(props) {
     mobile: "",
     password: "",
     password2: "",
-    preferences: ["A","C","E","B","D","F","M","G","L","J","Z","N","Q","R","W","1","2","3","4","5","6","7"]
+    preferences: ["A" ,"C","E","B","D","F","M","G","L","J","Z","N","Q","R","W","1","2","3","4","5","6","7"]
   });
 
   const history = useHistory();

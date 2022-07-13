@@ -14,10 +14,6 @@ function ProfileForm(props) {
     e.preventDefault();
 
   }
-
-  const update = (field) => {
-
-  }
   
   return (
     <div className="profile-container">
@@ -32,11 +28,14 @@ function ProfileForm(props) {
           <h1>User Preferences</h1>
         </div>
         <div className="profile-preferences">
-          { preferences.map(line => {
-            <li>
-              {line}
-            </li>
-          })}
+          <ul> 
+            { preferences.map(line => {
+              return(
+                <li key={line}>
+                  {`${line}`}
+                </li>
+            )})}
+          </ul>
         </div>
       </form>
     </div>
