@@ -30,7 +30,7 @@
 }
 
 .fastest-route-info-container {
-    z-index: 800;
+    z-index: 100;
     margin-top: 5px;
     max-width: 120%;
     min-height: 20px;
@@ -48,7 +48,6 @@
 }
 
 .arrival-duration-distance {
-    z-index: 700;
     min-width: 100%;
     display: flex;
     flex-direction: row;
@@ -57,11 +56,11 @@
 }
 
 .fastest-route-info-container-half {
-    z-index: 700;
     margin-top: 5px;
-    margin-right: 1%;
-    min-width: 50%;
-    max-width: 50%;
+    margin-right: 3%;
+    margin-left: 3%;
+    min-width: 45%;
+    max-width: 45%;
     min-height: 20px;
     max-height: 120%;
     background-color: rgba(135, 193, 207, 0.431);
@@ -72,11 +71,9 @@
     flex-direction: column;
     padding-left: 5px;
     padding-right: 5px;
-    box-shadow: 0px 20px 40px rgb(18, 18, 18, 0.5);
 }
 
 .fastest-route-info-container-quarter {
-    z-index: 700;
     margin-top: 5px;
     margin-right: 1%;
     min-width: 24%;
@@ -91,5 +88,29 @@
     flex-direction: column;
     padding-left: 5px;
     padding-right: 5px;
-    box-shadow: 0px 20px 40px rgb(18, 18, 18, 0.5);
+}
+.directions-errors-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.directions-error-btn {
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    min-width: 120px;
+    max-width: 130px;
+    min-height: 30px;
+    margin-top: 20px;
+    transition: background-color 0.25s ease, color 0.25s ease-in;
+    color: #202b34;
+    font-weight: 550;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.directions-error-btn:hover {
+    color:black;
+    background-color: #98cccc;
 }

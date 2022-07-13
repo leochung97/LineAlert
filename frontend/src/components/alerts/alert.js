@@ -16,7 +16,7 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
       .then(() => {
         setState({ ...state, isLoaded: true })
       })
-  }, [])
+  }, [alert.station])
 
   const handleDelete = (alertId) => {
     deleteAlert(alertId)
@@ -45,8 +45,10 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
   }
 
   const alertTime = () => {
-    let alerttime = alert.createdAt.split('T')[1].split('.')[0];
-    return alerttime;
+    let startTime = new Date(alert.createdAt );
+    startTime =  new Date( startTime.getTime() + ( startTime.getTimezoneOffset() * 60000 ) );
+    startTime = startTime.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+    return startTime
   }
 
   return state.isLoaded ? (

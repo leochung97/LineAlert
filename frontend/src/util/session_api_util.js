@@ -17,3 +17,10 @@ export const login = (userData) => {
   //will return token or error
   return axios.post("/api/users/login", userData);
 };
+
+export const updateUser = user => {
+  return axios.patch(`api/users/edit`, user)
+  .then(res => {
+    return res.data;
+  });
+}

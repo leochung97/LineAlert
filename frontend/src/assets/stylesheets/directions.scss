@@ -151,7 +151,7 @@ input:focus {
     font-size: 17.5px;
 }
 
-#downshift-0-menu, #downshift-1-menu {
+.directions-search-origin > ul, .directions-search-destination > ul {
     z-index: 1000;
     position: absolute;
     top: 55px;
@@ -176,17 +176,22 @@ ul > li[aria-selected="true"] {
     color: black;
 }
 
-ul#downshift-0-menu > li {
+.directions-search-origin > ul > li {
     padding: 5px;
 }
-ul#downshift-1-menu > li {
+.directions-search-destination > ul > li {
     padding: 5px;
 }
 
 .spinner-container {
-    position: absolute;
-    top: 25%;
-    left: 45%;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // position: absolute;
+    // top: 25%;
+    // left: 45%;
 }
 @keyframes spinner {
     0% {
@@ -209,7 +214,6 @@ ul#downshift-1-menu > li {
     display: flex;
     justify-content: center;
     margin-bottom: 25px;
-    margin-top: 10px;
     color: #202b34;
 }
 

@@ -2,18 +2,26 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 
 function ProfileForm(props) {
+  const [preferences, setPref] = useState(props.currentUser.preferences)
   const [state, setState] = useState({
-    
+    id: props.currentUser.id,
+    mobile: props.currentUser.mobile,
+    email: props.currentUser.email,
+    preferences: preferences
   });
   
   const handleSubmit = (e) => {
     e.preventDefault();
+
+  }
+
+  const update = (field) => {
+
   }
   
   return (
-    
     <div className="profile-container">
-      {console.log(props.currentUser)}
+      {console.log(state)}
       <form onSubmit={handleSubmit}>
         <div className="close-profile-modal-container">
           <svg className='close-modal' height="15pt" viewBox="0 0 500 500" width="15pt" onClick={props.closeModal}>
@@ -24,10 +32,11 @@ function ProfileForm(props) {
           <h1>User Preferences</h1>
         </div>
         <div className="profile-preferences">
-          <label>
-            {/* <input type="radio" name="radio" onClick={} /> */}
-            
-          </label>
+          { preferences.map(line => {
+            <li>
+              {line}
+            </li>
+          })}
         </div>
       </form>
     </div>

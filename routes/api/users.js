@@ -7,6 +7,7 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
+const validateEditInput = require("../../validation/edit");
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -24,7 +25,10 @@ router.post("/register", (req, res) => {
         mobile: req.body.mobile,
         email: req.body.email,
         password: req.body.password,
+        preferences: req.body.preferences
       });
+
+      console.log(req.body);
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -37,6 +41,7 @@ router.post("/register", (req, res) => {
                 id: user.id,
                 mobile: user.mobile,
                 email: user.email,
+                preferences: user.preferences
               };
 
               jwt.sign(
@@ -75,7 +80,7 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        const payload = { id: user.id, mobile: user.mobile, email: user.email };
+        const payload = { id: user.id, mobile: user.mobile, email: user.email, preferences: user.preferences };
         jwt.sign(
           payload,
           keys.secretOrKey,
@@ -93,5 +98,26 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+router.patch("/edit",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { errors, isValid } = validateEditInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+    User.findByIdAndUpdate(req.params.id, {
+      mobile: req.body.mobile,
+      preferences: req.body.preferences
+    }, {new: true})
+      .then((user) => {
+        return res.json(user);
+      })
+      .catch((err) => {
+        return res.status(400).json(err);
+      });
+  })
 
 module.exports = router;

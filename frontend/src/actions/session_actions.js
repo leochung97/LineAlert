@@ -60,3 +60,9 @@ export const login = (user) => (dispatch) =>
       dispatch(receiveSessionErrors(err.response.data));
       return null;
     });
+
+export const updateUser = user => dispatch => {
+  APIUtil.updateUser(user)
+    .then(res => dispatch(receiveCurrentUser(res)))
+    .catch(err => dispatch(receiveSessionErrors(err)))
+}

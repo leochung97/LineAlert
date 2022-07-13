@@ -42,13 +42,25 @@ function NavBar(props) {
     if (props.loggedIn) {
       return (
         <div className='nav-links'>
-          <Link id="link" className='user-email' to="/profile" onClick={() => setProfile(true)}>
+          <Link id="link" className='user-email' to="/edit" onClick={() => {
+            closeModal()
+            setProfile(true)
+            }}
+          >
             <h4>{props.currentUser.email}</h4>
           </Link>
-          <Link id="link" to="/" onClick={() => setAbout(true)}>
+          <Link id="link" to="/" onClick={() => {
+            closeModal()
+            setAbout(true)
+            }}
+          >
             <h4>About</h4>
           </Link>
-          <Link id="link" to="/" onClick={() => setAlert(true)}>
+          <Link id="link" to="/" onClick={() => {
+            closeModal()
+            setAlert(true)
+            }}
+          >
             <h4>Create an Alert</h4>
           </Link>
           <div className='logout-button-container'>
@@ -60,17 +72,29 @@ function NavBar(props) {
       return (
         <div className='nav-links'>
           <div>
-            <Link id="link" to="/" onClick={() => setAbout(true)}>
+            <Link id="link" to="/" onClick={() => {
+              closeModal()
+              setAbout(true)
+              }}
+            >
               <h4>About</h4>
             </Link>
           </div>
           <div>
-            <Link id="link" to="/register" onClick={() => setSignup(true)}>
+            <Link id="link" to="/register" onClick={() => {
+              closeModal()
+              setSignup(true)
+            }}
+          >
               <h4>Signup</h4>
             </Link>
           </div>
           <div>
-            <Link id="link" to="/login" onClick={() => setLogin(true)}>
+            <Link id="link" to="/login" onClick={() => {
+              closeModal()
+              setLogin(true)
+              }}
+            >
               <h4>Login</h4>
             </Link>
           </div>
