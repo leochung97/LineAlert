@@ -11,7 +11,7 @@ const alerts = require("./routes/api/alerts");
 const stations = require("./routes/api/stations");
 const google = require("./routes/api/google");
 const directions = require("./routes/api/directions");
-const twilio = require("./routes/api/twilio");
+// const twilio = require("./routes/api/twilio");
 const path = require('path');
 // const trainStations = require("./trainstations");
 mongoose
@@ -30,7 +30,7 @@ app.use("/api/users", users);
 app.use("/api/alerts", alerts);
 app.use("/api/google", google);
 app.use("/api/stations", stations);
-app.use("/api/twilio", twilio);
+// app.use("/api/twilio", twilio);
 app.use("/api/directions", directions);
 // app.use("/api/trainStations", trainStations);
 const port = process.env.PORT || 5001;
