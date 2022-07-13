@@ -1,9 +1,9 @@
 import React from "react";
 import Modal from "react-modal";
-import SignupForm from "./signup_form";
-import "../../assets/stylesheets/session.scss";
+import ProfileForm from "./profile_form";
+import "../../assets/stylesheets/profile_modal.scss";
 
-export default function SignupModal(props) {
+export default function ProfileModal(props) {
   return (
     <Modal
       className="session-modal"
@@ -17,9 +17,7 @@ export default function SignupModal(props) {
         }
       }}
     >
-      {/* Has openLogin prop for switch function */}
-      <SignupForm 
-        openLogin={props.openLogin}
+      <ProfileForm
         closeModal={props.closeModal}
       />
     </Modal>

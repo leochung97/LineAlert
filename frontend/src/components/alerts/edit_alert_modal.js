@@ -10,6 +10,11 @@ export default function EditModal(props) {
       onRequestClose={props.closeModal}
       closeTimeoutMS={50}
       ariaHideApp={false}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }}
     >
       <EditAlertForm 
         alert={props.alert}

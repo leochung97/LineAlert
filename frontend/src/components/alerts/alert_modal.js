@@ -30,7 +30,6 @@ const AlertModal = ({ alert, open, onClose, fetchStation, stations, deleteAlert,
     }
   })
 
-  // console.log(currentStation)
   const alertDate = () => {
     let alertday = alert.createdAt.split('T')[0];
     return alertday;

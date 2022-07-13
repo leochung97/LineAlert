@@ -11,6 +11,11 @@ export default function CreateModal(props) {
       onRequestClose={props.closeModal}
       closeTimeoutMS={50}
       ariaHideApp={false}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }}
     >
       <CreateAlertForm
         closeModal={props.closeModal}

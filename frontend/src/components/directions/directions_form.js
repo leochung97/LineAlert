@@ -1,11 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Downshift from 'downshift'
 import { fetchDirections } from '../../actions/directions_actions';
 import stationNames from "../../util/station_name";
 import '../../assets/stylesheets/directions.scss'
-// import "bootstrap/dist/css/bootstrap.min.css"
-import Spinner from 'react-bootstrap/Spinner';
 
 function DirectionsForm(props) {
   const [state, setState] = useState({
@@ -22,21 +20,12 @@ function DirectionsForm(props) {
       setLoading(loading => !loading)
     })
   };
-  
-  const center = { lat: 40.767, lng: -73.972 };
 
-  const defaultBounds = {
-    north: center.lat + 0.1,
-    south: center.lat -0.1,
-    east: center.lng + 0.1,
-    west: center.lng - 0.1
-  };
   if (loading) {
     return (
-      <div className="spinner-animation">
-      <Spinner animation="border" role="status" variant="light">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
+      <div className="spinner-container">
+        <div className="loading-spinner">
+        </div>
     </div>
     )
   } else {  
@@ -64,7 +53,6 @@ function DirectionsForm(props) {
               <div className='directions-search-origin'>
                 <label className='directions-origin-label'>Origin</label>
                 <div className='combobox-origin'
-                  // style={{display: 'inline-block'}}
                   {...getRootProps({}, {suppressRefError: true})}
                 >
                   <input {...getInputProps()} />
@@ -79,11 +67,6 @@ function DirectionsForm(props) {
                               key: item,
                               index,
                               item,
-                              style: {
-                                backgroundColor:
-                                  highlightedIndex === index ? 'lightgray' : 'white',
-                                fontWeight: selectedItem === item ? 'bold' : 'normal',
-                              },
                             })}
                           >
                             {item}
@@ -113,7 +96,6 @@ function DirectionsForm(props) {
                 <div className='directions-search-destination'>
                 <label className='directions-destination-label'>Destination</label>
                   <div className='combobox-destination'
-                    // style={{display: 'inline-block'}}
                     {...getRootProps({}, {suppressRefError: true})}
                   >
                     <input {...getInputProps()} />
@@ -128,11 +110,6 @@ function DirectionsForm(props) {
                                 key: item,
                                 index,
                                 item,
-                                style: {
-                                  backgroundColor:
-                                    highlightedIndex === index ? 'lightgray' : 'white',
-                                  fontWeight: selectedItem === item ? 'bold' : 'normal',
-                                },
                               })}
                             >
                               {item}

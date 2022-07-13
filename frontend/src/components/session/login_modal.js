@@ -11,6 +11,11 @@ export default function LoginModal(props) {
       onRequestClose={props.closeModal}
       closeTimeoutMS={50}
       ariaHideApp={false}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }}
     >
       {/* Has openSignup prop for switch function */}
       <LoginForm

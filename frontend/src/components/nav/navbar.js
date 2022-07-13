@@ -6,59 +6,49 @@ import LoginModal from "../session/login_modal";
 import SignupModal from "../session/signup_modal.js";
 import CreateAlertModal from "../alerts/create_alert_modal.js";
 import AboutModal from "../about/about_modal.js";
+import ProfileModal from "../profile/profile_modal.js";
 
 function NavBar(props) {
-  const [state, setState] = useState({ 
-    isLoginOpen: false, isSignupOpen: false, isAlertOpen: false, isAboutOpen: false
-  });
+  const [login, setLogin] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [about, setAbout] = useState(false);
+  const [profile, setProfile] = useState(false);
 
   const openLogin = () => {
-    setState({
-      isLoginOpen: true, isSignupOpen: false, isAlertOpen: false, isAboutOpen: false
-    })
+    setSignup(false);
+    setLogin(true);
   };
 
   const openSignup = () => {
-    setState({
-      isLoginOpen: false, isSignupOpen: true, isAlertOpen: false, isAboutOpen: false
-    })
+    setLogin(false);
+    setSignup(true);
   };
-
-  const openAlert = () => {
-    setState({
-      isLoginOpen: false, isSignupOpen: false, isAlertOpen: true, isAboutOpen: false
-    })
-  }
 
   const closeModal = () => {
-    setState({
-      isLoginOpen: false, isSignupOpen: false, isAlertOpen: false, isAboutOpen: false
-    });
+    setLogin(false);
+    setSignup(false);
+    setAlert(false);
+    setAbout(false);
+    setProfile(false);
   };
-
-  const openAbout = () => {
-    setState({
-      isLoginOpen: false, isSignupOpen: false, isAlertOpen: false, isAboutOpen: true
-    });
-  }
   
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
-    // window.location.reload();
   };
 
   const getLinks = () => {
     if (props.loggedIn) {
       return (
         <div className='nav-links'>
-          <Link id="link" className='user-email' to="/profile">
+          <Link id="link" className='user-email' to="/profile" onClick={() => setProfile(true)}>
             <h4>{props.currentUser.email}</h4>
           </Link>
-          <Link id="link" to="/" onClick={openAbout}>
+          <Link id="link" to="/" onClick={() => setAbout(true)}>
             <h4>About</h4>
           </Link>
-          <Link id="link" to="/" onClick={openAlert}>
+          <Link id="link" to="/" onClick={() => setAlert(true)}>
             <h4>Create an Alert</h4>
           </Link>
           <div className='logout-button-container'>
@@ -70,17 +60,17 @@ function NavBar(props) {
       return (
         <div className='nav-links'>
           <div>
-            <Link id="link" to="/" onClick={openAbout}>
+            <Link id="link" to="/" onClick={() => setAbout(true)}>
               <h4>About</h4>
             </Link>
           </div>
           <div>
-            <Link id="link" to="/register" onClick={openSignup}>
+            <Link id="link" to="/register" onClick={() => setSignup(true)}>
               <h4>Signup</h4>
             </Link>
           </div>
           <div>
-            <Link id="link" to="/login" onClick={openLogin}>
+            <Link id="link" to="/login" onClick={() => setLogin(true)}>
               <h4>Login</h4>
             </Link>
           </div>
@@ -94,11 +84,11 @@ function NavBar(props) {
       <div className="header">
         <div className="header-logo">
           <Link to='/' onClick={closeModal}>
-          <img
-            id="logo"
-            src="https://linealert-assets.s3.amazonaws.com/linealert_logo_full.png"
-            alt="line-alert-logo"
-          />
+            <img
+              id="logo"
+              src="https://linealert-assets.s3.amazonaws.com/linealert_logo_full.png"
+              alt="line-alert-logo"
+            />
           </Link>
         </div>
         <div className="links"></div>
@@ -106,25 +96,32 @@ function NavBar(props) {
       </div>
 
       <LoginModal
-        isOpen={state.isLoginOpen}
+        isOpen={login}
         openSignup={openSignup}
         closeModal={closeModal}
       />
 
       <SignupModal
-        isOpen={state.isSignupOpen}
+        isOpen={signup}
         openLogin={openLogin}
         closeModal={closeModal}
       />
 
       <CreateAlertModal
-        isOpen={state.isAlertOpen}
+        isOpen={alert}
         closeModal={closeModal}
       />
+
       <AboutModal
-        isOpen={state.isAboutOpen}
+        isOpen={about}
         closeModal={closeModal}
       />
+
+      <ProfileModal
+        isOpen={profile}
+        closeModal={closeModal}
+      />
+
     </header>
     
   );

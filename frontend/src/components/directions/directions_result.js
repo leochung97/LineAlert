@@ -18,7 +18,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
     <div className="directions-results-container">
       {
         errors ? 
-        ( <span>{errors}</span> ) : 
+        ( <span className='directions-errors'>{errors}. Please try again.</span> ) : 
         (
           <div>
             <RouteInfo route={directions[count]} />

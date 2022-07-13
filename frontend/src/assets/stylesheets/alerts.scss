@@ -108,6 +108,7 @@
     position: relative;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     min-width: 50%;
 }
 
@@ -116,11 +117,17 @@
     color: rgb(255, 255, 255);
     background-color: rgb(42, 65, 78);
     border: none;
-    max-height: 14px;
+    min-height: 15.5px;
+    min-width: 50px;
     font-size: 10px;
     cursor: pointer;
     margin-top: 10px;
     margin-right: 20px;
+    text-align: center;
+    padding-top: 1.5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: background-color .25s ease, color .25s ease-in;
 }
 
 .delete-alert-button {
@@ -128,10 +135,35 @@
     color: rgb(255, 255, 255);
     background-color: rgb(42, 65, 78);
     border: none;
-    max-height: 14px;
+    min-height: 15.5px;
+    min-width: 50px;
     font-size: 10px;
     cursor: pointer;
     margin-top: 10px;
     margin-left: 20px;
+    text-align: center;
+    padding-top: 1.5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: background-color .25s ease, color .25s ease-in;
 }
 
+.edit-alert-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.delete-alert-button:hover {
+    background-color: white;
+    color: black;
+}
+
+.edit-alert-button:active {
+    position: relative;
+    top: 1px;
+}
+
+.delete-alert-button:active {
+    position: relative;
+    top: 1px;
+}

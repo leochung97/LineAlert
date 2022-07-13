@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { createAlert } from "../../actions/alert_actions";
 import Downshift from 'downshift'
 import stationNames from "../../util/station_name";

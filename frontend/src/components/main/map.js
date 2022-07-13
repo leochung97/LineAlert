@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
-import { GoogleMap, Marker, TransitLayer, Polyline, InfoWindow, MarkerClusterer } from "@react-google-maps/api";
+import { GoogleMap, Marker, TransitLayer } from "@react-google-maps/api";
 import mapStyles from "./styles.js";
-
 import AlertModal from '../alerts/alert_modal.js';
   
 const center = { lat: 40.767, lng: -73.972 };
+
 const NEW_YORK_BOUNDS = {
   north: 40.867,
   south: 40.667,
   west: -74.072,
   east: -73.872
 };
-
-const poly = [
-  { lat: 40.7359, lng: -73.9911 },
-  { lat: 40.7559, lng: -73.9871 },
-  { lat: 40.7623, lng: -73.9752 },
-  { lat: 40.7730, lng: -73.9855 },
-  { lat: 40.7830, lng: -73.9815 }
-]
 
 function Maps() {
   const [markers, setMarkers] = useState([]);
@@ -57,62 +49,52 @@ function Maps() {
     let clickedMarker = alerts.filter(alert => (alert._id === id))[0]
     setIsOpen(true)
     setClickedMarker(clickedMarker)
-    console.log(clickedMarker)
   }
 
   if (window.google) {
-  return (
-    <GoogleMap
-      zoom={12.5}
-      center={center}
-      mapContainerClassName="map-container"
-      options={{
-        minZoom: 11,
-        panControl: false,
-        disableDefaultUI: true,
-        styles: mapStyles,
-        restriction: {
-          latLngBounds: NEW_YORK_BOUNDS,
-          strictBounds: false
+    return (
+      <GoogleMap
+        zoom={12.5}
+        center={center}
+        mapContainerClassName="map-container"
+        options={{
+          minZoom: 11,
+          panControl: false,
+          disableDefaultUI: true,
+          styles: mapStyles,
+          restriction: {
+            latLngBounds: NEW_YORK_BOUNDS,
+            strictBounds: false
+          }
+        }}
+      >
+        <button className="transitlayer-toggle" onClick={() => setoggleTL(!toggleTL)}>Toggle Transit Layer</button>
+        {toggleTL ? <TransitLayer /> : <></>}
+
+        <div className='alert-modal-container'>
+          <AlertModal alert={clickedMarker} open={isOpen} onClose={()=> setIsOpen(false)}/>
+        </div>
+        
+
+        <TransitLayer />
+
+        {
+          markers.map(marker => 
+              <Marker 
+                key={marker.id}
+                position={marker.center}
+                icon={marker.color}
+                onClick={ () => markerClick(marker.id) }
+                options={{ clickable: true }}
+              />
+            )
         }
-      }}
-    >
-      <button className="transitlayer-toggle" onClick={() => setoggleTL(!toggleTL)}>Toggle Transit Layer</button>
-      {toggleTL ? <TransitLayer /> : <></>}
-
-      <div className='alert-modal-container'>
-        <AlertModal alert={clickedMarker} open={isOpen} onClose={()=> setIsOpen(false)}/>
-      </div>
-      
-
-      <TransitLayer />
-
-      {
-        markers.map(marker => 
-            <Marker 
-              key={marker.id}
-              position={marker.center}
-              icon={marker.color}
-              onClick={ () => markerClick(marker.id) }
-              options={{ clickable: true }}
-            />
-          )
-      }
-
-      {/* <Polyline
-            path={poly}
-            options={{
-              strokeColor: '#FFFFFF',
-              strokeOpactiy: 1.0,
-              strokeWeight: 2
-            }}
-          /> */}
-
+        
     </GoogleMap>
-    )
-        } else {
-          return <></>
-        }
+  )
+  } else {
+    return <></>
+  }
 }
 
 export default Maps;
