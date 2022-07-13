@@ -1,0 +1,55 @@
+{
+  "name": "linealert",
+  "version": "1.0.0",
+  "description": "username: admin password: THgIXY5w72U7g5N1 THgIXY5w72U7g5N1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server:debug": "npx nodemon --inspect app.js --ignore client",
+    "start": "node app.js",
+    "server": "npx nodemon app.js --ignore client",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leochung97/LineAlert.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leochung97/LineAlert/issues"
+  },
+  "homepage": "https://github.com/leochung97/LineAlert#readme",
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.8.7",
+    "@react-google-maps/api": "^2.12.0",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "bootstrap": "^5.1.3",
+    "concurrently": "^7.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "downshift": "^6.1.7",
+    "express": "^4.18.1",
+    "express-list-routes": "^1.1.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "mongoose": "^6.4.3",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "twilio": "^3.78.0",
+    "typed.js": "^2.0.12",
+    "util": "^0.12.4",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}

@@ -1,0 +1,244 @@
+.modal-form {
+  border-radius: 3px;
+  border: none;
+  margin-top: 3px;
+  min-width: 250px;
+  min-height: 25px;
+  color: white;
+  background-color: rgb(28, 37, 48);
+  border-bottom: 1px, solid, black;
+  font-size: 10px;
+}
+
+.modal-form:hover {
+  border: 1px, solid, #98cccc;
+}
+
+.close-modal {
+  filter: invert(100%) sepia(1%) saturate(2136%) hue-rotate(254deg) brightness(113%) contrast(100%);
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+  transition: filter .25s ease;
+}
+
+.close-modal:hover {
+  filter: invert(87%) sepia(29%) saturate(315%) hue-rotate(126deg) brightness(89%) contrast(81%);
+}
+
+.close-modal:active {
+  top: 16px;
+}
+
+// Create Alert Form
+.create-alert-form-container > * {
+  height: 450px;
+  width: 400px;
+  background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0px 10px 50px 0.5px rgb(35, 35, 35);
+}
+
+.create-alert-header > h1 {
+  font-size: 25px;
+  margin-bottom: 20px;
+  color: white;
+  cursor: default;
+  font-weight: 550;
+}
+
+.create-alert-submit-button {
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+  min-width: 115px;
+  max-width: 130px;
+  min-height: 30px;
+  margin-top: 20px;
+  transition: background-color .25s ease, color .25s ease-in;
+  font-size: 12px;
+  color: #202b34;
+  font-weight: 550;
+}
+
+.create-alert-submit-button:hover {
+  background-color: #98cccc;
+  color: black;
+}
+
+.create-alert-submit-button:active {
+  position: relative;
+  top: 1px;
+  max-width: 129px;
+  min-width: 114px;
+}
+
+.middle {
+  margin: 10px 0px;
+  width: 100%;
+  text-align: center;
+
+  h1 {
+    color: white;
+  }
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked {
+      +.box {
+        background-color: #98cccc;
+
+        span {
+          color: white;
+          // For text selected position
+          transform: translateY(10px);
+
+          &:before {
+            transform: translateY(0px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .box {
+    width: 75px;
+    height: 50px;
+    margin: 10px 5px;
+    border-radius: 15px;
+    max-height: 30px;
+    background-color: white;
+    transition: all 250ms ease;
+    will-change: transition;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    font-weight: 600;
+
+    &:active {
+      transform: translateY(2.5px);
+    }
+
+    span {
+      position: absolute;
+      // For text base position
+      transform: translate(0, 75%);
+      left: 0;
+      right: 0;
+      transition: all 300ms ease;
+      font-size: 12px;
+      user-select: none;
+      color: #202b34;
+
+      &:before {
+
+        display: block;
+        transform: translateY(-80px);
+        opacity: 0;
+        transition: all 300ms ease-in-out;
+        font-weight: normal;
+        color: #98cccc;
+      }
+    }
+  }
+
+  .front-end {
+    span {
+      &:before {
+        content: "\f121";
+      }
+    }
+  }
+
+  .back-end {
+    span {
+      &:before {
+        content: "\f0f4";
+      }
+    }
+  }
+}
+
+.middle > h1 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  cursor: default;
+  font-weight: 550;
+  font-size: 17px;
+}
+
+.intensity-explainer {
+  color: white;
+  font-size: 10.5px;
+  cursor: default;
+}
+
+.create-alert-errors > ul > li{
+  margin: 10px;
+  color: rgb(239, 48, 48);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.create-alert-station {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.directions-search-station {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.directions-search-station > ul {
+  z-index: 1000;
+  position: absolute;
+  top: 30px;
+  min-width: 60%;
+  cursor: pointer;
+  background-color: rgb(59, 96, 119);
+  font-size: 13px;
+  font-weight: 400;
+  color: white;
+}
+
+
+.directions-search-station > ul > li[aria-selected="true"] {
+  background-color: rgb(247, 176, 114);
+  color: black;
+}
+
+.directions-search-station > ul > li {
+  padding: 5px;
+}
+
+.combobox-alert-destination {
+  display: flex;
+  justify-content: center;
+}
+
+.combobox-alert-destination > input {
+  margin-top: 5px;
+  min-width: 250px;
+  min-height: 25px;
+  border-radius: 5px;
+  background-color: rgb(28, 37, 48);
+  color: white;
+  font-size: 10px;
+  box-shadow: none;
+  border: none;
+}
+
