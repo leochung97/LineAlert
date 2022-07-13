@@ -58,7 +58,10 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
       <p className='alert-description'>{alert.description}</p>
       <div className='alert-date-time'>
         <p className={`alert-date ${alert.intensity}`}>{alertDate()}</p>
-        {
+        <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
+      </div>
+      <div className='edit-delete-alerts-container'>
+      {
           currentUser === alert.user && isAuthenticated ? (
             <div className='edit-delete-alert'>
               <button className='edit-alert-button' onClick={openEdit}>Edit</button>
@@ -68,7 +71,6 @@ const Alert = ({ alert, fetchStation, stations, deleteAlert, currentUser, isAuth
             <></>
           )
         }
-        <p className={`alert-time ${alert.intensity}`}>{alertTime()}</p>
       </div>
       <EditAlertModal
         alert={alert}
