@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
-import { GoogleMap, Marker, TransitLayer } from "@react-google-maps/api";
+import { connect, useSelector } from 'react-redux';
+import { GoogleMap, Marker, TransitLayer, Polyline } from "@react-google-maps/api";
 import mapStyles from "./styles.js";
 import AlertModal from '../alerts/alert_modal.js';
   
@@ -13,12 +13,22 @@ const NEW_YORK_BOUNDS = {
   east: -73.872
 };
 
-function Maps() {
+function Maps({directions}) {
   const [markers, setMarkers] = useState([]);
   const [toggleTL, setoggleTL] = useState(true)
   const [isOpen, setIsOpen] = useState(false)
   const [clickedMarker, setClickedMarker] = useState(null)
   
+  let poly = []
+  const direction = Object.values(directions)[0]
+
+  if (direction){
+      poly.push(direction.startLocation)
+      poly.push(direction.endLocation)
+  } else {
+    poly = []
+  }
+
   const alerts = useSelector(state => state.entities.alerts, (a, b) => a.length === b.length);
   const stations = useSelector(state => state.entities.stations, (a, b) => a.length === b.length);
 
@@ -74,9 +84,17 @@ function Maps() {
         <div className='alert-modal-container'>
           <AlertModal alert={clickedMarker} open={isOpen} onClose={()=> setIsOpen(false)}/>
         </div>
-        
 
         <TransitLayer />
+
+        <Polyline
+              path={poly}
+              options={{
+                strokeColor: '#4A89F3',
+                strokeOpactiy: 1.0,
+                strokeWeight: 3
+              }}
+        />
 
         {
           markers.map(marker => 
@@ -97,4 +115,16 @@ function Maps() {
   }
 }
 
-export default Maps;
+const mSTP = state => {
+  return {
+    directions: state.entities.directions
+  }
+}
+
+const mDTP = dispatch => {
+  return {
+
+  }
+}
+
+export default connect(mSTP, mDTP)(Maps);

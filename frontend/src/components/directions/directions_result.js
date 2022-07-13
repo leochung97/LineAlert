@@ -14,6 +14,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
     }
   }
 
+
   return (
     <div className="directions-results-container">
       {
