@@ -5,35 +5,42 @@ import { logout } from "../../actions/session_actions.js";
 import LoginModal from "../session/login_modal";
 import SignupModal from "../session/signup_modal.js";
 import CreateAlertModal from "../alerts/create_alert_modal.js";
+import AboutModal from "../about/about_modal.js";
 
 function NavBar(props) {
   const [state, setState] = useState({ 
-    isLoginOpen: false, isSignupOpen: false, isAlertOpen: false 
+    isLoginOpen: false, isSignupOpen: false, isAlertOpen: false, isAboutOpen: false
   });
 
   const openLogin = () => {
     setState({
-      isLoginOpen: true, isSignupOpen: false, isAlertOpen: false
+      isLoginOpen: true, isSignupOpen: false, isAlertOpen: false, isAboutOpen: false
     })
   };
 
   const openSignup = () => {
     setState({
-      isLoginOpen: false, isSignupOpen: true, isAlertOpen: false
+      isLoginOpen: false, isSignupOpen: true, isAlertOpen: false, isAboutOpen: false
     })
   };
 
   const openAlert = () => {
     setState({
-      isLoginOpen: false, isSignupOpen: false, isAlertOpen: true
+      isLoginOpen: false, isSignupOpen: false, isAlertOpen: true, isAboutOpen: false
     })
   }
 
   const closeModal = () => {
     setState({
-      isLoginOpen: false, isSignupOpen: false, isAlertOpen: false
+      isLoginOpen: false, isSignupOpen: false, isAlertOpen: false, isAboutOpen: false
     });
   };
+
+  const openAbout = () => {
+    setState({
+      isLoginOpen: false, isSignupOpen: false, isAlertOpen: false, isAboutOpen: true
+    });
+  }
   
   const logoutUser = (e) => {
     e.preventDefault();
@@ -45,8 +52,11 @@ function NavBar(props) {
     if (props.loggedIn) {
       return (
         <div className='nav-links'>
-          <Link id="link" to="/profile">
+          <Link id="link" className='user-email' to="/profile">
             <h4>{props.currentUser.email}</h4>
+          </Link>
+          <Link id="link" to="/" onClick={openAbout}>
+            <h4>About</h4>
           </Link>
           <Link id="link" to="/" onClick={openAlert}>
             <h4>Create an Alert</h4>
@@ -59,6 +69,11 @@ function NavBar(props) {
     } else {
       return (
         <div className='nav-links'>
+          <div>
+            <Link id="link" to="/" onClick={openAbout}>
+              <h4>About</h4>
+            </Link>
+          </div>
           <div>
             <Link id="link" to="/register" onClick={openSignup}>
               <h4>Signup</h4>
@@ -106,7 +121,12 @@ function NavBar(props) {
         isOpen={state.isAlertOpen}
         closeModal={closeModal}
       />
+      <AboutModal
+        isOpen={state.isAboutOpen}
+        closeModal={closeModal}
+      />
     </header>
+    
   );
 };
 

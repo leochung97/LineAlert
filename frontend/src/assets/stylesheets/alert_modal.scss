@@ -14,8 +14,9 @@
     align-items: center;
     flex-direction: column;
     background-color: rgba(33, 33, 33, 0.7);
-    min-width: 80%;
-    min-height: 10%;
+    min-width: 85%;
+    max-width: 85%;
+    min-height: 115px;
     border-radius: 15px;
     color: white;
     animation: fadeIn .75s, slideIn 1s;
@@ -25,11 +26,22 @@
 .close-alert-modal {
     filter: invert(100%) sepia(1%) saturate(2136%) hue-rotate(254deg) brightness(113%) contrast(100%);
     position: absolute;
-    top: 10px;
-    left: 7.5px;
+    top: 15px;
+    left: 15px;
     cursor: pointer;
     transition: filter .25s ease;
   }
+
+  .alert-modal-location {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 550;
+    margin-bottom: 5px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+    max-width: 65%;
+    min-width: 65%;
+}
   
   .close-alert-modal:hover {
     filter: invert(87%) sepia(29%) saturate(315%) hue-rotate(126deg) brightness(89%) contrast(81%);

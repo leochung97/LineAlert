@@ -7,10 +7,10 @@ function Directions_Results({ directions, errors, clearDirections }) {
 
   const toggleButton = () => {
     if (count === directions.length -1 ) {
-      return <button type="button" onClick={() => setCount(0)}>Best Route Again</button>
+      return <button type="button" className='direction-button' onClick={() => setCount(0)}>Best Route Again</button>
     } 
     else {
-      return <button type="button" onClick={() => setCount(count + 1 )}>Next best route</button>
+      return <button type="button" className='direction-button' onClick={() => setCount(count + 1 )}>Next Best Route</button>
     }
   }
 
@@ -22,8 +22,10 @@ function Directions_Results({ directions, errors, clearDirections }) {
         (
           <div>
             <RouteInfo route={directions[count]} />
+            <div className='directions-buttons'>
           {toggleButton()}
-            < button type = "button" onClick={() => clearDirections()}> Re-fill Form! </button>
+            < button className='direction-button' type = "button" onClick={() => clearDirections()}> Re-fill Form! </button>
+            </div>
           </div>
         
         )

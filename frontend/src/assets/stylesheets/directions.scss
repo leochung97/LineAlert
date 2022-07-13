@@ -72,7 +72,7 @@
 }
 .combobox-origin > input {
     min-width: 75%;
-    min-height: 17.5px;
+    min-height: 25px;
     border-radius: 5px;
     background-color: rgb(62, 90, 107);
     color: white;
@@ -81,7 +81,7 @@
 
 .combobox-destination > input {
     min-width: 75%;
-    min-height: 17.5px;
+    min-height: 25px;
     border-radius: 5px;
     background-color: rgb(62, 90, 107);
     color: white;
@@ -156,3 +156,42 @@
     top: 25%;
     left: 48%;
 }
+
+.directions-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+@media (max-width: 700px){
+    .directions-buttons {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .direction-button {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+.direction-button {
+    border-radius: 15px;
+    cursor: pointer;
+    border: none;
+    min-width: 120px;
+    max-width: 130px;
+    min-height: 30px;
+    margin-top: 10px;
+    transition: background-color .25s ease, color .25s ease-in;
+    color: #98cccc;
+    font-weight: 550;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.direction-button:hover {
+    background-color: #98cccc;
+    color: black;
+  }

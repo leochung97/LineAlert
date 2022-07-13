@@ -10,8 +10,8 @@
 }
 
 @keyframes fadeIn {
-  0% { opacity: .8; }
-  50% { opacity: 1; }
+  0% { opacity: 0; }
+  50% { opacity: 0.5; }
 }
 
 @keyframes slideIn {
