@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const fetchDirections = directions => {
-     return axios.post('/api/directions', {data: directions})
+     return axios.post('/api/directions', directions)
 }

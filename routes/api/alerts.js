@@ -8,7 +8,6 @@ const Station = require("../../models/Station");
 router.get("/", (req, res) => { //gets all alerts
   Alert.find()
   .sort({createdAt: 'desc'})
-  .limit(10)
   .then( (alerts) => res.json(alerts))
   .catch( (err) => res.json({noalertsfound : "No Alerts"}))
 })

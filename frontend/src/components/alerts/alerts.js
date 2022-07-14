@@ -5,32 +5,25 @@ import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
 import { fetchStation } from '../../actions/station_actions';
 import '../../assets/stylesheets/alerts.scss'
 
-const Alerts = ({fetchAlerts, fetchStation, stations, deleteAlert, currentUser, isAuthenticated}) => {
+const Alerts = (props) => {
   const alerts = useSelector(state => state.entities.alerts, (a, b) => JSON.stringify(a) === JSON.stringify(b));
 
   useEffect(() => {
-    fetchAlerts()
+    props.fetchAlerts()
   }, []);
 
   return (
     <>
       {Object.values(alerts).map((alert, i) => (
         <div className='alert-item' key={i}>
-          <Alert
-            alert={alert}
-            fetchStation={fetchStation}
-            stations={stations}
-            deleteAlert={deleteAlert}
-            currentUser={currentUser}
-            isAuthenticated={isAuthenticated}
-          />
+          <Alert alert={alert} {...props} />
         </div>
       ))}
     </>
   )
 }
 
-const mapStateToProps = state => {
+const mSTP = state => {
   return {
     stations: state.entities.stations,
     currentUser: state.session.user.id,
@@ -38,7 +31,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDisptachToProps = dispatch => {
+const mDTP = dispatch => {
   return {
     fetchAlerts: () => dispatch(fetchAlerts()),
     fetchStation: stationId => dispatch(fetchStation(stationId)),
@@ -46,4 +39,4 @@ const mapDisptachToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDisptachToProps)(Alerts);
+export default connect(mSTP, mDTP)(Alerts);

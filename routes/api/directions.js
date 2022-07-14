@@ -34,7 +34,7 @@ const parseRoutes = (routesArr) => {
 router.post("/", (req, res) => {
   var options = {
     method: "get",
-    url: `https://maps.googleapis.com/maps/api/directions/json?alternatives=true&mode=transit&transit_mode=subway&origin=${req.body.data.origin}&destination=${req.body.data.destination}&key=${process.env.REACT_APP_MAP_KEY}`,
+    url: `https://maps.googleapis.com/maps/api/directions/json?alternatives=true&mode=transit&transit_mode=subway&origin=${req.body.origin}&destination=${req.body.destination}&key=${process.env.REACT_APP_MAP_KEY}`,
   };
   axios(options).then((directions) => {
     if (directions.data.status === "OK") {

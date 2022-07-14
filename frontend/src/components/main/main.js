@@ -19,7 +19,11 @@ function MainPage({directions, stations, alerts}) {
       </div>
       <div className="main-right-side">
         <div className="main-right-top">
-          {Object.values(directions).length !== 0 ? <DirectionsResult/> : <DirectionsForm /> }
+        {JSON.stringify(directions) !== "{}" ? (
+            <DirectionsResult />
+          ) : (
+            <DirectionsForm />
+          )}
         </div>
         <div className="main-right-bottom">
           <h1>Alerts</h1>

@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const expressListRoutes = require("express-list-routes");
+// const expressListRoutes = require("express-list-routes");
 const cors = require("cors");
 const users = require("./routes/api/users");
 const alerts = require("./routes/api/alerts");
@@ -37,7 +37,7 @@ const port = process.env.PORT || 5001;
 
 // for route debugging purposes
 app.listen(port, () => console.log(`Server is running on port ${port}`));
-console.log(expressListRoutes(app, { prefix: "/" }));
+// console.log(expressListRoutes(app, { prefix: "/" }));
 
 // For Heroku
 if (process.env.NODE_ENV === 'production') {

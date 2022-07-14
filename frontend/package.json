@@ -19,7 +19,6 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
     "sass": "^1.53.0",
-    "typed.js": "^2.0.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -12,6 +12,15 @@ function DirectionsForm(props) {
   });
   const [loading, setLoading ] = useState(false)
 
+  const filterFn = (inputVal) => {
+    return stationNames
+      .filter(
+        (item) =>
+          !inputVal || item.toLowerCase().includes(inputVal.toLowerCase())
+      )
+      .slice(0, 4);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(loading => !loading);
@@ -58,10 +67,7 @@ function DirectionsForm(props) {
                   <input {...getInputProps()} />
                 </div>
                 <ul {...getMenuProps()}>
-                  {isOpen
-                    ? stationNames
-                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLowerCase())).slice(0, 4)
-                        .map((item, index) => (
+                  {isOpen ? filterFn(inputValue).map((item, index) => (
                           <li
                             {...getItemProps({
                               key: item,
@@ -101,10 +107,7 @@ function DirectionsForm(props) {
                     <input {...getInputProps()} />
                   </div>
                   <ul {...getMenuProps()}>
-                    {isOpen
-                      ? stationNames
-                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLowerCase())).slice(0, 4)
-                          .map((item, index) => (
+                    {isOpen ? filterFn(inputValue).map((item, index) => (
                             <li
                               {...getItemProps({
                                 key: item,

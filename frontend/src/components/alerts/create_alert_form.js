@@ -12,6 +12,15 @@ function CreateAlertForm(props) {
     user: props.currentUser.id
   });
 
+  const filterFn = (inputVal) => {
+    return stationNames
+      .filter(
+        (item) =>
+          !inputVal || item.toLowerCase().includes(inputVal.toLowerCase())
+      )
+      .slice(0, 4);
+  };
+
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
   };
@@ -83,10 +92,7 @@ function CreateAlertForm(props) {
                   <input placeholder="Station Name" {...getInputProps()} />
                 </div>
                 <ul {...getMenuProps()}>
-                  {isOpen
-                    ? stationNames
-                        .filter(item => !inputValue || item.toLowerCase().includes(inputValue.toLowerCase())).slice(0, 4)
-                        .map((item, index) => (
+                  {isOpen ? filterFn(inputValue).map((item, index) => (
                           <li
                             {...getItemProps({
                               key: item,

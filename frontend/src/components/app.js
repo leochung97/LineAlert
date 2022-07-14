@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import NavBar from "./nav/navbar";
 import MainPage from "./main/main";
-import axios from 'axios'
+import axios from "axios";
 
 const App = () => {
-  let googleKey;
+  const googleKeyRef = useRef(null);
 
   useEffect(() => {
     const fetchGoogleKey = async () => {
-       googleKey = await axios.get('/api/google')
-        const script = document.createElement('script'); 
-        script.setAttribute('src', googleKey.data);
-        document.head.append(script);
-    }
-
+      googleKeyRef.current = await axios.get("/api/google");
+      const script = document.createElement("script");
+      script.setAttribute("src", googleKeyRef.current.data);
+      document.head.append(script);
+    };
     fetchGoogleKey();
   }, []);
 
@@ -22,7 +21,7 @@ const App = () => {
       <NavBar />
       <MainPage />
     </div>
-  )
+  );
 };
 
 export default App;

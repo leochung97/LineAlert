@@ -19,6 +19,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
       {
         errors ? 
         ( <div className="directions-errors-container">
+            {console.log(errors)}
             <span className='directions-errors'>{errors}. Please try again.</span>
             <button onClick={clearDirections} className="directions-error-btn">Try again</button> 
           </div>

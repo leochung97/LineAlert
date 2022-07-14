@@ -123,6 +123,7 @@
     cursor: pointer;
     position: relative;
     font-weight: 600;
+    
 
     &:active {
       transform: translateY(2.5px);
@@ -240,5 +241,7 @@
   font-size: 10px;
   box-shadow: none;
   border: none;
+  font-size: 11px;
+  padding-left: 9px;
 }
 
