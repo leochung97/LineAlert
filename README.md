@@ -31,6 +31,24 @@ LineAlert is built with the MERN stack, a combination of following four technolo
 
 ## Technologies and Technical Challenges
 
+LineAlert is built with the MERN stack (MongoDB, Express, React, and NodeJS).
+
+### MERN Stack
+
+Utilizing the MERN stack allowed us to use JavaScript on both the front and back end. The user's information and preferences are stored as NoSQL objects in MongoDB. We used Express for back end routing purposes and connected them to display our React front end components by making Axios requests.
+
+### Google Maps API
+
+A customized dynamic google map is used to display the visual layer of available transit lines, with the ability to toggle on or off as preference. Unique color coded markers (depending on hazard level) for alerts are rendered for every station pinpointed to their exact location using lattitude and longitude.
+
+### Google Directions API
+
+Users are able to search a route based on their input origin and destination. Results will allow users to know duration of route, distance of route, and expected arrival time. Users can also search next best route if current route has too many alerts on its path. While the JSON object received for this request was useful, it was difficult to parse, as many layers were nested into each other.
+
+### Downshift
+
+Utilized for autocomplete when users need to input station names. There was difficulty implementing a flexible search query for users due to the fact that certain stations have the same names but use different train lines and also the fact that stations can have integer or string names, both used interchangeably. To simplify this and ensure the least error-prone method, we introduced autocomplete for all forms needing a station name.
+
 ## Group Members and Work Breakdown
 
 Project Lead: Leo Chung  
