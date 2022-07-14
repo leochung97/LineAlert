@@ -76,8 +76,9 @@
     border-radius: 5px;
     background-color: rgb(84, 133, 163);
     color: white;
-    font-size: 10px;
-    border: 0
+    font-size: 11px;
+    border: 0;
+    padding-left: 7px;
 }
 
 .combobox-destination > input {
@@ -86,8 +87,9 @@
     border-radius: 5px;
     background-color: rgb(84, 133, 163);
     color: white;
-    font-size: 10px;
+    font-size: 11px;
     border: 0;
+    padding-left: 7px;
 }
 
 input:focus {

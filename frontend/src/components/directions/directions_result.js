@@ -29,7 +29,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
             <RouteInfo route={directions[count]} />
             <div className='directions-buttons'>
           {toggleButton()}
-            < button className='direction-button' type = "button" onClick={() => clearDirections()}> Re-fill Form! </button>
+            < button className='direction-button' type = "button" onClick={() => clearDirections()}> Back to Search </button>
             </div>
           </div>
         

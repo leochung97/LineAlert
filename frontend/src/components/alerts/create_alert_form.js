@@ -55,7 +55,7 @@ function CreateAlertForm(props) {
             type="text"
             value={state.description}
             onChange={update("description")}
-            placeholder="Description of alert"
+            placeholder="Description"
           />
         </div>
         <div className='create-alert-station'>
