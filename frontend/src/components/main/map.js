@@ -13,12 +13,20 @@ const NEW_YORK_BOUNDS = {
   east: -73.872
 };
 
+
+
 function Maps({directions}) {
   const [markers, setMarkers] = useState([]);
   const [toggleTL, setoggleTL] = useState(true)
   const [isOpen, setIsOpen] = useState(false)
   const [clickedMarker, setClickedMarker] = useState(null)
-  
+
+  useEffect(() => {
+    if (Object.values(directions)[0]) {
+      setState(state => ({ ...state, a: props.a }));
+    }
+  }, [Object.values(directions)[0]]);
+
   let poly = []
   const direction = Object.values(directions)[0]
 

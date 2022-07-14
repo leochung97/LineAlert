@@ -12,7 +12,6 @@ function ProfileForm(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-
   }
   
   return (
@@ -30,7 +29,7 @@ function ProfileForm(props) {
         <div className="profile-preferences">
           <ul> 
             { preferences.map(line => {
-              return(
+              return (
                 <li key={line}>
                   {`${line}`}
                 </li>
