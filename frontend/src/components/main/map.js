@@ -95,6 +95,16 @@ function Maps({directions}) {
                 strokeWeight: 3
               }}
         />
+        {
+          poly.map(marker => 
+              <Marker 
+                key={marker.lat}
+                position={marker}
+                icon={'https://linealert-assets.s3.amazonaws.com/linealert-poly-pin.png'}
+              />
+            )
+        }
+
 
         {
           markers.map(marker => 
@@ -111,7 +121,11 @@ function Maps({directions}) {
     </GoogleMap>
   )
   } else {
-    return <></>
+    return (
+      <div className="spinner-container-maps">
+        <div className="loading-spinner"></div>
+      </div>
+    );
   }
 }
 
