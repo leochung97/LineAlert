@@ -18,6 +18,17 @@ LineAlert is built with the MERN stack, a combination of following four technolo
 
 ## Functionality and MVP
 
+- [ ] Customized map using Google Maps API to display only transit layer, can be toggled on or off
+- [ ] Dynamic color coded markers (depending on hazard level) will pop up as alerts are created
+- [ ] Option to view all alerts on right navigation or on-click on any markers on the map
+- [ ] Search feature for directions from an origin to a destination will display a polyline on the map, also showing where alerts are on the route
+
+## Bonus Features
+
+- [ ] Route rerouting when there are alerts on the route
+- [ ] Increase application functionality to all 5 boroughs of NYC
+- [ ] Instant message system for users to receive alerts based on their time preference
+
 ## Technologies and Technical Challenges
 
 ## Group Members and Work Breakdown
