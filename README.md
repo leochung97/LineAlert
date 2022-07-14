@@ -32,3 +32,8 @@ LineAlert is built with the MERN stack, a combination of following four technolo
 ## Technologies and Technical Challenges
 
 ## Group Members and Work Breakdown
+
+Project Lead: Leo Chung  
+Frontend Lead: Tom Leslie Li  
+Backend Lead: Nikhil Kumar  
+Project Flex: Vivian Chen  
