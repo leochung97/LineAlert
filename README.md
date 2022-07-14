@@ -4,9 +4,17 @@
 
 LineAlert is a NYC subway alert application where users can create live alerts as they see them, notifying anyone who uses the application.
 
-## Table of Contents
-
 ## Background and Overview
+
+There is currently no alert system for anyone using the subway system in NYC. We want to create an application where users can notify others, of any suspicious events at the current station and anything that might cause delays to their commute. This would be beneficial to all residents who use the subway system as well as tourists alike.
+
+We will need to:
+* Build a database to store NYC subway stations with names, lattitude and longitude, and all intersecting lines
+* Allow all users to view alerts but only authenticated users to have full CRUD functionality
+* Utilize Google Maps API to design a seamless map with dynamic markers of all stations
+* Include a search feature where users can create their path and view all alerts on that path
+
+LineAlert is built with the MERN stack, a combination of following four technologies: MongoDB, Express, React, and Node.
 
 ## Functionality and MVP
 
