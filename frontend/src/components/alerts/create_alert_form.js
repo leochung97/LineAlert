@@ -9,7 +9,7 @@ function CreateAlertForm(props) {
     description: "",
     station: "",
     intensity: "",
-    user: props.currentUser.id
+    user: props.currentUser ? props.currentUser.id : null,
   });
 
   const filterFn = (inputVal) => {
@@ -31,6 +31,9 @@ function CreateAlertForm(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!props.currentUser) {
+      return props.closeModal();
+    }
     props.createAlert(state)
       .then(res => {
         if (res) {

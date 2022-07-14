@@ -45,7 +45,7 @@ function LoginForm(props) {
     e.preventDefault();
     let demouser = {
       email: "demouser@linealert.com",
-      password: "demopass"
+      password: "password"
     }
     setState(demouser);
     props.login(demouser)

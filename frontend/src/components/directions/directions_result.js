@@ -5,13 +5,17 @@ import RouteInfo from "./routeinfo";
 function Directions_Results({ directions, errors, clearDirections }) {
   const [count, setCount] = useState(0)
 
-  const toggleButton = () => {
-    if (count === directions.length -1 ) {
+  const toggleforRoute = () => {
+    if (count === directions.length - 1 ) {
       return <button type="button" className='direction-button' onClick={() => setCount(0)}>Best Route Again</button>
     } 
     else {
-      return <button type="button" className='direction-button' onClick={() => setCount(count + 1 )}>Next Best Route</button>
+      return <button type="button" className='direction-button' onClick={() => setCount(count + 1)}>Next Best Route</button>
     }
+  }
+
+  const toggleprevRoute = () => {
+    return count ? <button type="button" className='direction-button' onClick={() => setCount(count - 1)}>Previous Route</button> : <></>
   }
 
   return (
@@ -19,7 +23,6 @@ function Directions_Results({ directions, errors, clearDirections }) {
       {
         errors ? 
         ( <div className="directions-errors-container">
-            {console.log(errors)}
             <span className='directions-errors'>{errors}. Please try again.</span>
             <button onClick={clearDirections} className="directions-error-btn">Try again</button> 
           </div>
@@ -28,8 +31,9 @@ function Directions_Results({ directions, errors, clearDirections }) {
           <div>
             <RouteInfo route={directions[count]} />
             <div className='directions-buttons'>
-          {toggleButton()}
-            < button className='direction-button' type = "button" onClick={() => clearDirections()}> Re-fill Form! </button>
+          {toggleprevRoute()}
+          {toggleforRoute()}
+            < button className='direction-button' type = "button" onClick={() => clearDirections()}> Clear Search </button>
             </div>
           </div>
         

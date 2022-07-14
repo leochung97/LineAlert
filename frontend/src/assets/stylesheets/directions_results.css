@@ -64,12 +64,10 @@
     margin-bottom: 15px;
 }
 
-.fastest-route-info-container-half {
+.fastest-route-info-container-third {
     margin-top: 5px;
-    margin-right: 3%;
-    margin-left: 3%;
-    min-width: 45%;
-    max-width: 45%;
+    min-width: 22%;
+    width: 35%;
     min-height: 20px;
     max-height: 120%;
     background-color: rgba(135, 193, 207, 0.431);
@@ -80,13 +78,13 @@
     flex-direction: column;
     padding-left: 5px;
     padding-right: 5px;
+    margin-right: 13px;
 }
 
-.fastest-route-info-container-quarter {
+.fastest-route-info-container-third-last {
     margin-top: 5px;
-    margin-right: 1%;
-    min-width: 24%;
-    max-width: 24%;
+    min-width: 22%;
+    width: 35%;
     min-height: 20px;
     max-height: 120%;
     background-color: rgba(135, 193, 207, 0.431);
@@ -97,6 +95,7 @@
     flex-direction: column;
     padding-left: 5px;
     padding-right: 5px;
+    margin-right: 0px;
 }
 .directions-errors-container {
     display: flex;

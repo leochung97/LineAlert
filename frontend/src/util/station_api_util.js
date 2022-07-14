@@ -6,3 +6,7 @@ export const fetchStation = stationId => {
       return res.data;
     })
 }
+
+export const fetchStations = () => {
+  return axios.get("api/stations/").then(res => res.data)
+}

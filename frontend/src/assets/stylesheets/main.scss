@@ -6,6 +6,35 @@
   overflow-y: hidden;
 }
 
+.resize-warning {
+  z-index: 9000;
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  cursor: default;
+}
+
+.resize-warning > h3 {
+  font-size: 17.5px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.resize-warning > h5 {
+  font-size: 11px;
+}
+
+@media (max-height: 700px){
+  .resize-warning {
+    display: flex;
+  }
+}
+
 .header h4 {
   margin: 20px;
   font-weight: 500;
@@ -42,7 +71,7 @@
   background-color: inherit;
   border: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   transition: color .25s ease, color .25s ease-in;
 }
@@ -68,7 +97,7 @@
 }
 
 .header {
-  z-index: 1000;
+  z-index: 2500;
   min-width: 100%;
   white-space: none;
   display: flex;
@@ -189,8 +218,8 @@
 
 .main-right-top {
   width: 90%;
-  min-height: 40vh;
-  max-height: 40vh;
+  min-height: 39vh;
+  max-height: 39vh;
   background: linear-gradient(162deg, rgb(34, 44, 57) 10%, rgb(31, 42, 48) 79%, rgb(33, 52, 59) 100%) 100% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(31, 41, 60);
   border-radius: 5px;
   margin-top: 4vh;
@@ -218,8 +247,8 @@
   background: linear-gradient(162deg, rgb(34, 44, 57) 5%, rgb(31, 42, 48) 60%, rgb(33, 52, 59) 100%) 20% center / cover, url(https://robinhood-clone-assets.s3.amazonaws.com/noise__d63eaf58eecf93a9e61385dd154fba64.svg) rgb(30, 35, 44);
   border-radius: 5px;
   margin-top: 5vh;
-  min-height: 40vh;
-  max-height: 40vh;
+  min-height: 39vh;
+  max-height: 39vh;
   margin-bottom: 4vh;
   overflow-x: hidden;
   overflow-y:auto;
@@ -260,7 +289,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 }
 
 .transitlayer-toggle {
-  z-index: 5000;
+  z-index: 3000;
   position: absolute;
   background-color: #98cccc;
   background-repeat:no-repeat;

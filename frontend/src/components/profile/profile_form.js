@@ -9,15 +9,19 @@ function ProfileForm(props) {
     email: props.currentUser.email,
     preferences: preferences
   });
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
+  }
 
+  const prefUpdate = (line) => {
+    console.log(line);
+    console.log(preferences[0].line)
+    preferences[0].line = !preferences[0].line
   }
   
   return (
     <div className="profile-container">
-      {console.log(state)}
       <form onSubmit={handleSubmit}>
         <div className="close-profile-modal-container">
           <svg className='close-modal' height="15pt" viewBox="0 0 500 500" width="15pt" onClick={props.closeModal}>
@@ -28,15 +32,15 @@ function ProfileForm(props) {
           <h1>User Preferences</h1>
         </div>
         <div className="profile-preferences">
-          <ul> 
-            { preferences.map(line => {
-              return(
-                <li key={line}>
-                  {`${line}`}
-                </li>
-            )})}
-          </ul>
+          { Object.keys(preferences[0]).map(line => {
+            return (
+              <div className='preference-radio-container' key={line}>
+                {`${line}`}
+                <input className='preference-radio' type="checkbox" onClick={() => prefUpdate(line)}/>
+              </div>
+          )})}
         </div>
+        <h6 className='select-stations-directions'>Select all stations you'd like to receive alerts for.</h6>
       </form>
     </div>
   )
@@ -46,8 +50,4 @@ const mSTP = state => ({
   currentUser: state.session.user
 });
 
-const mDTP = dispatch => ({
-
-});
-
-export default connect(mSTP, mDTP)(ProfileForm);
+export default connect(mSTP)(ProfileForm);

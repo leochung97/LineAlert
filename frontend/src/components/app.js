@@ -18,6 +18,10 @@ const App = () => {
 
   return (
     <div>
+      <div className='resize-warning'>
+        <h3> LineAlert requires a minimum height of 700 pixels </h3>
+        <h5> Please resize your browser accordingly.</h5>
+      </div>
       <NavBar />
       <MainPage />
     </div>

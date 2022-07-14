@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom'
-import { connect, useSelector } from 'react-redux';
-import EditAlertModal from "./edit_alert_modal";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import '../../assets/stylesheets/alert_modal.scss'
-import { useHistory } from 'react-router-dom';
 import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
 import { fetchStation } from '../../actions/station_actions';
 
-const AlertModal = ({ alert, open, onClose, fetchStation, stations, deleteAlert, currentUser, isAuthenticated }) => {
-  const history = useHistory();
-
-
+const AlertModal = ({ alert, open, onClose, fetchStation, stations, deleteAlert }) => {
   useEffect(() => {
     if (alert) {
       fetchStation(alert.station)    
     }
   }, [alert])
-
-  const handleDelete = (alertId) => {
-    deleteAlert(alertId).then(() => window.location.reload())
-  }
   
   let currentStation = {}
   stations.forEach(station => {

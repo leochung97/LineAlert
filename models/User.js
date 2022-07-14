@@ -16,8 +16,7 @@ const UserSchema = new Schema(
       required: true,
     },
     preferences: {
-      type: Array,
-      "default": [],
+      type: [{}],
       required: false
     }
   },

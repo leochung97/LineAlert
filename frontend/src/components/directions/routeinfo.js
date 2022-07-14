@@ -6,13 +6,13 @@ function RouteInfo({route}) {
             <h1 className="route-container-header">Fastest Route</h1>
             <div className="route-container-tripinfo">
                 <div className='arrival-duration-distance'>
-                <div className='fastest-route-info-container-quarter'>
+                <div className='fastest-route-info-container-third'>
                     <h4 className='fastest-route-h4'>Duration</h4><div className='fastest-route-p'> {route.duration}</div>
                     </div>
-                    <div className='fastest-route-info-container-half'>
-                        <h4 className='fastest-route-h4'>Expected Arrival Time</h4><div className='fastest-route-p'> {route.arrivalTime}</div>
+                    <div className='fastest-route-info-container-third'>
+                        <h4 className='fastest-route-h4'>Arrival Time</h4><div className='fastest-route-p'> {route.arrivalTime}</div>
                     </div>
-                    <div className='fastest-route-info-container-quarter'>
+                    <div className='fastest-route-info-container-third-last'>
                         <h4 className='fastest-route-h4'>Distance</h4><div className='fastest-route-p'>{route.distance}</div>
                     </div>
                 </div>

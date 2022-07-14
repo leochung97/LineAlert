@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect, useSelector } from 'react-redux';
 import Alert from './alert';
 import { deleteAlert, fetchAlerts } from '../../actions/alert_actions';
@@ -8,9 +8,20 @@ import '../../assets/stylesheets/alerts.scss'
 const Alerts = (props) => {
   const alerts = useSelector(state => state.entities.alerts, (a, b) => JSON.stringify(a) === JSON.stringify(b));
 
+  const filteredArrRef = useRef([])
   useEffect(() => {
     props.fetchAlerts()
+    // console.log(props.preferences)
+    // for (const [key, value] of Object.entries(props.preferences[0])) { 
+    //   if (value) {
+    //     filteredArrRef.current.push(key)
+    //   }
+    // }
   }, []);
+
+  const checkIntersection = (arr1, arr2) => {
+    return arr1.filter(value => arr2.includes(value));
+  }
 
   return (
     <>
@@ -25,6 +36,7 @@ const Alerts = (props) => {
 
 const mSTP = state => {
   return {
+    preferences: state.session.user ? state.session.user.preferences : [{}],
     stations: state.entities.stations,
     currentUser: state.session.user.id,
     isAuthenticated: state.session.isAuthenticated

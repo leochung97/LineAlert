@@ -9,6 +9,14 @@
   animation: fadeIn 1.5s, slideIn 1.2s;
 }
 
+@media (max-height: 700px){
+  .signup-form-container,
+  .login-form-container,
+  .main {
+    display: none;
+  }
+}
+
 @keyframes fadeIn {
   0% { opacity: 0.75; }
   50% { opacity: 1; }

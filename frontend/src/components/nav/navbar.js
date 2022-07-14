@@ -36,6 +36,7 @@ function NavBar(props) {
   const logoutUser = (e) => {
     e.preventDefault();
     props.logout();
+    closeModal();
   };
 
   const getLinks = () => {

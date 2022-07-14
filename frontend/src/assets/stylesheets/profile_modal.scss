@@ -41,5 +41,72 @@
   flex-direction: column;
   position: relative;
   box-shadow: 0px 10px 50px 0.5px rgb(35, 35, 35);
+  color: white;
+  font-size: 14px;
 }
 
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 22.5px;
+  margin-bottom: 60px;
+  cursor: default;
+}
+
+.select-stations-directions {
+  font-size: 10px;
+  margin-top: 60px;
+  cursor: default;
+}
+
+.profile-preferences {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-right: 56px;
+  margin-left: 56px;
+}
+
+.preference-radio-container {
+  min-width: 36px;
+  cursor: default;
+}
+
+.preference-radio {
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #98cccc;
+
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: rgb(84, 133, 163);
+  margin-left: 7px;
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 0.15em;
+  transform: translateY(1.95em);
+  transition: background-color .25s ease;
+
+}
+
+input[type="checkbox"]:checked {
+  background-color: rgb(87, 232, 128);
+  border: 2px solid rgb(255, 255, 255, 0.3);
+}
+
+input[type="checkbox"]:checked:hover {
+  background-color: rgb(87, 232, 128);
+  border: 2px solid rgb(255, 255, 255, 0.3);
+}
+
+input[type="checkbox"]:hover {
+  background-color: #98cccc;
+  border: 2px solid rgb(255, 255, 255, 0.3);
+}
