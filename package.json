@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/leochung97/LineAlert#readme",
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "@react-google-maps/api": "^2.12.0",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",

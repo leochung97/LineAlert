@@ -6,6 +6,7 @@ import LoginModal from "../session/login_modal";
 import SignupModal from "../session/signup_modal.js";
 import CreateAlertModal from "../alerts/create_alert_modal.js";
 import AboutModal from "../about/about_modal.js";
+import InfoModal from "../info/info.js";
 import ProfileModal from "../profile/profile_modal.js";
 
 function NavBar(props) {
@@ -13,6 +14,7 @@ function NavBar(props) {
   const [signup, setSignup] = useState(false);
   const [alert, setAlert] = useState(false);
   const [about, setAbout] = useState(false);
+  const [info, setInfo] = useState(false);
   const [profile, setProfile] = useState(false);
 
   const openLogin = () => {
@@ -30,6 +32,7 @@ function NavBar(props) {
     setSignup(false);
     setAlert(false);
     setAbout(false);
+    setInfo(false);
     setProfile(false);
   };
   
@@ -45,17 +48,22 @@ function NavBar(props) {
         <div className='nav-links'>
           <Link id="link" className='user-email' to="/" onClick={() => {
             closeModal()
+            // setProfile(true)
             }}
           >
             <h4>{props.currentUser.email}</h4>
           </Link>
+
           <Link id="link" to="/" onClick={() => {
             closeModal()
             setAbout(true)
             }}
           >
-            <h4>About</h4>
+            <h4>Contact the Creators</h4>
           </Link>
+
+
+
           <Link id="link" to="/" onClick={() => {
             closeModal()
             setAlert(true)
@@ -63,6 +71,7 @@ function NavBar(props) {
           >
             <h4>Create an Alert</h4>
           </Link>
+
           <div className='logout-button-container'>
             <button id='logout-button' onClick={logoutUser}>Logout</button>
           </div>
@@ -77,9 +86,20 @@ function NavBar(props) {
               setAbout(true)
               }}
             >
-              <h4>About</h4>
+              <h4>Contact the Creators</h4>
             </Link>
           </div>
+
+          <div>
+            <Link id="link" to="/" onClick={() => {
+              closeModal()
+              setInfo(true)
+              }}
+            >
+              <h4>Application Info</h4>
+            </Link>
+          </div>
+
           <div>
             <Link id="link" to="/register" onClick={() => {
               closeModal()
@@ -89,6 +109,7 @@ function NavBar(props) {
               <h4>Signup</h4>
             </Link>
           </div>
+
           <div>
             <Link id="link" to="/login" onClick={() => {
               closeModal()
@@ -143,6 +164,11 @@ function NavBar(props) {
 
       <ProfileModal
         isOpen={profile}
+        closeModal={closeModal}
+      />
+
+      <InfoModal
+        isOpen={info}
         closeModal={closeModal}
       />
 

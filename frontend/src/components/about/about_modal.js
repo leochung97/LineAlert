@@ -76,7 +76,7 @@ const AboutModal = ({isOpen, closeModal}) => {
               <div className='about-details'>
               <span className='about-details-item'><h4>Vivian</h4></span>
                   <span className='about-details-item'><h4>Chen</h4></span>
-                  <span className='about-details-item'><h6>Project Flex</h6></span>
+                  <span className='about-details-item'><h6>Flex Lead</h6></span>
               </div>
               <div className='about-links'>
               <a href='https://www.linkedin.com/in/vivian-chen-8082169a/'>
