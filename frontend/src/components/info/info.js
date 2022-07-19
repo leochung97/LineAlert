@@ -23,7 +23,7 @@ export default function InfoModal(props) {
         <h1>Application Info</h1>
         <div className="info-text">
           <div className='link-section'>
-            <a href='https://github.com/leochung97/LineAlert' target="_blank">
+            <a href='https://github.com/leochung97/LineAlert' target="_blank" rel="noreferrer">
               <img className='link-github-logo' src='https://linealert-assets.s3.amazonaws.com/github-logo.png' alt='github-logo'/>
             </a>
           </div>
@@ -54,15 +54,15 @@ export default function InfoModal(props) {
           <h3>Alert Intensity Legend</h3>
           <div className='info-legend-items'>
             <div className='info-legend-item'>
-              <h4>YELLOW</h4>
+              <h4 className='yellow'>YELLOW</h4>
               <p>Low: No hazards - discomfort unlikely</p>
             </div>
             <div className='info-legend-item'>
-              <h4>ORANGE</h4>
+              <h4 className='orange'>ORANGE</h4>
               <p>Medium: Chance of hazard - discomfort probable</p>
             </div>
             <div className='info-legend-item'>
-              <h4>RED</h4>
+              <h4 className='red'>RED</h4>
               <p>High: Hazard confirmed - avoid station</p>
             </div>
           </div>

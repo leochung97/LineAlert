@@ -17,7 +17,6 @@ router.post("/register", (req, res) => {
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
-    console.log(req.body);
     if (user) {
       errors.email = "Email already exists";
       return res.status(400).json(errors);
@@ -29,7 +28,6 @@ router.post("/register", (req, res) => {
         preferences: req.body.preferences
       });
 
-      console.log(req.body);
 
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {

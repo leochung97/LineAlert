@@ -60,10 +60,16 @@ function NavBar(props) {
             setAbout(true)
             }}
           >
-            <h4>Contact the Creators</h4>
+            <h4>Contact</h4>
           </Link>
 
-
+          <Link id="link" to="/" onClick={() => {
+            closeModal()
+            setInfo(true)
+            }}
+          >
+            <h4>Info</h4>
+          </Link>
 
           <Link id="link" to="/" onClick={() => {
             closeModal()

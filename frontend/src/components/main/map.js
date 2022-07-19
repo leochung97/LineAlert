@@ -142,10 +142,4 @@ const mSTP = state => {
   }
 }
 
-const mDTP = dispatch => {
-  return {
-
-  }
-}
-
-export default connect(mSTP, mDTP)(Maps);
+export default connect(mSTP)(Maps);

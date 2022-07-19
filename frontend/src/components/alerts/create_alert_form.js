@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { createAlert } from "../../actions/alert_actions";
 import Downshift from 'downshift'
 import stationNames from "../../util/station_name";
+import sendMail from "../../util/mail_api_util"
 
 function CreateAlertForm(props) {
   const [state, setState] = useState({
@@ -36,6 +37,7 @@ function CreateAlertForm(props) {
     }
     props.createAlert(state)
       .then(res => {
+        sendMail(state)
         if (res) {
           props.closeModal();
         }
