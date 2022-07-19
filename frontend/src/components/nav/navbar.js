@@ -87,7 +87,7 @@ function NavBar(props) {
               setAbout(true)
               }}
             >
-              <h4>Contact the Creators</h4>
+              <h4>Contact</h4>
             </Link>
           </div>
 
@@ -97,7 +97,7 @@ function NavBar(props) {
               setInfo(true)
               }}
             >
-              <h4>Application Info</h4>
+              <h4>Info</h4>
             </Link>
           </div>
 

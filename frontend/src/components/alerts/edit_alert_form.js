@@ -101,7 +101,7 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
   updateAlert: alert => dispatch(updateAlert(alert)),
-  fetchAlerts: () => dispatch(fetchAlerts()),
+  fetchAlerts: () => dispatch(fetchAlerts())
 })
 
 export default connect(mSTP, mDTP)(EditAlertForm);

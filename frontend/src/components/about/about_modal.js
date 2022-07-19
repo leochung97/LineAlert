@@ -31,10 +31,10 @@ const AboutModal = ({isOpen, closeModal}) => {
                   <span className='about-details-item'><h6>Project Lead</h6></span>
               </div>
               <div className='about-links'>
-              <a href='https://www.linkedin.com/in/swchung/'>
+              <a href='https://www.linkedin.com/in/swchung/' target="_blank" rel='noreferrer'>
                   <img className='linkedin-logo' src='https://linealert-assets.s3.amazonaws.com/linkedin-logo.png' alt='github-logo'/>
               </a>
-              <a href='https://github.com/leochung97'>
+              <a href='https://github.com/leochung97' target="_blank" rel='noreferrer'>
                   <img className='github-logo' src='https://linealert-assets.s3.amazonaws.com/github-logo.png' alt='github-logo'/>
               </a>
               </div>
@@ -47,10 +47,10 @@ const AboutModal = ({isOpen, closeModal}) => {
                   <span className='about-details-item'><h6>Frontend Lead</h6></span>
               </div>
               <div className='about-links'>
-              <a href='https://linkedin.com/in/tomleslieli/'>
+              <a href='https://linkedin.com/in/tomleslieli/' target="_blank" rel='noreferrer'>
                   <img className='linkedin-logo' src='https://linealert-assets.s3.amazonaws.com/linkedin-logo.png' alt='github-logo'/>
               </a>
-              <a href='https://github.com/tomleslieli'>
+              <a href='https://github.com/tomleslieli' target="_blank" rel='noreferrer'>
                   <img className='github-logo' src='https://linealert-assets.s3.amazonaws.com/github-logo.png' alt='github-logo'/>
               </a>
               </div>
@@ -63,10 +63,10 @@ const AboutModal = ({isOpen, closeModal}) => {
                   <span className='about-details-item'><h6>Backend Lead</h6></span>
               </div>
               <div className='about-links'>
-              <a href='https://www.linkedin.com/in/nikhil-kumar7890/'>
+              <a href='https://www.linkedin.com/in/nikhil-kumar7890/' target="_blank" rel='noreferrer'>
                   <img className='linkedin-logo' src='https://linealert-assets.s3.amazonaws.com/linkedin-logo.png' alt='github-logo'/>
               </a>
-              <a href='https://github.com/nikumar1206'>
+              <a href='https://github.com/nikumar1206' target="_blank" rel='noreferrer'>
                   <img className='github-logo' src='https://linealert-assets.s3.amazonaws.com/github-logo.png' alt='github-logo'/>
               </a>
               </div>
@@ -79,10 +79,10 @@ const AboutModal = ({isOpen, closeModal}) => {
                   <span className='about-details-item'><h6>Flex Lead</h6></span>
               </div>
               <div className='about-links'>
-              <a href='https://www.linkedin.com/in/vivian-chen-8082169a/'>
+              <a href='https://www.linkedin.com/in/vivian-chen-8082169a/' target="_blank" rel='noreferrer'>
                   <img className='linkedin-logo' src='https://linealert-assets.s3.amazonaws.com/linkedin-logo.png' alt='github-logo'/>
               </a>
-              <a href='https://github.com/vnchen92'>
+              <a href='https://github.com/vnchen92' target="_blank" rel='noreferrer'>
                   <img className='github-logo' src='https://linealert-assets.s3.amazonaws.com/github-logo.png' alt='github-logo'/>
               </a>
               </div>

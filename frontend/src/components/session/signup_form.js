@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { signup } from "../../actions/session_actions";
+import { signup, removeErrors } from "../../actions/session_actions";
 import { Link, useHistory } from "react-router-dom";
 
 function SignUp(props) {
@@ -41,7 +41,10 @@ function SignUp(props) {
     if (props.currentUser) {
       history.push("/");
     }
-  }, [props.currentUser, history]);
+    if (Object.values(props.errors).length > 0) {
+      props.removeErrors();
+    }
+  }, [props.currentUser, props, history]);
 
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
@@ -131,6 +134,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signup: (user) => dispatch(signup(user)),
+    removeErrors: () => dispatch(removeErrors())
   };
 };
 

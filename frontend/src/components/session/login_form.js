@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions/session_actions";
+import { login, removeErrors } from "../../actions/session_actions";
 import { Link, useHistory } from "react-router-dom";
 
 function LoginForm(props) {
@@ -14,6 +14,9 @@ function LoginForm(props) {
   useEffect(() => {
     if (props.currentUser) {
       history.push("/"); 
+    }
+    if (Object.values(props.errors).length > 0) {
+      props.removeErrors();
     }
   }, [props.currentUser, history]);
 
@@ -108,6 +111,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (user) => dispatch(login(user)),
+    removeErrors: () => dispatch(removeErrors())
   };
 };
 

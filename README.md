@@ -4,6 +4,9 @@
 
 LineAlert is a NYC-based subway alert application where users can create live alerts to notify other users of subway hazards, delays, and other suspicious activity.
 
+## Demo
+
+
 ## Background and Overview
 
 LineAlert was inspired by real-world events that occurred during our time at App Academy, a full stack software engineering bootcamp. On our first in-person day, a subway shooting shocked and delayed transit systems in NYC. Our application was designed to possibly prevent users from enterring hazardous stations and to avoid delays that frequently occur on the NYC subways.
@@ -59,7 +62,7 @@ Utilized for autocompleting search inputs when users were required to input stat
 
 ## Group Members and Work Breakdown
 
-- Project Lead: Leo Chung
-- Frontend Lead: Tom Leslie Li
-- Backend Lead: Nikhil Kumar
-- Flex Lead: Vivian Chen
+- Project Lead: [Leo Chung](https://github.com/leochung97)
+- Frontend Lead: [Tom Leslie Li](https://github.com/tomleslieli)
+- Backend Lead: [Nikhil Kumar](https://github.com/nikumar1206)
+- Flex Lead: [Vivian Chen](https://github.com/vnchen92)
