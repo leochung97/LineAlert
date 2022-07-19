@@ -43,9 +43,8 @@ function NavBar(props) {
     if (props.loggedIn) {
       return (
         <div className='nav-links'>
-          <Link id="link" className='user-email' to="/edit" onClick={() => {
+          <Link id="link" className='user-email' to="/" onClick={() => {
             closeModal()
-            setProfile(true)
             }}
           >
             <h4>{props.currentUser.email}</h4>

@@ -11,7 +11,7 @@ const alerts = require("./routes/api/alerts");
 const stations = require("./routes/api/stations");
 const google = require("./routes/api/google");
 const directions = require("./routes/api/directions");
-// const twilio = require("./routes/api/twilio");
+const twilio = require("./routes/api/twilio");
 const path = require('path');
 // const trainStations = require("./trainstations");
 mongoose
