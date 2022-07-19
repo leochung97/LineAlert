@@ -40,6 +40,7 @@ function NavBar(props) {
     e.preventDefault();
     props.logout();
     closeModal();
+    window.location.reload();
   };
 
   const getLinks = () => {
