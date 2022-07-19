@@ -8,11 +8,11 @@ LineAlert is a NYC-based subway alert application where users can create live al
 
 #### Search for Directions
 
-![Search Directions](https://linealert-assets.s3.amazonaws.com/search_directions.gif)
+![Search Directions](https://github.com/leochung97/LineAlert/blob/main/frontend/src/assets/img/search_directions.gif)
 
 #### Create an Alert
 
-![Create Alert](https://linealert-assets.s3.amazonaws.com/create_alert.gif)
+![Create Alert](https://github.com/leochung97/LineAlert/blob/main/frontend/src/assets/img/create_alert.gif)
 
 ## Background and Overview
 
