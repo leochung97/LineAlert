@@ -59,7 +59,7 @@ Utilized for autocompleting search inputs when users were required to input stat
 
 ## Group Members and Work Breakdown
 
-Project Lead: Leo Chung
-Frontend Lead: Tom Leslie Li
-Backend Lead: Nikhil Kumar
-Flex Lead: Vivian Chen
+- Project Lead: Leo Chung
+- Frontend Lead: Tom Leslie Li
+- Backend Lead: Nikhil Kumar
+- Flex Lead: Vivian Chen
