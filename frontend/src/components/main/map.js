@@ -38,8 +38,6 @@ function Maps({ directions, count }) {
     poly = []
   }
 
-  // console.log(direction)
-
   const directionsCallback = resp => {
     if (resp !== null) {
       if (resp.status === 'OK') {
@@ -123,7 +121,7 @@ function Maps({ directions, count }) {
             options={{
               origin: poly[0],
               destination: poly[1],
-              travelMode: 'TRANSIT'
+              travelMode: "TRANSIT"
             }}
             callback={directionsCallback}
           />
@@ -132,6 +130,7 @@ function Maps({ directions, count }) {
         
         { JSON.stringify(directions) !== "{}" ?
           <DirectionsRenderer
+            directions={response}
             routeIndex={count}
             options={{
               suppressMarkers: true
@@ -140,7 +139,6 @@ function Maps({ directions, count }) {
           />
           : <></>
         }
-
 
         {
           poly.map(marker => 
