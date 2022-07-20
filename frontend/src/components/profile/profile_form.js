@@ -5,7 +5,6 @@ function ProfileForm(props) {
   const [preferences, setPref] = useState(props.currentUser.preferences)
   const [state, setState] = useState({
     id: props.currentUser.id,
-    mobile: props.currentUser.mobile,
     email: props.currentUser.email,
     preferences: preferences
   });

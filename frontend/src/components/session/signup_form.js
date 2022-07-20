@@ -6,7 +6,6 @@ import { Link, useHistory } from "react-router-dom";
 function SignUp(props) {
   const [state, setState] = useState({
     email: "",
-    mobile: "",
     password: "",
     password2: ""
   });
@@ -20,7 +19,7 @@ function SignUp(props) {
     if (Object.values(props.errors).length > 0) {
       props.removeErrors();
     }
-  }, [props.currentUser, props, history]);
+  }, [props.currentUser, history]);
 
   const update = (field) => {
     return (e) => setState(() => ({ ...state, [field]: e.target.value }));
@@ -67,14 +66,6 @@ function SignUp(props) {
           <br />
           <input
             className='modal-form'
-            type="text"
-            value={state.mobile}
-            onChange={update("mobile")}
-            placeholder="Phone Number"
-          />
-          <br />
-          <input
-            className='modal-form'
             type="password"
             value={state.password}
             onChange={update("password")}
@@ -93,7 +84,7 @@ function SignUp(props) {
         </div>
         <input className='signup-submit-button' type="submit" value="Sign Up" />
         <div className='switch-modals'>
-          <Link id="link" to="/login" onClick={props.openLogin}>Have an account? Log in. </Link>
+          <Link id="link" to="/" onClick={props.openLogin}>Have an account? Log in. </Link>
         </div>
       </form>
     </div>

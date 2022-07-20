@@ -118,7 +118,7 @@ function NavBar(props) {
           </div>
 
           <div>
-            <Link id="link" to="/login" onClick={() => {
+            <Link id="link" to="/" onClick={() => {
               closeModal()
               setLogin(true)
               }}

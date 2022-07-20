@@ -15,9 +15,9 @@ const NEW_YORK_BOUNDS = {
 
 function Maps({directions}) {
   const [markers, setMarkers] = useState([]);
-  const [toggleTL, setoggleTL] = useState(true)
-  const [isOpen, setIsOpen] = useState(false)
-  const [clickedMarker, setClickedMarker] = useState(null)
+  const [toggleTL, setoggleTL] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [clickedMarker, setClickedMarker] = useState(null);
 
   useEffect(() => {
     if (Object.values(directions)[0] && !directions.error) {
@@ -28,6 +28,8 @@ function Maps({directions}) {
   let poly = []
 
   let direction = null
+
+  console.log('THIS IS DIRECTIONS', directions)
 
   directions.error ? direction = null : direction = Object.values(directions)[0]
 
@@ -137,8 +139,10 @@ function Maps({directions}) {
 }
 
 const mSTP = state => {
+  console.log('THIS IS THE POLYLINE',state.entities.polyline)
   return {
-    directions: state.entities.directions
+    directions: state.entities.directions,
+    polyline: state.entities.polyline
   }
 }
 

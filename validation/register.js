@@ -4,18 +4,9 @@ const validText = require("./valid-text");
 module.exports = function validateRegisterInput(data) {
   let errors = {};
   
-  data.mobile = validText(data.mobile) ? data.mobile : "";
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";
   data.password2 = validText(data.password2) ? data.password2 : "";
-
-  if (!Validator.isLength(data.mobile, { min: 12, max: 12 })) {
-    errors.mobile = "Phone number must be 12 characters";
-  }
-
-  if (Validator.isEmpty(data.mobile)) {
-    errors.mobile = "Phone number is required";
-  }
 
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email field is required";

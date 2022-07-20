@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { connect } from "react-redux";
 import { fetchDirections, clearDirections } from "../../actions/directions_actions";
 import RouteInfo from "./routeinfo";
+
 function Directions_Results({ directions, errors, clearDirections }) {
   const [count, setCount] = useState(0)
 
@@ -29,7 +30,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
         ) : 
         (
           <div>
-            <RouteInfo route={directions[count]} />
+            <RouteInfo route={directions[count]}/>
             <div className='directions-buttons'>
           {toggleprevRoute()}
           {toggleforRoute()}
@@ -44,6 +45,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
 }
 
 const mapStateToProps = (state) => {
+  console.log('THIS IS STATE IN DIRECTIONSRESULT MSTP', state)
   return {
     directions: Object.values(state.entities.directions),
     errors: state.entities.directions.error,

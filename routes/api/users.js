@@ -7,7 +7,6 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
-const validateEditInput = require("../../validation/edit");
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -22,7 +21,6 @@ router.post("/register", (req, res) => {
       return res.status(400).json(errors);
     } else {
       const newUser = new User({
-        mobile: req.body.mobile,
         email: req.body.email,
         password: req.body.password,
         preferences: req.body.preferences
@@ -38,7 +36,6 @@ router.post("/register", (req, res) => {
             .then((user) => {
               const payload = {
                 id: user.id,
-                mobile: user.mobile,
                 email: user.email,
                 preferences: user.preferences
               };
@@ -79,7 +76,12 @@ router.post("/login", (req, res) => {
 
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
-        const payload = { id: user.id, mobile: user.mobile, email: user.email, preferences: user.preferences };
+        const payload = { 
+          id: user.id, 
+          email: user.email, 
+          preferences: user.preferences 
+        };
+
         jwt.sign(
           payload,
           keys.secretOrKey,
@@ -108,7 +110,6 @@ router.patch("/edit",
     }
 
     User.findByIdAndUpdate(req.params.id, {
-      mobile: req.body.mobile,
       preferences: req.body.preferences
     }, {new: true})
       .then((user) => {
