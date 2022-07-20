@@ -2,9 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import "../../assets/stylesheets/main.scss";
 import AlertsContainer from "../alerts/alerts";
-import DirectionsForm from "../directions/directions_form.js"
+import DirectionsForm from "../directions/directions_form.js";
 import DirectionsResult from "../directions/directions_result";
 import Map from "./map.js";
+
 
 function MainPage({directions, stations, alerts}) {
   return (

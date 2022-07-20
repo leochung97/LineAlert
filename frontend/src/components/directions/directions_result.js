@@ -1,22 +1,23 @@
-import React, {useState} from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { fetchDirections, clearDirections } from "../../actions/directions_actions";
+import {incrementCount, decrementCount, resetCount} from '../../actions/count_actions';
+
 import RouteInfo from "./routeinfo";
 
-function Directions_Results({ directions, errors, clearDirections }) {
-  const [count, setCount] = useState(0)
+function Directions_Results({ directions, errors, clearDirections, incrementCount, decrementCount, resetCount, count }) {
 
   const toggleforRoute = () => {
     if (count === directions.length - 1 ) {
-      return <button type="button" className='direction-button' onClick={() => setCount(0)}>Best Route Again</button>
+      return <button type="button" className='direction-button' onClick={() => resetCount()}>Best Route Again</button>
     } 
     else {
-      return <button type="button" className='direction-button' onClick={() => setCount(count + 1)}>Next Best Route</button>
+      return <button type="button" className='direction-button' onClick={() => incrementCount(count)}>Next Best Route</button>
     }
   }
 
   const toggleprevRoute = () => {
-    return count ? <button type="button" className='direction-button' onClick={() => setCount(count - 1)}>Previous Route</button> : <></>
+    return count ? <button type="button" className='direction-button' onClick={() => decrementCount(count)}>Previous Route</button> : <></>
   }
 
   return (
@@ -34,7 +35,7 @@ function Directions_Results({ directions, errors, clearDirections }) {
             <div className='directions-buttons'>
           {toggleprevRoute()}
           {toggleforRoute()}
-            < button className='direction-button' type = "button" onClick={() => clearDirections()}> Clear Search </button>
+            <button className='direction-button' type = "button" onClick={() => clearDirections()}> Clear Search </button>
             </div>
           </div>
         
@@ -45,10 +46,10 @@ function Directions_Results({ directions, errors, clearDirections }) {
 }
 
 const mapStateToProps = (state) => {
-  console.log('THIS IS STATE IN DIRECTIONSRESULT MSTP', state)
   return {
     directions: Object.values(state.entities.directions),
     errors: state.entities.directions.error,
+    count: state.entities.count
   };
 };
 
@@ -56,6 +57,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchDirections: (directions) => dispatch(fetchDirections(directions)),
     clearDirections: () => dispatch(clearDirections()),
+    incrementCount: (count) => dispatch(incrementCount(count)),
+    decrementCount: (count) => dispatch(decrementCount(count)),
+    resetCount: () => dispatch(resetCount()),
   };
 };
 
