@@ -33,9 +33,8 @@
       "react-app/jest"
     ]
   },
-  
+  "plugins": ["react-perf"],
   "proxy": "http://localhost:5001/",
-
   "browserslist": {
     "production": [
       ">0.2%",
