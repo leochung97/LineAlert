@@ -64,7 +64,7 @@ function DirectionsForm(props) {
                 <div className='combobox-origin'
                   {...getRootProps({}, {suppressRefError: true})}
                 >
-                  <input {...getInputProps()} />
+                  <input {...getInputProps()} required/>
                 </div>
                 <ul {...getMenuProps()}>
                   {isOpen ? filterFn(inputValue).map((item, index) => (
@@ -104,7 +104,7 @@ function DirectionsForm(props) {
                   <div className='combobox-destination'
                     {...getRootProps({}, {suppressRefError: true})}
                   >
-                    <input {...getInputProps()} />
+                    <input {...getInputProps()} required/>
                   </div>
                   <ul {...getMenuProps()}>
                     {isOpen ? filterFn(inputValue).map((item, index) => (

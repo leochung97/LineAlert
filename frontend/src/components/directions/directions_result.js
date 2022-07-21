@@ -6,7 +6,6 @@ import {incrementCount, decrementCount, resetCount} from '../../actions/count_ac
 import RouteInfo from "./routeinfo";
 
 function Directions_Results({ directions, errors, clearDirections, incrementCount, decrementCount, resetCount, count }) {
-
   const toggleforRoute = () => {
     if (count === directions.length - 1 ) {
       return <button type="button" className='direction-button' onClick={() => resetCount()}>Best Route Again</button>
@@ -35,7 +34,7 @@ function Directions_Results({ directions, errors, clearDirections, incrementCoun
             <div className='directions-buttons'>
           {toggleprevRoute()}
           {toggleforRoute()}
-            <button className='direction-button' type = "button" onClick={() => clearDirections()}> Clear Search </button>
+            <button className='direction-button' type = "button" onClick={() => clearDirections()}>Clear Search</button>
             </div>
           </div>
         

@@ -7,6 +7,7 @@ import DirectionsResult from "../directions/directions_result";
 import Map from "./map.js";
 
 
+
 function MainPage({directions, stations, alerts}) {
   return (
     <div className="main">

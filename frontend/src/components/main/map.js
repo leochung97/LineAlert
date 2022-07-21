@@ -1,17 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useSelector } from 'react-redux';
-import { GoogleMap, Marker, TransitLayer, DirectionsService, DirectionsRenderer, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, Marker, TransitLayer, DirectionsService, useJsApiLoader, Polyline } from "@react-google-maps/api";
 import mapStyles from "./styles.js";
 import AlertModal from '../alerts/alert_modal.js';
-  
-const center = { lat: 40.767, lng: -73.972 };
-
-const NEW_YORK_BOUNDS = {
-  north: 40.867,
-  south: 40.667,
-  west: -74.072,
-  east: -73.872
-};
+import {icons, center, NEW_YORK_BOUNDS} from './map_utils.js';
 
 function Maps({ directions, count }) {
   const [markers, setMarkers] = useState([]);
@@ -19,33 +11,50 @@ function Maps({ directions, count }) {
   const [isOpen, setIsOpen] = useState(false);
   const [clickedMarker, setClickedMarker] = useState(null);
   const [response, updateResponse] = useState(null);
-  
+  const [sentResponse, updateSentResponse] = useState(false);
+  const [mapInit, setMapInit] = useState(false);
+
   useEffect(() => {
     if (Object.values(directions)[count] && !directions.error) {
       setoggleTL(false);
     }
   }, [directions, count]);
   
-  let poly = []
-  let direction = null
+  let polyStart = {};
+  let polyEnd = {};
+  let direction = null;
+  let trains = [];
 
-  directions.error ? direction = null : direction = Object.values(directions)[count]
-
-  if (direction) {
-    poly.push(direction.startLocation)
-    poly.push(direction.endLocation)
-  } else {
-    poly = []
+  if (JSON.stringify(directions) !== "{}") {
+    directions.error ? direction = null : direction = Object.values(directions)[count]
   }
 
+
   const directionsCallback = resp => {
-    if (resp !== null) {
-      if (resp.status === 'OK') {
-        updateResponse(resp)
-      } else {
-        console.log('response: ', resp)
-      }
+    if (resp !== null && resp.status === 'OK') {
+        if (!sentResponse) {
+          updateResponse(resp)
+          updateSentResponse(true);
+        }
+    
+        if (sentResponse){
+          setTimeout(() => {
+            updateSentResponse(false);
+          }, 20000)
+        }
     }
+  }
+
+  if (direction) {
+    direction.trains.forEach(train => {
+      trains.push(train)
+    })
+    polyStart = direction.startLocation;
+    polyEnd = direction.endLocation;
+  } else {
+    trains = []
+    polyStart = {}
+    polyEnd = {}
   }
 
   const alerts = useSelector(state => state.entities.alerts, (a, b) => a.length === b.length);
@@ -73,18 +82,28 @@ function Maps({ directions, count }) {
 
     setMarkers(Object.values(tempMarkers));
   }, [alerts, stations])
-  
+
   const markerClick = id => {
     let clickedMarker = alerts.filter(alert => (alert._id === id))[0]
     setIsOpen(true)
     setClickedMarker(clickedMarker)
   }
 
-  const {isLoaded, loadError} = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyAnIbS_geF_FmCXWPVgocrZOz85lP6kCsk'
-  })
+  // const { isLoaded } = useJsApiLoader({
+  //   googleMapsApiKey: ''
+  // })
 
-  const [mapInit, setMapInit] = useState(false);
+  const memoizedDirectionsService = () => {
+        return <DirectionsService
+          options={{
+            origin: polyStart,
+            destination: polyEnd,
+            travelMode: "TRANSIT",
+            provideRouteAlternatives: true,
+          }}
+          callback={directionsCallback}
+        />
+  }
 
   setTimeout(() => {
     setMapInit(true);
@@ -101,6 +120,7 @@ function Maps({ directions, count }) {
           panControl: false,
           disableDefaultUI: true,
           styles: mapStyles,
+          suppressInfoWindows: true,
           restriction: {
             latLngBounds: NEW_YORK_BOUNDS,
             strictBounds: false
@@ -117,39 +137,34 @@ function Maps({ directions, count }) {
         <TransitLayer />
 
         { JSON.stringify(directions) !== "{}" ? 
-          <DirectionsService
-            options={{
-              origin: poly[0],
-              destination: poly[1],
-              travelMode: "TRANSIT"
-            }}
-            callback={directionsCallback}
-          />
-          : <></>
-        }
-        
-        { JSON.stringify(directions) !== "{}" ?
-          <DirectionsRenderer
-            directions={response}
-            routeIndex={count}
-            options={{
-              suppressMarkers: true
-              // provideRouteAlternatives: true
-            }}
-          />
+          memoizedDirectionsService()   
           : <></>
         }
 
         {
-          poly.map(marker => 
-              <Marker 
-                key={marker.lat}
-                position={marker}
-                icon={'https://linealert-assets.s3.amazonaws.com/linealert-poly-pin.png'}
+          response && JSON.stringify(directions) !== "{}" &&
+          <Polyline 
+            path={response.routes[count].overview_path}
+            options={{
+              strokeColor: "#4A89F3",
+              strokeOpacity: 0.95,
+              strokeWeight: 4,
+            }}
+          />
+        }
+
+        {
+          trains.map(train => {
+            return (
+              <Marker
+              key={train.polyline}
+              position={train.departureStopLocation}
+              icon={icons[train.trainName]}
               />
             )
+          })
         }
-        
+
         {
           markers.map(marker => 
               <Marker 
@@ -174,7 +189,7 @@ function Maps({ directions, count }) {
   }
 
   return (
-    isLoaded && mapInit ? renderMap() : spinner()
+    mapInit ? renderMap() : spinner()
   )
 }
 

@@ -26,7 +26,7 @@ const Alerts = (props) => {
 const mSTP = state => {
   return {
     stations: state.entities.stations,
-    currentUser: state.session.user.id,
+    currentUser: state.session.user ? state.session.user.id : null,
     isAuthenticated: state.session.isAuthenticated
   }
 }
