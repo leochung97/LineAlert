@@ -17,11 +17,14 @@ const parseRoutes = (routesArr) => {
     route.legs[0].steps.map((subroute) => {
       if (subroute.travel_mode === "TRANSIT") {
         let trainInfo = {};
+        console.log(subroute.transit_details.departure_stop)
         trainInfo.polyline = subroute.polyline.points;
         trainInfo.instructions = subroute.html_instructions;
         trainInfo.trainName = subroute.transit_details.line.short_name;
         trainInfo.arrivalStop = subroute.transit_details.arrival_stop.name
         trainInfo.departureStop = subroute.transit_details.departure_stop.name
+        trainInfo.arrivalStopLocation = subroute.transit_details.arrival_stop.location
+        trainInfo.departureStopLocation = subroute.transit_details.departure_stop.location
         trains.push(trainInfo);
       }
       filteredRoute.trains = trains;
