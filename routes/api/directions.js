@@ -17,7 +17,6 @@ const parseRoutes = (routesArr) => {
     route.legs[0].steps.map((subroute) => {
       if (subroute.travel_mode === "TRANSIT") {
         let trainInfo = {};
-        console.log(subroute.transit_details.departure_stop)
         trainInfo.polyline = subroute.polyline.points;
         trainInfo.instructions = subroute.html_instructions;
         trainInfo.trainName = subroute.transit_details.line.short_name;

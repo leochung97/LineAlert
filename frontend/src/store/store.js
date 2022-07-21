@@ -8,7 +8,7 @@ const configureStore = (preloadedState = {}) => {
     rootReducer,
     preloadedState,
     // Add back logger into applyMiddle if required
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk)
   );
 };
 
