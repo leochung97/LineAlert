@@ -76,7 +76,7 @@ router.post("/mail", async (req, res) => {
   let emails = await grabUsers();
   sendEmail({
     subject: `New Alert at ${station}`,
-    text: `Dear valued New Yorker, an alert (Hazard Level: ${convertInten}) has been issued.\nAlert message:\n${message}\n\nPlease visit the app for more information: https://aa-linealert.herokuapp.com/ \nStay Safe,\nLineAlert`,
+    text: `Dear valued New Yorker, an alert (Hazard Level: ${convertInten}) has been issued.\nAlert message:\n${message}\n\nPlease visit the app for more information: https://aa-linealert.onrender.com \nStay Safe,\nLineAlert`,
     bcc: emails,
     from: "LineAlert",
   })
