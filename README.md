@@ -1,6 +1,6 @@
 # LineAlert
 
-### [LineAlert](https://aa-linealert.herokuapp.com/)
+### [LineAlert](https://aa-linealert.onrender.com/)
 
 LineAlert is a NYC-based subway alert application where users can create live alerts to notify other users of subway hazards, delays, and other suspicious activity.
 
